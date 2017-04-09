@@ -1,0 +1,101 @@
+\chapter{Referencial Teórico}
+
+\section{\textit{Representational State Transfer} (REST) }
+
+  A Transferência de Estado Representacional (do inglês, \textit{Representational State Transfer} ou REST)
+  é um estilo arquitetural introduzido por \citeonline{fielding2002} que serve como um modelo abstrato
+  para guiar o uso do \textit{Hypertext Transfer Protocol} (HTTP) e do \textit{Uniform Resource Identifier} (URI)
+  na arquitetura da \textit{Web} moderna, abstraindo os elementos arquiteturais participantes de um sistema de
+  hipermídia distribuído.
+  
+  \citeonline{perry1992} classificam os elementos arquiteturais em elementos de processamento (componentes),
+  elementos de dados e elementos de conexão (conectores). O estilo REST foca no papel dos componentes, nas restrições
+  da interação entre componentes e na interpretação de elementos de dados significantes para a interação \cite{fielding2002}.
+  
+  O estilo REST é um conjunto coordenado de restrições arquiteturais que possibilita baixo acoplamento entre os componentes,
+  minimização da latência da comunicação e favorece a escalabilidade da implementação dos componentes \textit{fielding2002}.
+  
+  \subsection{Elementos de processamento}
+  
+    Componentes REST se comunicam transferindo uma representação do dado (informação) em algum formato padrão que pode
+    ser selecionado dinamicamente com base nas preferências do destinatário \cite{fielding2002}. Além dos dados contidos na 
+    informação, uma representação contém também metadados descrevendo os dados e, possivelmente, metadados sobre os
+    metadados \cite{fielding2002}.
+    
+    O estilo REST possui uma natureza \textit{stateless} (sem estado), ou seja, cada requisição deve ser autosuficiente, sem
+    dependência de outras interações. Isso possibilita a implementação de serviços utilizando uma estrutura complexa de componentes
+    intermediários e múltiplos servidores de origem, caracterizando um aspecto interessante em um cenário distribuído \cite{fielding2002}.
+    \citeonline{fielding2002} afirmam que a arquitetura REST foi desenvolvida para atender as necessidades de um sistema de
+    hipermídia distribuído, onde a interação entre componentes consiste em transferência de grande quantidade de dados.
+    
+    A Tabela \ref{rest-components-elements} apresenta os tipos de componentes no REST.
+  
+    \begin{table}[ht!]
+    \centering
+    \caption{Tipos de componentes da arquitetura REST. Traduzido e adaptado de \cite{fielding2002}.}
+    \label{rest-components-elements}
+    \begin{tabular}{l|l}
+    \hline
+    \multicolumn{1}{c|}{\textbf{Tipos de componentes}} & \multicolumn{1}{c}{\textbf{Exemplos}} \\ \hline
+    servidor de origem                                  & Apache httpd, Nginx                    \\ \hline
+    \textit{gateway}                                    & Squid, CGI, Proxy reverso              \\ \hline
+    proxy                                               & CERN Proxy, Netscape Proxy             \\ \hline
+    agente de usuário                                   & Google Chrome, Mozilla Firefox, Lynx   \\ \hline
+    \end{tabular}
+    \end{table}
+  
+  \subsection{Elementos de dados}
+    
+    No estilo REST, uma informação é abstraída em um recurso, que pode ser qualquer informação que possa ser nomeada
+    (documentos, imagens, serviços, entre outros).
+    
+    Para \citeonline{fielding2002}, um recurso é um mapeamento conceitual para um conjunto de entidades e não a entidade mapeada
+    em um determinado espaço no tempo. Em termos matemáticos, um recurso \textit{R} é uma função de associação variável no tempo, a qual, em um 
+    determinado tempo \textit{t}, mapeia um conjunto de valores, onde esses valores podem ser representações do recurso em questão ou
+    outros identificadores de recursos.
+    Com essa definição abstrata de um recurso é importante salientar que a semântica de um mapeamento de um recurso dever permanecer
+    estática, uma vez que esta semântica é o que permite distinguir os recursos \cite{fielding2002}.
+    Para identificar um recurso específico na interação entre dois componentes, o REST utiliza um identificador de recurso \cite{fielding2002}.
+    
+    A Tabela \ref{rest-data-elements} apresenta os elementos de dados no REST.
+    
+    \begin{table}[ht!]
+    \centering
+    \caption{Elementos de dados da arquitetura REST. Traduzido de \cite{fielding2002}.}
+    \label{rest-data-elements}
+    \begin{tabular}{l|l}
+    \hline
+    \multicolumn{1}{c|}{\textbf{Elementos de dados}} & \multicolumn{1}{c}{\textbf{Exemplos}}                                                             \\ \hline
+    recurso                                           & \begin{tabular}[c]{@{}l@{}}alvo conceitual desejado de uma\\ referência de hipertexto\end{tabular} \\ \hline
+    identificador de recurso                          & URI, URN                                                                                           \\ \hline
+    representação                                     & documento HTML, imagem JPEG                                                                        \\ \hline
+    metadados da representação                        & tipo de mídia, last-modified-time                                                                  \\ \hline
+    metadados do recurso                              & link da fonte, alternativas                                                                        \\ \hline
+    dados de controle                                 & if-modified-since, cache-control                                                                   \\ \hline
+    \end{tabular}
+    \end{table}
+  
+  \subsection{Elementos de conexão}
+  
+    Os conectores na arquitetura REST fornecem uma interface genérica para acessar e manipular o conjunto de valores de um ou mais recursos,
+    encapsulando as atividades de acesso aos recursos e de transferência de representações de recursos \cite{fielding2002}.
+    Os conectores gerenciam a comunicação de rede de um componente. 
+    O encapsulamento possibilitado pelos conectores permite que seja possível se comunicar na \textit{Web} por meio de diferentes protocolos,
+    embora o HTTP seja o protocolo de transferência primário \cite{fielding2002}.
+    
+    A Tabela \ref{rest-connectors-elements} apresenta os tipos de conectores no REST.
+    
+    \begin{table}[ht!]
+    \centering
+    \caption{Tipos de conectores da arquitetura REST. Traduzido de \cite{fielding2002}.}
+    \label{rest-connectors-elements}
+    \begin{tabular}{l|l}
+    \hline
+    \multicolumn{1}{c|}{\textbf{Tipos de conectores}} & \multicolumn{1}{c}{\textbf{Exemplos}} \\ \hline
+    cliente                                            & libwww, libwww-perl                    \\ \hline
+    servidor                                           & libwww, Apache API                     \\ \hline
+    cache                                              & browser cache, Akamai cache network    \\ \hline
+    resolvedor                                         & bind (biblioteca DNS)                  \\ \hline
+    túnel                                              & SOCKS, SSL                             \\ \hline
+    \end{tabular}
+    \end{table}
