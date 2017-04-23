@@ -17,46 +17,61 @@ Aproximadamente 54\% dos atendimentos foram para prestação de informações. D
 
 Ao longo dos anos, cenários como esse impulsionaram os governos à criação de políticas públicas (PP) para a redução da violência contra as mulheres e de estratégias de apoio às mulheres e de conscientização da população. Além disso, estratégias tecnológicas, como aplicativos e sites, têm surgido nesse contexto.
 
-O I-DECIDE é um projeto australiano, proveniente dessas estratégias, responsável por disponibilizar para as mulheres um site
-no qual elas podem avaliar sua relação, suas prioridades e planejar um futuro mais seguro. A ferramenta compreende avaliações de segurança e um processo de planejamento de ação individualizado adaptado às circunstâncias particulares de cada mulher. \footnote{Traduzido de I-DECIDE: Trial of an online healthy relationship tool and safety decision aid for women experiencing domestic violence - http://medicine.unimelb.edu.au/research-groups/general-practice-research/abuse-and-violence/development-and-evaluation-of-an-online-healthy-relationship-tool-and-safety-decision-aid-for-women-experiencing-domestic-violence-i-decide}
+O I-DECIDE é um projeto australiano, proveniente dessas estratégias, responsável por disponibilizar para as mulheres um site no qual elas podem avaliar sua relação, suas prioridades e planejar um futuro mais seguro. A ferramenta compreende avaliações de segurança e um processo de planejamento de ação individualizado adaptado às circunstâncias particulares de cada mulher \cite{idecide}.
 
 No Brasil, a criação da Lei Maria da Penha, da Lei do Feminicídio e de programas e serviços de apoio à causa 
 como o Disque-denúncia Ligue 180, a Casa da Mulher Brasileira e a Unidade Móvel de Atendimento são respostas aos cenários supracitados. No contexto de Tecnologia da Informação (TI), a criação de software têm sido apoiada pelo governo e realizada pela própria população.
 
-Em 2011, o Laboratório Hacker da Câmara dos Deputados promoveu um \textit{Hackathon} de Gênero e Cidadania, no qual
-um dos temas era "Violência Contra a Mulher". O site Minha Voz foi o vencedor e de suas funcionalidades é um questionário que ajuda a mulher a identificar o tipo de violência sofrida. 
+Um rápido levantamento realizado sobre as aplicações existentes no Brasil, demonstra que elas têm bastante em comum. A maioria concentra em prover uma rede de denúncias para mapear locais de risco ou levar essa
+denúncia até uma autoridade competente. Além disso, muitas aplicações preocupam-se em prover informações sobre leis e conceitos.
 
-Na Figura \ref{fig:sistemas_categorizados} são apresentadas algumas aplicações criadas no Brasil para apoio à mulher vítima de violência categorizadas em cinco tipos: Levantamento de Dados e estatísticas, Mapeamento de riscos, Informativos, Pedido de Socorro e Apoio.
+Diante desse cenário, é percebido que cada aplicação fornece apoio para a mulher e 
+gera dados importantes para o contexto, porém esses dados ficam apenas no domínio daquela aplicação. 
+Além disso, uma lacuna é identificada quanto ao fornecimento de um apoio mais específico de acordo com a situação de violência vivida pela mulher.
 
-\begin{figure}[ht]
-\centering
-\includegraphics[scale=0.85]{figuras/sistemas_relacionados.png}
-\caption{Aplicações de apoio à mulher vítima de violência}
-\label{fig:sistemas_categorizados}
-\end{figure}
+Uma \textit{Application Programming Interface} (API), é uma interface que expõe os seus componentes como um serviço, permitindo que outras aplicações interajam com esses componentes \cite{wagh2012comparative, understanding_web}. Essa arquitetura de serviços possibilita o compartilhamento dos dados armazenados com as aplicações que consomem o serviço. 
 
-Em suma, os sistemas estão voltados para informações, pedido de socorro e uma rede de desabafo e apoio entre as mulheres. 
-As aplicações classificadas como apoio, no geral apresentam informações genéricas sobre como agir em situações de violência. Dessa forma, percebe-se uma lacuna em um apoio mais específico de acordo com a situação de violência, como sugestões de ações a serem tomadas e planejamento de segurança, como por exemplo, a proposta do I-DECIDE.
+\section{Objetivos}
 
-\section{Objetivo}
+Considerando os aspectos supracitados, o objetivo do trabalho é criar uma API para uso em sistemas de tomada de decisão e planejamento de segurança, para mulheres vítimas de violência, que consolide as informações das aplicações existentes e forneça um apoio específico de acordo com a situação da mulher.
 
-Considerando a lacuna identificada nos sistemas existentes, o objetivo do trabalho é 
-criar uma \textit{Application Programming Interface} (API) para uso em sistemas de tomada de 
-decisão e planejamento de segurança para mulheres vítima de violência, utilizando o modelo definido e utilizado na aplicação I-DECIDE.
-Para esse fim os objetivos específicos do trabalho são:
+Para alcançar o objetivo proposto os objetivos específicos do trabalho são:
 \begin{itemize}
+	\item Mapear as funcionalidades em comum entre as aplicações existentes;
+	\item Definir as funcionalidades a serem consolidadas na API;
 	\item Definir um questionário padrão a ser respondido pelas mulheres para apoio a tomada de decisão;
 	\item Permitir que novas questões sejam inseridas pelas mulheres;
 	\item Categorizar as questões (padrão e inseridas);
 	\item Definir ações de segurança para as categorias de violência;
 \end{itemize}
 
-\section{Metodologia}
+\section{Etapas do trabalho}
 
-% LEVANTAMENTO DE SISTEMAS RELACIONADOS
+% Neste capítulo são descritos os passos utilizados na realização do trabalho.
+
+Para realização do objetivo proposto no trabalho serão realizadas quatro etapas: 
+Diagnóstico, Definição do trabalho, Desenvolvimento do trabalho, Aplicação em um caso de exemplo.
+
+\noindent \textbf{Diagnóstico}: Esta etapa compreende o levantamento dos sistemas relacionados e o mapeamento
+de funcionalidades em comum com o objetivo de entender o cenário das aplicações implementadas no contexto
+de violência contra a mulher.
+
+\noindent \textbf{Definição do trabalho}: Esta etapa tem como objetivo o estabelecimento do problema a ser solucionado, dos objetivos a serem alcançados e o planejamento da realização do trabalho.
+
+\noindent \textbf{Desenvolvimento do trabalho}: Esta etapa compreende a realização dos passos planejados para 
+alcançar os objetivos definidos na etapa anterior.
+
+\noindent \textbf{Aplicação em um caso de exemplo}: Esta etapa consiste na construção de um exemplo utilizando o
+trabalho desenvolvido, a fim de ilustrar o seu uso.
+
+% Levantar sistemas relacionados, Mapear funcionalidades em comum, Definir escopo da API,
+% Modelar estrutura da API, Desenvolver a API e Desenvolver um caso de exemplo.
+
+% Passos: Levantar sistemas relacionados, definir escopo da api, definir tecnologia, 
+% definir um questionário padrão a ser respondido pelas mulheres para apoio a tomada de decisão, implementar api, definir categorias, adicionar inteligência, definir ações
 
 
 
 
 
-
+% \section{Organização do trabalho}
