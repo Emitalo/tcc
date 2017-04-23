@@ -7,12 +7,31 @@ aplicações, permitem a criação de novas aplicações e constituem a base par
 "Web como uma plataforma". 
 
 \citeonline{wagh2012comparative} afirmam que existem vários métodos para interação entre o  
-usuário e a Internet, através de serviços web (\textit{web services}), utilizando o conceito 
-de arquitetura orientada a serviços (SOA). Essa arquitetura permite que os componentes de 
+usuário e a Internet, através de serviços web (\textit{web services}). Essa arquitetura permite que os componentes de 
 software, o que inclui funções, objetos e processos de diferentes sistemas, sejam expostos 
 como um serviço.
 
 Para prover esses serviços através de uma API, podem ser utilizadas duas arquiteturas: SOAP ou REST.
+
+\section{\textit{Simple object access Protocol} (SOAP) }
+
+O protocolo SOAP é uma arquitetura de \textit{web service} baseada em três entidades: o provedor, o registrador e o consumidor do serviço. O provedor é entendido como o serviço endereçado na rede
+que aceita requisições. O consumidor é uma aplicação, serviço ou outro tipo de software que
+requisita um serviço e um registrador é um diretório na rede que contém os serviços disponíveis \cite{mumbaikar}.
+
+% colocar o significado de cada sigla.
+A comunicação é realizada através de mensagens trocadas via SMTP, FTP e HTTP. Cada mensagem 
+é composta por um "envelope", um cabeçalho e um conteúdo. As mensagens são enviadas em documentos XML
+que contém as mensagens e os métodos a serem chamados \cite{mumbaikar}. 
+Um serviço implementado com SOAP sempre retorna um documento XML \cite{wagh2012comparative}.
+
+% \citeonline{wagh2012comparative} afirma que as mensagens SOAP tem um conteúdo pesado e por
+% esse motivo não sendo sendo indicadas para dispositivos móveis.
+
+% PESQUISAR: Louridas, P. “SOAP and Web Services Software”, IEEE Volume: 23 ,
+% Issue: 6 Digital Object Identifier: 10.1109/MS.2006.172 Publication
+% Year: 2006 , Page(s): 62 - 67 Cited by: 2
+
 
 \section{\textit{Representational State Transfer} (REST) }
 
