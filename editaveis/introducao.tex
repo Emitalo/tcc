@@ -17,7 +17,7 @@ Aproximadamente 54\% dos atendimentos foram para prestação de informações. D
 
 Ao longo dos anos, cenários como esse impulsionaram os governos à criação de políticas públicas (PP) para a redução da violência contra as mulheres e de estratégias de apoio às mulheres e de conscientização da população. Além disso, estratégias tecnológicas, como aplicativos e sites, têm surgido nesse contexto.
 
-O I-DECIDE é um projeto australiano, proveniente dessas estratégias, responsável por disponibilizar para as mulheres um site no qual elas podem avaliar sua relação, suas prioridades e planejar um futuro mais seguro. A ferramenta compreende avaliações de segurança e um processo de planejamento de ação individualizado adaptado às circunstâncias particulares de cada mulher \cite{idecide}.
+% O I-DECIDE é um projeto australiano, proveniente dessas estratégias, responsável por disponibilizar para as mulheres um site no qual elas podem avaliar sua relação, suas prioridades e planejar um futuro mais seguro. A ferramenta compreende avaliações de segurança e um processo de planejamento de ação individualizado adaptado às circunstâncias particulares de cada mulher \cite{idecide}.
 
 No Brasil, a criação da Lei Maria da Penha, da Lei do Feminicídio e de programas e serviços de apoio à causa 
 como o Disque-denúncia Ligue 180, a Casa da Mulher Brasileira e a Unidade Móvel de Atendimento são respostas aos cenários supracitados. No contexto de Tecnologia da Informação (TI), a criação de software têm sido apoiada pelo governo e realizada pela própria população.
@@ -27,22 +27,21 @@ denúncia até uma autoridade competente. Além disso, muitas aplicações preoc
 
 Diante desse cenário, é percebido que cada aplicação fornece apoio para a mulher e 
 gera dados importantes para o contexto, porém esses dados ficam apenas no domínio daquela aplicação. 
-Além disso, uma lacuna é identificada quanto ao fornecimento de um apoio mais específico de acordo com a situação de violência vivida pela mulher.
+% Além disso, uma lacuna é identificada quanto ao fornecimento de um apoio mais específico de acordo com a situação de violência vivida pela mulher.
 
 Uma \textit{Application Programming Interface} (API), é uma interface que expõe os seus componentes como um serviço, permitindo que outras aplicações interajam com esses componentes \cite{wagh2012comparative, understanding_web}. Essa arquitetura de serviços possibilita o compartilhamento dos dados armazenados com as aplicações que consomem o serviço. 
 
 \section{Objetivos}
 
-Considerando os aspectos supracitados, o objetivo do trabalho é criar uma API para uso em sistemas de tomada de decisão e planejamento de segurança, para mulheres vítimas de violência, que consolide as informações das aplicações existentes e forneça um apoio contextualizado de acordo com a situação da mulher.
+Considerando os aspectos supracitados, o objetivo do trabalho é criar uma API que consolide as informações das aplicações existentes e auxilie na descoberta de uma possível situação de violência e na criação de uma rede de apoio à mulher por meio de \textit{clusterização}.
 
 Para alcançar o objetivo proposto os objetivos específicos do trabalho são:
 \begin{itemize}
 	\item Mapear as funcionalidades em comum entre as aplicações existentes;
 	\item Definir as funcionalidades a serem consolidadas na API;
-	\item Definir um questionário padrão a ser respondido pelas mulheres para apoio a tomada de decisão;
-	\item Permitir que novas questões sejam inseridas pelas mulheres;
-	\item Categorizar as questões (padrão e inseridas);
-	\item Definir ações de segurança para as categorias de violência;
+	\item Definir as funcionalidades a serem consolidadas na API;
+	\item Avaliar algoritmos de clusterização;
+	\item Selecionar algoritmos de clusterização;
 \end{itemize}
 
 \section{Etapas do trabalho}
@@ -58,7 +57,7 @@ de funcionalidades em comum.
 
 \noindent \textbf{Planejamento}: Nesta etapa há o planejamento da realização do trabalho, como a definição de escopo e cronograma.
 
-\noindent \textbf{Desenvolvimento}: Esta etapa compreende a realização dos passos planejados para 
+\noindent \textbf{Desenvolvimento}: Esta etapa compreende a realização de iterações para 
 alcançar os objetivos definidos na etapa anterior.
 
 \noindent \textbf{Aplicação em um caso de exemplo}: Esta etapa consiste na construção de um exemplo utilizando o
