@@ -19,18 +19,33 @@ que aceita requisições. O consumidor é uma aplicação, serviço ou outro tip
 requisita um serviço e um registrador é um diretório na rede que contém os serviços disponíveis \cite{mumbaikar}.
 
 % colocar o significado de cada sigla.
-A comunicação é realizada através de mensagens trocadas via SMTP, FTP e HTTP. Cada mensagem 
-é composta por um "envelope", um cabeçalho e um conteúdo. As mensagens são enviadas em documentos XML
-que contém as mensagens e os métodos a serem chamados \cite{mumbaikar}. 
+A comunicação é realizada através de mensagens que podem ser trocadas por meio dos protocolos SMTP, FTP e HTTP. 
+Cada mensagem é um documento XML estruturado em duas partes: o cabeçalho e o corpo da mensagem. No cabeçalho
+estão contidas as informações relacionadas ao protocolo, mas que não são visíveis à aplicação e o corpo da mensagem  
+contém as mensagens e os métodos a serem chamados \cite{mumbaikar, unraveling_soap, soap_and_ws}. 
 Um serviço implementado com SOAP sempre retorna um documento XML \cite{wagh2012comparative}.
 
-% \citeonline{wagh2012comparative} afirma que as mensagens SOAP tem um conteúdo pesado e por
-% esse motivo não sendo sendo indicadas para dispositivos móveis.
+Abaixo, é apresentada a estrutura de uma mensagem SOAP, adaptado de \citeonline{unraveling_soap}. 
 
-% PESQUISAR: Louridas, P. “SOAP and Web Services Software”, IEEE Volume: 23 ,
-% Issue: 6 Digital Object Identifier: 10.1109/MS.2006.172 Publication
-% Year: 2006 , Page(s): 62 - 67 Cited by: 2
+%  CODE EXAMPLE FROM - UNRAVELING THE WEB SERVICES  - unraveling_soap
+\lstset{language=XML}
+\begin{lstlisting}
+<SOAP:Envelope xmlns:SOAP= “http://schemas.xmlsoap.org/soap/envelope/”>
+    <SOAP:Header>
+    <!— conteúdo do cabeçalho —>
+    </SOAP:Header>
+    <SOAP:Body>
+    <!— conteúdo do corpo (Mensagens, métodos, atributos)—>
+    </SOAP:Body>
+</SOAP:Envelope> 
+\end{lstlisting}
 
+Todas as definições de métodos disponíveis, entradas e saídas (requisições e respostas) são definidas utilizando uma linguagem específica: Web Services Description Language (WSDL) \cite{soap_and_ws}. Essa definição também é feita em um documento XML e é utilizada para conhecimento de como o serviço funciona.
+
+Desse modo, a aplicação que deseja consumir o serviço provido por meio do SOAP deve conhecer esse documento de definições e implementar suas requisições com as entradas
+definidas. E assim estabelecer a comunicação através da troca de mensagens estruturadas em documentos XML. O protocolo SOAP mostra-se bastante eficiente em seu propósito, todavia é relatado que o uso de XML pode comprometer a performance da aplicação, considerando a sua estrutura com informações legíveis aos seres humanos \cite{wagh2012comparative, soap_and_ws}.
+
+% \citeonline{wagh2012comparative} afirma que as mensagens SOAP tem um conteúdo pesado e por esse motivo não sendo sendo indicadas para dispositivos móveis.
 
 \section{\textit{Representational State Transfer} (REST) }
 
