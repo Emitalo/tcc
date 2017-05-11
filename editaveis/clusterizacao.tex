@@ -4,28 +4,7 @@ A clusterização é denominada como técnica para organização ou agrupamento 
 Trata-se de uma técnica bastante utilizada em análise exploratórias, agrupamentos, tomada de decisão e implementações de \textit{machine learning}, como:
 mineração de dados, recuperação de documentos, segmentação de imagens e padronização \cite{clustering_review}.
 
-A aplicação da técnica pode ser resumida nos passos apresentados na Figura \ref{fig:tasks_clustering}.
-
-\begin{figure}[h!]
-\centering
-\includegraphics[scale=0.6]{figuras/tasks_clustering.png}
-\caption{Passos para clusterização. Adaptado de \citeonline{clustering_review}}
-\label{fig:tasks_clustering}
-\end{figure}
-
-A representação de padrões está relacionada ao número de classes, número de padrões disponíveis e o número, tipo e escala
-das características disponíveis no algoritmo de clusterização. Algumas dessas informações podem não ser controladas pelos
-profissionais \cite{clustering_review}.
-
-A seleção de características é o processo de identificação do subconjunto das características mais eficaz para a clusterização, já a extração
-de características é o uso de uma ou mais transformações das características de entrada para produzir novas características \cite{clustering_review}.
-
-A similaridade, em geral, é medida por uma função de distância entre um par de padrões ou elementos. Essa função de distância pode variar
-de acordo com o contexto da aplicação. E por fim, o agrupamento pode ser realizado com uso de vários algoritmos diferentes \cite{clustering_review}.
-
-\section{Análise de \textit{clusters}}
-
-\citeonline{tan2013data} definem a análise de \textit{clusters} como a ação que agrupa objetos de dados baseado apenas nas informações contidas
+\citeonline{tan2013data} definem a análise de \textit{clusters}, ou clusterização, como a ação que agrupa objetos de dados baseado apenas nas informações contidas
 nos dados do próprio objeto que permitam descrever os objetos e suas relações. 
 
 Classificação é o processo de encontrar um modelo que possa descrever e distinguir classes de dados \cite{han2011data}.
@@ -55,7 +34,38 @@ de pontos (a) que pode ser agrupado de formas diferentes gerando quantidades dif
 \label{fig:clusters_difficulty}
 \end{figure}
 
- 
+A aplicação da técnica pode ser resumida nos passos apresentados na Figura \ref{fig:tasks_clustering}.
+
+\begin{figure}[h!]
+\centering
+\includegraphics[scale=0.6]{figuras/tasks_clustering.png}
+\caption{Passos para clusterização. Adaptado de \citeonline{clustering_review}}
+\label{fig:tasks_clustering}
+\end{figure}
+
+A representação de padrões está relacionada ao número de classes, número de padrões disponíveis e o número, tipo e escala
+das características disponíveis no algoritmo de clusterização. Algumas dessas informações podem não ser controladas pelos
+profissionais \cite{clustering_review}.
+
+A seleção de características é o processo de identificação do subconjunto das características mais eficaz para a clusterização, já a extração
+de características é o uso de uma ou mais transformações das características de entrada para produzir novas características \cite{clustering_review}.
+
+A similaridade, em geral, é medida por uma função de distância entre um par de padrões ou elementos. Essa função de distância pode variar de acordo com o contexto da aplicação. E por fim, o agrupamento pode ser realizado com uso de inúmeras técnicas e algoritmos diferentes que serão apresentadas nas próximas seções \cite{clustering_review}.
+
 \section{Tipos de clusterização}
+
+A técnica de clusterização pode ser dividida em alguns tipos: hierárquica ou particional; exclusiva, sobreposta ou \textit{fuzzy}; completa ou parcial \cite{tan2013data, clustering_review}. 
+
+\citeonline{clustering_review} definem uma clusterização hierárquica quando ela produz uma série
+de partições aninhadas baseadas em um critério para junção ou separação dos \textit{clusters} por meio de similaridade. \citeonline{tan2013data} afirmam que esse tipo de clusterização acontece quando algoritmo
+produz um resultado no qual é possível obter \textit{subclusters} e dessa forma os \textit{clusters} são aninhados
+e organizados como uma árvore, seguindo a ideia de hierarquia.
+
+Já na clusterização particional o agrupamento dos objetos de dados é realizado em simples \textit{clusters}, os quais pertencem apenas a um \textit{cluster} \cite{tan2013data}.
+
+No processo de clusterização, os objetos de dados podem pertencer a um único \textit{cluster} exclusivamente ou podem
+pertencer a diferentes \textit{clusters} ao mesmo tempo. O primeiro caso é conhecido como clusterização exclusiva e o segundo como sobreposta \cite{tan2013data}. Já o tipo \textit{fuzzy} trata da pertinência dos objetos a um grupo de forma probabilística, ou em um grau de pertinência, em vez de determinar se o objeto pertence ou não àquele grupo \cite{tan2013data, clustering_review}.
+
+Por fim, \citeonline{tan2013data} definem uma clusterização como completa quando no resultado todos os objetos estão em pelo menos um grupo. Pois, na clusterização parcial alguns elementos podem ficar sem grupo caso não sejam compatíveis com algum \textit{cluster} formado.
 
 \section{Algoritmos de clusterização}
