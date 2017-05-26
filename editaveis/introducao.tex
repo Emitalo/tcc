@@ -15,7 +15,7 @@ No primeiro semestre de 2016 foram contabilizados 555.634 atendimentos na centra
 de violência contra a mulher, de acordo com o levantamento feito pela Secretaria de Políticas para as Mulheres (SPM). 
 Aproximadamente 54\% dos atendimentos foram para prestação de informações. De acordo com \cite{portal_180}, aproximadamente 13\% dos atendimentos, são relatos de violência física (51\%), psicológica (31,1\%), moral (6,51\%), patrimonial (1,93\%), sexual (4,30\%), cárcere privado (4,86\%) e tráfico de pessoas (0,24\%).
 
-Ao longo dos anos, cenários como esse impulsionaram os governos à criação de políticas públicas (PP) para a redução da violência contra as mulheres e de estratégias de apoio às mulheres e de conscientização da população. Além disso, estratégias tecnológicas, como aplicativos e sites, têm surgido nesse contexto.
+Ao longo dos anos, cenários como esses impulsionaram os governos à criação de políticas públicas (PP) para a redução da violência contra as mulheres e de estratégias de apoio às mulheres e de conscientização da população. Além disso, estratégias tecnológicas, como aplicativos e sites, têm surgido nesse contexto.
 
 % O I-DECIDE é um projeto australiano, proveniente dessas estratégias, responsável por disponibilizar para as mulheres um site no qual elas podem avaliar sua relação, suas prioridades e planejar um futuro mais seguro. A ferramenta compreende avaliações de segurança e um processo de planejamento de ação individualizado adaptado às circunstâncias particulares de cada mulher \cite{idecide}.
 
@@ -24,27 +24,38 @@ como o Disque-denúncia Ligue 180, a Casa da Mulher Brasileira e a Unidade Móve
 
 Um rápido levantamento realizado sobre as aplicações existentes no Brasil, demonstra que o apoio proveniente da tecnologia concentra em prover uma rede de denúncias para mapear locais de risco ou levar essa denúncia até uma autoridade competente. Além disso, muitas aplicações preocupam-se em prover informações sobre leis e conceitos.
 
-Diante desse cenário, é percebido que cada aplicação fornece apoio para a mulher baseado em leis e gera dados importantes para o contexto, porém esses dados ficam apenas no domínio daquela aplicação e assim diminuindo a efetividade das estatísticas geradas. Além disso, as aplicações partem do princípio de que as mulheres sabem que sofreram alguma tipo de violência. E de acordo com os dados supracitados, é possível perceber que as mulheres ainda buscam muitas informações acerca do assunto.
+Diante desse cenário, é percebido que cada aplicação fornece apoio para a mulher baseado em leis e gera dados importantes para o contexto, porém esses dados ficam apenas no domínio daquela aplicação e assim diminuindo a efetividade das estatísticas geradas. Além disso, as aplicações partem do princípio de que as mulheres sabem que sofreram alguma tipo de violência. 
 
-Observando esses aspectos, nota-se a necessidade de consolidar os dados provenientes das denúncias. Ademais, auxiliar as mulheres a 
-descobrirem se sofreram violência e se apoiarem. Estas necessidades identificadas podem ser apoiadas pela tecnologia, todavia necessitam de 
-um apoio especializado, assim como é feito nas aplicações existentes.
+Observando esses aspectos, percebe-se que mesmo com as políticas e aplicações existentes, a promoção de discussões efetivas acerca do assunto ainda é abaixo do esperado, assim nota-se a importância de promover essas discussões sobre a situação das mulheres a fim de melhorá-la em diversos aspectos, seja criando uma rede de apoio entre as mulheres que enfrentam situações semelhantes ou chamando a atenção para causas de interesse público.
+
+% Observando esses aspectos, nota-se a necessidade de consolidar os dados provenientes das denúncias. Ademais, auxiliar as mulheres a descobrirem se sofreram violência e se apoiarem. Estas necessidades identificadas podem ser apoiadas pela tecnologia, todavia necessitam de 
+% um apoio especializado, assim como é feito nas aplicações existentes.
+
+Atualmente, novas plataformas têm surgido com o intuito de melhorar a efetividade das discussões promovidas na Internet. Uma dessas plataformas é o Empurrando Juntos. 
+
+% FALAR SOBRE O EMPURRANDO JUNTOS
 
 Uma \textit{Application Programming Interface} (API), é uma interface que expõe os seus componentes como um serviço, permitindo que outras aplicações interajam com esses componentes \cite{wagh2012comparative, understanding_web}. Essa arquitetura de serviços possibilita o compartilhamento dos dados armazenados com as aplicações que consomem o serviço. 
 
-O uso de uma API permite a convergência das informações das denúncias e permite a criação de uma rede de apoio mais especializado por meio de questionários elaborados por estudiosos da temática.
+O uso de uma API permite a convergência de informações e disseminação da sua proposta por meio de seu uso em diversos tipos de sistema.
 
-% # FALAR SOBRE CLUSTERIZAÇÃO
+% das denúncias e permite a criação de uma rede de apoio mais especializado por meio de questionários elaborados por estudiosos da temática.
+
+% # FALAR SOBRE CLUSTERIZAÇÃO + empurrando juntos
 
 \section{Objetivos}
 
-Considerando os aspectos supracitados, o objetivo do trabalho é criar uma API que consolide as informações das aplicações existentes e forneça informações para estudos que auxilie na descoberta de uma possível situação de violência e na criação de uma rede de apoio à mulher por meio de clusterização.
+% Considerando os aspectos supracitados, o objetivo do trabalho é criar uma API que consolide as informações das aplicações existentes e forneça informações para estudos que auxilie na descoberta de uma possível situação de violência e na criação de uma rede de apoio à mulher por meio de clusterização.
+
+Considerando os aspectos supracitados, o objetivo do trabalho é criar uma API que auxilie na promoção de discussões acerca da violência contra a mulher utilizando como técnica a clusterização.
 
 Para alcançar o objetivo proposto os objetivos específicos do trabalho são:
 \begin{itemize}
-	\item Mapear as funcionalidades em comum entre as aplicações existentes;
-	\item Definir as funcionalidades a serem consolidadas na API;
+	% \item Mapear as funcionalidades em comum entre as aplicações existentes;
+	\item Realizar um levantamento sobre as aplicações existentes;
+	% \item Definir as funcionalidades a serem consolidadas na API;
 	\item Avaliar e selecionar algoritmos de clusterização;
+	% \item Avaliar e selecionar algoritmos de clusterização;
 \end{itemize}
 
 \section{Etapas do trabalho}
@@ -52,9 +63,9 @@ Para alcançar o objetivo proposto os objetivos específicos do trabalho são:
 Para realização do objetivo proposto serão realizadas cinco etapas: 
 Diagnóstico, Definição do trabalho, Planejamento, Desenvolvimento, Aplicação em um caso de exemplo.
 
-\noindent \textbf{Diagnóstico}: Esta etapa compreende o entendimento do cenário das aplicações implementadas no contexto
-de violência contra a mulher, por meio do levantamento dos sistemas relacionados e mapeamento
-de funcionalidades em comum.
+\noindent \textbf{Diagnóstico}: Esta etapa compreende o entendimento do cenário das aplicações implementadas no contexto de violência contra a mulher.
+% , por meio do levantamento dos sistemas relacionados e mapeamento
+% de funcionalidades em comum.
 
 \noindent \textbf{Definição do trabalho}: Esta etapa tem como objetivo o estabelecimento do problema a ser solucionado e dos objetivos a serem alcançados.
 
