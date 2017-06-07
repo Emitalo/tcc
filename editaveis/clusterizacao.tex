@@ -1,5 +1,17 @@
-\chapter{Clusterização} \label{cap:clusterizacao}
+\chapter{Empurrando Juntos} \label{cap:clusterizacao}
 
+A ideia da plataforma Empurrando Juntos surgiu no contexto do uso da Internet para
+consolidação da democracia, o que \citeonline{penteadoencontro} resumiram como sendo o conceito de democracia digital.
+
+Foi observado um viés nas discussões nas redes sociais há uma polarização das mensagens o que dificulta
+a participação da minoria, ou seja, aqueles que pensam diferente dos demais. Dessa forma,
+o objetivo da plataforma é dar voz para essa minoria e tornar as discussões mais efetivas para o propósito \cite{empurrandojuntos}. 
+
+Em suma, a plataforma Empurrando Juntos trata-se de um software livre, ainda em construção, que tem como 
+requisito, de uma maneira geral, realizar o agrupamento de pessoas que concordam em uma conversa, possibilitando a visualização dos grupos formados. 
+A técnica utilizada para esse agrupamento é a Clusterização.
+
+\section{Clusterização}
 A clusterização é denominada como técnica para organização ou agrupamento de uma coleção de padrões, ou elementos que sigam padrões, em \textit{clusters} baseada em similaridade.
 Trata-se de uma técnica bastante utilizada em análise exploratórias, agrupamentos, tomada de decisão e implementações de \textit{machine learning}, como:
 mineração de dados, recuperação de documentos, segmentação de imagens e padronização \cite{clustering_review}.
@@ -52,7 +64,7 @@ de características é o uso de uma ou mais transformações das característica
 
 A similaridade, em geral, é medida por uma função de distância entre um par de padrões ou elementos. Essa função de distância pode variar de acordo com o contexto da aplicação. E por fim, o agrupamento pode ser realizado com uso de inúmeras técnicas e algoritmos diferentes que serão apresentadas nas próximas seções \cite{clustering_review}.
 
-\section{Tipos de clusterização}
+\subsection{Tipos de clusterização}
 
 A técnica de clusterização pode ser dividida em alguns tipos: hierárquica ou particional; exclusiva, sobreposta ou \textit{fuzzy}; completa ou parcial \cite{tan2013data, clustering_review}. 
 
@@ -68,4 +80,3 @@ pertencer a diferentes \textit{clusters} ao mesmo tempo. O primeiro caso é conh
 
 Por fim, \citeonline{tan2013data} definem uma clusterização como completa quando no resultado todos os objetos estão em pelo menos um grupo. Pois, na clusterização parcial alguns elementos podem ficar sem grupo caso não sejam compatíveis com algum \textit{cluster} formado.
 
-\section{Algoritmos de clusterização}
