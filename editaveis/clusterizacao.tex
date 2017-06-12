@@ -62,7 +62,10 @@ profissionais \cite{clustering_review}.
 A seleção de características é o processo de identificação do subconjunto das características mais eficaz para a clusterização, já a extração
 de características é o uso de uma ou mais transformações das características de entrada para produzir novas características \cite{clustering_review}.
 
-A similaridade, em geral, é medida por uma função de distância entre um par de padrões ou elementos. Essa função de distância pode variar de acordo com o contexto da aplicação. E por fim, o agrupamento pode ser realizado com uso de inúmeras técnicas e algoritmos diferentes que serão apresentadas nas próximas seções \cite{clustering_review}.
+A similaridade, em geral, é medida por uma função de distância entre um par de padrões ou elementos. 
+Essa função de distância pode variar de acordo com o contexto da aplicação. 
+E por fim, o agrupamento pode ser realizado com uso de inúmeras técnicas e algoritmos diferentes que serão 
+apresentadas nas próximas seções \cite{clustering_review}.
 
 \subsection{Tipos de clusterização}
 
@@ -79,4 +82,29 @@ No processo de clusterização, os objetos de dados podem pertencer a um único 
 pertencer a diferentes \textit{clusters} ao mesmo tempo. O primeiro caso é conhecido como clusterização exclusiva e o segundo como sobreposta \cite{tan2013data}. Já o tipo \textit{fuzzy} trata da pertinência dos objetos a um grupo de forma probabilística, ou em um grau de pertinência, em vez de determinar se o objeto pertence ou não àquele grupo \cite{tan2013data, clustering_review}.
 
 Por fim, \citeonline{tan2013data} definem uma clusterização como completa quando no resultado todos os objetos estão em pelo menos um grupo. Pois, na clusterização parcial alguns elementos podem ficar sem grupo caso não sejam compatíveis com algum \textit{cluster} formado.
+
+
+\section{Algoritmo do Empurrando Juntos}
+
+Para utilização da técnica de clusterização a plataforma utilizada um algoritmo bastante popular nesse ramo, o k-Means.
+De acordo com \citeonline{tan2013data}, esse algoritmo define um modelo a partir de centróides. Esses centróides
+representam a média dos pontos em grupo.
+
+O algoritmo foi descrito por \citeonline{tan2013data} da seguinte forma:
+
+\lstset{language=HTML, numbers=left, stepnumber=1}
+\begin{lstlisting}
+Escolha K pontos como centróides
+Repita:
+  Forme K clusters de acordo com a menor distância dos pontos ao centróide.
+  Recalcule o centróide de cada cluster.
+Até que os centróides não mudem.
+\end{lstlisting}
+
+Ou seja, nota-se que o número de centróides escolhidos determina a quantidade de clusters no final do processamento.
+Para o cálculo da distância entre os pontos é utilizado um cálculo conhecido como distância Euclidiana, dado pela fórmula \cite{tan2013data, han2011data}:
+
+\begin{center}
+  $E = \sum_{i=1}^{k} \sum_{p \epsilon C_i} dist(p, c_i)^2$
+\end{center}
 
