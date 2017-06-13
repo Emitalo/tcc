@@ -90,21 +90,60 @@ Para utilização da técnica de clusterização a plataforma utilizada um algor
 De acordo com \citeonline{tan2013data}, esse algoritmo define um modelo a partir de centróides. Esses centróides
 representam a média dos pontos em grupo.
 
-O algoritmo foi descrito por \citeonline{tan2013data} da seguinte forma:
+O algoritmo foi descrito por \citeonline{tan2013data} e \citeonline{han2011data} da seguinte forma:
 
 \lstset{language=HTML, numbers=left, stepnumber=1}
 \begin{lstlisting}
-Escolha K pontos como centróides
+Escolha K pontos, dentro do conjunto de pontos a serem clusterizados, como centróides 
 Repita:
-  Forme K clusters de acordo com a menor distância dos pontos ao centróide.
-  Recalcule o centróide de cada cluster.
+  Forme K clusters de acordo com a menor distância dos pontos ao centróide, movendo os pontos para cada cluster.
+  Recalcule o centróide de cada cluster baseado nos pontos do cluster.
 Até que os centróides não mudem.
 \end{lstlisting}
 
 Ou seja, nota-se que o número de centróides escolhidos determina a quantidade de clusters no final do processamento.
-Para o cálculo da distância entre os pontos é utilizado um cálculo conhecido como distância Euclidiana, dado pela fórmula \cite{tan2013data, han2011data}:
+Para o cálculo da distância entre os pontos é utilizado um cálculo conhecido como distância Euclidiana, dado pela fórmula \cite{clustering_review, tan2013data, han2011data}:
+
+\begin{center}
+  $d_2(x_i, x_j) = (\sum_{k=1}^{d} (x_{i,k} - x_{j,k})^2)^{1/2} $
+\end{center}
+
+A variação dentro do cluster é calculada pela seguinte fórmula, na qual a 
+função \textit{dist} representa a distância Euclidiana entre um ponto do
+cluster e seu centróide. Ou seja, a variação é a soma dos quadrados
+das distâncias de todos os pontos do cluster.
 
 \begin{center}
   $E = \sum_{i=1}^{k} \sum_{p \epsilon C_i} dist(p, c_i)^2$
 \end{center}
+
+Na Figura \ref{fig:iteracoes_kmeans} é apresentada um exemplo das iterações utilizando o algoritmo.
+
+\begin{figure}[h!]
+\centering
+\includegraphics[scale=0.6]{figuras/iteracoes_kmeans.png}
+\caption{Iterações de clusterização utilizando k-Means. Adaptado de \citeonline{tan2013data}}
+\label{fig:iteracoes_kmeans}
+\end{figure}
+
+\pagebreak
+
+Para utilização do k-Means, o algoritmo utilizado no Empurrando Juntos realiza a redução dos pontos para 
+representá-los em apenas duas dimensões. Essa transformação é realizada utilizando o método de Análise de 
+Componentes Principais (PCA, do inglês). 
+
+\citeonline{han2011data} afirmam que o PCA cria k vetores ortogonais que possuem o mesmo significado que o conjunto
+de vetores inicial, porém trata-se de um conjunto menor. Para aplicação desse método são realizados basicamente quatro procedimentos, são eles:
+
+\begin{enumerate}
+ \item Normalizar os dados de entrada, para que eles estejam dentro da mesma variação;
+ \item Computar k vetores ortonormais, ou seja, vetores de magnitude 1, nos quais cada ponto é perpendicular aos outros;
+  \subitem Esses vetores são chamados de componentes principais.
+ \item Ordenar decrescentemente os componentes principais pela significância;
+ \item Remover os componentes ``fracos'', ou seja, aqueles com pouca variância.
+\end{enumerate}
+
+No final dos quatro procedimentos, os componentes principais restantes são uma boa aproximação dos dados originais \cite{han2011data}.
+
+
 
