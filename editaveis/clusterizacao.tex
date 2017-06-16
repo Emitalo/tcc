@@ -135,9 +135,10 @@ algoritmo particional e de clusterização exclusiva que forma k clusters a part
 
 O algoritmo foi descrito por \citeonline{tan2013data} e \citeonline{han2011data} da seguinte forma:
 
+
 \lstset{language=HTML, numbers=left, stepnumber=1}
 \begin{lstlisting}
-Escolha K pontos, dentro do conjunto de pontos a serem clusterizados, como centróides iniciais
+Escolha K pontos, dentro do conjunto de pontos a serem clusterizados ou não, como centróides iniciais
 Repita:
   Forme K clusters de acordo com a menor distância dos pontos ao centróide, movendo os pontos para cada cluster.
   Recalcule o centróide de cada cluster baseado nos pontos do cluster.
@@ -170,11 +171,13 @@ Na Figura \ref{fig:iteracoes_kmeans} é apresentada um exemplo das iterações u
 \label{fig:iteracoes_kmeans}
 \end{figure}
 
-Para utilização do k-Means, o algoritmo utilizado no Empurrando Juntos realiza a redução dos pontos para 
-representá-los em apenas duas dimensões. Essa transformação é realizada utilizando o método de Análise de 
-Componentes Principais (PCA, do inglês). 
+Frequentemente antes de medir a similaridade entre os objetos é necessário
+reduzir a dimensionalidade, isso acontece, pois para espaços de alta dimensão as distâncias euclidianas
+tendem a inflar e reduzir a dimensionalidade pode aliviar este problema e reduzir o tempo de cálculo.
+Um dos métodos mais utilizados para realizar essa redução é a Análise de 
+Componentes Principais (PCA, do inglês) \cite{han2011data, sklearn}.
 
-\citeonline{han2011data} afirmam que o PCA cria k vetores ortogonais que possuem o mesmo significado que o conjunto
+\citeonline{han2011data} afirmam que o PCA cria K vetores ortogonais que possuem o mesmo significado que o conjunto
 de vetores inicial, porém trata-se de um conjunto menor. Para aplicação desse método são realizados basicamente quatro procedimentos.
 
 \begin{enumerate}
@@ -186,6 +189,51 @@ de vetores inicial, porém trata-se de um conjunto menor. Para aplicação desse
 \end{enumerate}
 
 No final dos quatro procedimentos, os componentes principais restantes são uma boa aproximação dos dados originais \cite{han2011data}.
+
+Definir previamente o valor de K, ou seja, o número de \textit{clusters} é considerada uma das desvantagens desse algoritmo. Todavia,
+é possível contornar essa desvantagem escolhendo um intervalo de valores para execução do algoritmo e em seguida aplicar
+uma técnica analítica para definir o melhor valor \cite{han2011data}. Uma técnica analítica para a definição do melhor valor para K utilizada pelo Empurrando Juntos
+é conhecida como Coeficiente de silhueta \cite{sklearn}.
+
+Essa técnica tem por objetivo combinar a avaliação de coesão e separação dos clusters por meio do cálculo de um coeficiente (o de silhueta) que 
+varia de -1 a 1 e é dado pela fórmula \ref{eq:coeficiente} \cite{tan2013data}.
+
+\begin{equation} \label{eq:coeficiente}
+  s_{i} = \frac{(b_{i} - a_{i})}{max(a_{i}, b_{i})} \mbox{, onde:}
+\end{equation}
+
+{\addtolength{\leftskip}{8mm}
+    i é o objeto do \textit{cluster} que está sendo analisado
+    
+    $a_{i}$ é a média da distância entre o objeto e todos os objetos do seu \textit{cluster}
+    
+    $b_{i}$ é o valor mínimo entre o objeto e os demais \textit{clusters}. 
+    
+	  \footnotesize \indent \indent A distância entre o objeto e outro \textit{cluster} é média da distância entre o objeto \\ \indent \indent e todos os objetos do outro \textit{cluster}.
+}
+
+
+
+Um coeficiente negativo representa que o elemento está no \textit{cluster} errado, pois isso significa que a distância entre o objeto e outro \textit{cluster} 
+é menor que a distância entre o objeto e os objetos de seu \textit{cluster}. O valor ``zero'' representa que o elemento está próximo da ``borda'' do \textit{cluster}, ou seja,
+as distância entre o objeto e outros \textit{clusters} e entre o objeto e os objetos de seu \textit{cluster} é a mesma. E por fim, quanto mais próximo do valor 1, melhor
+está a distribuição dos \textit{clusters}, pois significa que o valor de $a_i$ é menor que o valor de $b_i$.
+
+Dessa forma, com a escolha de um intervalo de valores para K, como sugerido por \citeonline{han2011data} e \citeonline{sklearn}, permite testar os valores para o coeficiente
+de silhueta e escolher o melhor valor de K dentro do intervalo. Na Figura \ref{fig:exemplo_silhueta} é apresentado um exemplo visual de \textit{clusters} com diferentes valores
+de K e seus coeficientes de silhueta.
+
+\begin{figure}[h!]
+\centering
+\includegraphics[scale=0.7]{figuras/exemplo_silhueta.png}
+\caption{Formação de \textit{clusters} utilizando K-means e seus coeficientes de silhueta. Adaptado de \citeonline{sklearn}}
+\label{fig:exemplo_silhueta}
+\end{figure}
+
+Considerando todas os métodos e técnicas supracitados que são utilizados no Empurrando Juntos, a Figura \ref{fig:esquematico_metodos} apresenta um esquemático
+do módulo de clusterização da plataforma.
+
+
 
 
 
