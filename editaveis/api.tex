@@ -4,15 +4,27 @@ De acordo com \citeonline{understanding_web}, uma API é uma interface que permi
 usuários interajam ou respondam a dados ou serviços solicitados de outro programa, outros
 aplicativos ou sites. No contexto da Web, as APIs facilitam a troca de dados entre 
 aplicações, permitem a criação de novas aplicações e constituem a base para o conceito de 
-"Web como uma plataforma". 
+"Web como uma plataforma".
+
+A criação de uma API para o contexto deste trabalho é adequada, pois promove um fraco acoplamento
+entre os componentes da aplicação, não sobrecarregando o Empurrando Juntos com funcionalidades genéricas
+para as conversas e de agrupamento dos usuários,
+permitindo a reutilização dos serviços de clusterização por qualquer
+outra aplicação que já existe ou que venha a ser criada, tanto \textit{web} como \textit{mobile}.
+
+Com uma API é possível criar uma solução que contribua para o propósito do Empurrando Juntos e que também
+possa ser utilizada em outras aplicações, como uma plataforma para apoio à mulheres vítimas de violência, que é
+um dos objetivos deste trabalho.
 
 \citeonline{wagh2012comparative} afirmam que existem vários métodos para interação entre o  
-usuário e a Internet, através de serviços web (web \textit{services}). Essa arquitetura permite que os componentes de software, o que inclui funções, objetos e processos de diferentes sistemas, sejam expostos 
-como um serviço.
+usuário e a Internet, através de serviços web (web \textit{services}).
+Essa arquitetura permite que os componentes de software, o que inclui funções,
+objetos e processos de diferentes sistemas, sejam expostos como um serviço.
 
-Para prover esses serviços através de uma API, podem ser utilizadas duas arquiteturas: SOAP ou REST.
+Para prover esses serviços através de uma API duas arquiteturas se destacam atualmente como representantes do provimento
+de serviços via \textit{Web}: SOAP e REST.
 
-\section{\textit{Simple object access Protocol} (SOAP) }
+\section{\textit{Simple Object Access Protocol} (SOAP)}
 
 O protocolo SOAP é uma arquitetura de web \textit{service} baseada em três entidades: o provedor, o registrador e o consumidor do serviço. O provedor é entendido como o serviço endereçado na rede
 que aceita requisições. O consumidor é uma aplicação, serviço ou outro tipo de software que
@@ -60,7 +72,7 @@ definidas. E assim estabelecer a comunicação através da troca de mensagens es
   da interação entre componentes e na interpretação de elementos de dados significantes para a interação \cite{fielding2002}.
   
   O estilo REST é um conjunto coordenado de restrições arquiteturais que possibilita baixo acoplamento entre os componentes,
-  minimização da latência da comunicação e favorece a escalabilidade da implementação dos componentes \textit{fielding2002}.
+  minimização da latência da comunicação e favorece a escalabilidade da implementação dos componentes \cite{fielding2002}.
   
   \subsection{Elementos de processamento}
   
@@ -147,6 +159,5 @@ definidas. E assim estabelecer a comunicação através da troca de mensagens es
     \end{tabular}
     \end{table}
 
-
-
+\section{Comparação entre as arquiteturas}
 
