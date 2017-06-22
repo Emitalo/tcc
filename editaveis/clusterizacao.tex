@@ -171,11 +171,14 @@ Na Figura \ref{fig:iteracoes_kmeans} é apresentada um exemplo das iterações u
 \label{fig:iteracoes_kmeans}
 \end{figure}
 
+No Empurrando Juntos a entrada para os \textit{clusters} são os votos. Todavia, cada voto está associado à um participante e um 
+comentário. Essa combinação forma uma entrada tridimensional para cada comentário.
 Frequentemente antes de medir a similaridade entre os objetos é necessário
 reduzir a dimensionalidade, isso acontece, pois para espaços de alta dimensão as distâncias euclidianas
 tendem a inflar e reduzir a dimensionalidade pode aliviar este problema e reduzir o tempo de cálculo.
 Um dos métodos mais utilizados para realizar essa redução é a Análise de 
 Componentes Principais (PCA, do inglês) \cite{han2011data, sklearn}.
+
 
 \citeonline{han2011data} afirmam que o PCA cria K vetores ortogonais que possuem o mesmo significado que o conjunto
 de vetores inicial, porém trata-se de um conjunto menor. Para aplicação desse método são realizados basicamente quatro procedimentos.
@@ -212,26 +215,36 @@ varia de -1 a 1 e é dado pela fórmula \ref{eq:coeficiente} \cite{tan2013data}.
 	  \footnotesize \indent \indent A distância entre o objeto e outro \textit{cluster} é média da distância entre o objeto \\ \indent \indent e todos os objetos do outro \textit{cluster}.
 }
 
-
-
 Um coeficiente negativo representa que o elemento está no \textit{cluster} errado, pois isso significa que a distância entre o objeto e outro \textit{cluster} 
 é menor que a distância entre o objeto e os objetos de seu \textit{cluster}. O valor ``zero'' representa que o elemento está próximo da ``borda'' do \textit{cluster}, ou seja,
 as distância entre o objeto e outros \textit{clusters} e entre o objeto e os objetos de seu \textit{cluster} é a mesma. E por fim, quanto mais próximo do valor 1, melhor
 está a distribuição dos \textit{clusters}, pois significa que o valor de $a_i$ é menor que o valor de $b_i$.
 
 Dessa forma, com a escolha de um intervalo de valores para K, como sugerido por \citeonline{han2011data} e \citeonline{sklearn}, permite testar os valores para o coeficiente
-de silhueta e escolher o melhor valor de K dentro do intervalo. Na Figura \ref{fig:exemplo_silhueta} é apresentado um exemplo visual de \textit{clusters} com diferentes valores
+de silhueta e escolher o melhor valor de K dentro do intervalo. 
+
+
+Na Figura \ref{fig:exemplo_silhueta} é apresentado um exemplo visual de \textit{clusters} com diferentes valores
 de K e seus coeficientes de silhueta.
 
-\begin{figure}[h!]
+\begin{figure}[bt!]
 \centering
 \includegraphics[scale=1]{figuras/exemplo_silhueta.png}
 \caption{Formação de \textit{clusters} utilizando K-means e seus coeficientes de silhueta. Adaptado de \citeonline{sklearn}}
 \label{fig:exemplo_silhueta}
 \end{figure}
 
-Considerando todas os métodos e técnicas supracitados que são utilizados no Empurrando Juntos, a Figura \ref{fig:resumo_clusterizao_ej} apresenta um esquemático
-do módulo de clusterização da plataforma.
+\vfill
+\pagebreak
+\section{Considerações finais}
+
+Neste capítulo foram discutidos os principais aspectos relacionados à plataforma Empurrando Juntos, contexto deste trabalho.
+Foram apresentados os conceitos relacionados à clusterização que é a técnica utilizada para a realização do agrupamento 
+das pessoas de acordo com seus votos nas conversas. 
+
+Os métodos e técnicas apresentados fazem parte do algoritmo implementado no módulo de clusterização da plataforma 
+e possuem um objetivo específico. O fluxo seguido pelo algoritmo de clusterização do Empurrando Juntos pode ser resumido de acordo comm
+a Figura \ref{fig:resumo_clusterizao_ej} que apresenta um esquemático desse módulo.
 
 \begin{figure}[h!]
 \centering
@@ -239,8 +252,6 @@ do módulo de clusterização da plataforma.
 \caption{Fluxo de clusterização do Empurrando Juntos}
 \label{fig:resumo_clusterizao_ej}
 \end{figure}
-
-\vfill
 
 
 
