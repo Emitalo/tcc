@@ -3,17 +3,17 @@
 
 A democracia digital é resumida por \citeonline{penteadoencontro} como sendo o uso da Internet para consolidação da democracia.
 Esse uso tem acarretado em um crescente número de discussões acerca de temas políticos, o que permitiu interessados na área analisassem 
-esse fenômeno. A partir disso, foi possível observar uma polarização das mensagens trocadas \cite{empurrandojuntos}.
+esse fenômeno. A partir disso, foi possível observar uma polarização das mensagens trocadas nas redes sociais \cite{empurrandojuntos}.
 
 \citeonline{empurrandojuntos} afirmou que as discussões realizadas, principalmente em redes sociais, 
 acabavam refletindo sempre a opinião da maioria e que 
 as pessoas estão sempre presentes em uma bolha de opinião, ou seja, as pessoas só vêem aquilo que é parecido com o que elas pensam.
 Com isso, percebeu que essa polarização dificulta a participação da minoria, ou seja, aqueles que pensam diferente dos demais. 
 Com suas mensagens sendo anuladas pelas mensagens trocadas pela maioria e não são apresentadas novas ideias ou pensamentos diferentes 
-para quem usa essas redes sociais.
+para quem usa essas redes sociais. 
 
-Observando esse aspecto, \citeonline{empurrandojuntos} apresenta a ideia da plataforma Empurrando Juntos cujo objetivo 
-é dar voz para essa minoria e tornar as discussões mais efetivas para os seus propósitos.
+Observando esse aspecto, o Instituto Cidade Democrática apresenta a ideia da plataforma Empurrando Juntos cujo objetivo 
+é dar voz para essa minoria e tornar as discussões mais efetivas para os seus propósitos \cite{empurrandojuntos}.
 
 A ideia é que um usuário possa criar conversas e participar de conversas criadas por outros usuários. Essa participação 
 acontece de duas formas: comentando em uma conversa ou votando em um comentário de outro participante. Entende-se por voto
@@ -43,14 +43,13 @@ grupos, é conhecido como classificação.
 \citeonline{tan2013data}, \citeonline{han2011data} e \citeonline{clustering_review} apresentam dois tipos de 
 classificação: supervisionada e não supervisionada.
 Na classificação supervisionada os objetos de dados são analisados a partir de rótulos de classe predefinidos nos objetos, ou seja, 
-com as classes de dados previamente definidas e conhecidas. \citeonline{han2011data} chamam este tipo de dado de "dado treinado"
+com as classes de dados previamente definidas e conhecidas. \citeonline{han2011data} chamam este tipo de dado de ``dado treinado''
 (dados cujos rótulos são conhecidos), onde o modelo que o descreve é obtido a partir da análise dos rótulos.
 Na classificação não supervisionada, os rótulos de classe são obtidos a partir da análise dos dados dos objetos, tão somente \cite{tan2013data}.
 
 Uma técnica de classificação não supervisionada é a clusterização \cite{clustering_review, tan2013data}, na qual os rótulos de classes dos objetos 
-podem não existir ainda e o método empregado na clusterização pode gerar rótulos para um grupo de dados do conjunto \cite{han2011data}.
-
-Considerando as características da plataforma Empurrando Juntos, a clusterização foi a técnica utilizada para realizar o agrupamento de pessoas.
+podem não existir ainda e o método empregado na clusterização pode gerar rótulos para um grupo de dados do conjunto \cite{han2011data}. Considerando 
+as características da plataforma Empurrando Juntos, a clusterização foi a técnica utilizada para realizar o agrupamento de pessoas.
 
 
 \section{Clusterização}
@@ -65,27 +64,29 @@ tomada de decisão e implementações de \textit{machine learning}, como:
 mineração de dados, recuperação de documentos, segmentação de imagens e padronização \cite{clustering_review}.
 
 A técnica de clusterização pode ser dividida em alguns tipos: hierárquica ou particional; exclusiva, sobreposta ou \textit{fuzzy}; 
-completa ou parcial \cite{tan2013data, clustering_review}. 
-
-\citeonline{clustering_review} definem uma clusterização hierárquica quando ela produz uma série
-de partições aninhadas baseadas em um critério para junção ou separação dos \textit{clusters} por meio de similaridade. 
-\citeonline{tan2013data} afirmam que esse tipo de clusterização acontece quando algoritmo
-produz um resultado no qual é possível obter \textit{subclusters} e dessa forma os \textit{clusters} são aninhados
-e organizados como uma árvore, seguindo a ideia de hierarquia.
-
-Já na clusterização particional o agrupamento dos objetos de dados é realizado em simples \textit{clusters}, 
-os quais pertencem apenas a um \textit{cluster} \cite{tan2013data}.
+completa ou parcial \cite{tan2013data, clustering_review}. Na clusterização particional o agrupamento dos 
+objetos de dados é realizado em simples \textit{clusters}, o que significa que pertencem apenas a um \textit{cluster} \cite{tan2013data}.
 
 No processo de clusterização, os objetos de dados podem pertencer a um único \textit{cluster} exclusivamente ou podem
 pertencer a diferentes \textit{clusters} ao mesmo tempo. 
 O primeiro caso é conhecido como clusterização exclusiva e o segundo como sobreposta \cite{tan2013data}. 
-Já o tipo \textit{fuzzy} trata da pertinência dos objetos a um grupo de forma probabilística, 
-ou em um grau de pertinência, em vez de determinar se o objeto pertence ou não àquele grupo \cite{tan2013data, clustering_review}.
 
-Por fim, \citeonline{tan2013data} definem uma clusterização como completa quando no resultado todos os objetos estão em pelo menos um grupo. 
-Pois, na clusterização parcial alguns elementos podem ficar sem grupo caso não sejam compatíveis com algum \textit{cluster} formado.
+% \citeonline{clustering_review} definem uma clusterização hierárquica quando ela produz uma série
+% de partições aninhadas baseadas em um critério para junção ou separação dos \textit{clusters} por meio de similaridade. 
+% \citeonline{tan2013data} afirmam que esse tipo de clusterização acontece quando algoritmo
+% produz um resultado no qual é possível obter \textit{subclusters} e dessa forma os \textit{clusters} são aninhados
+% e organizados como uma árvore, seguindo a ideia de hierarquia.
+
+% Já o tipo \textit{fuzzy} trata da pertinência dos objetos a um grupo de forma probabilística, 
+% ou em um grau de pertinência, em vez de determinar se o objeto pertence ou não àquele grupo \cite{tan2013data, clustering_review}.
+% 
+% Por fim, \citeonline{tan2013data} definem uma clusterização como completa quando no resultado todos os objetos estão em pelo menos um grupo. 
+% Pois, na clusterização parcial alguns elementos podem ficar sem grupo caso não sejam compatíveis com algum \textit{cluster} formado.
 
 A clusterização pode ser resumida nos passos apresentados na Figura \ref{fig:tasks_clustering}.
+A seleção de características é o processo de identificação do subconjunto das características para ser utilizado na clusterização, 
+e a extração de características é o uso de uma ou mais transformações das características de entrada para 
+produzir mais efetivas para a clusterização. O objetivo de ambos é produzir o conjunto de objetos e dados a serem clusterizados \cite{clustering_review}.
 
 \begin{figure}[h!]
 \centering
@@ -93,10 +94,6 @@ A clusterização pode ser resumida nos passos apresentados na Figura \ref{fig:t
 \caption{Passos para clusterização. Adaptado de \citeonline{clustering_review}}
 \label{fig:tasks_clustering}
 \end{figure}
-
-A seleção de características é o processo de identificação do subconjunto das características para ser utilizado na clusterização, 
-e a extração de características é o uso de uma ou mais transformações das características de entrada para 
-produzir mais efetivas para a clusterização. O objetivo de ambos é produzir o conjunto de objetos e dados a serem clusterizados \cite{clustering_review}.
 
 A representação de padrões é o número de classes, número de padrões e o número, tipo e escala
 das características disponíveis para a clusterização \cite{clustering_review}.
@@ -129,7 +126,7 @@ de cálculo de similaridade e dissimilaridade para delimitação dos \textit{clu
 
 \section{Módulo de clusterização do Empurrando Juntos}
 
-A clusterização utilizada no Empurrando Juntos é baseada em um algoritmo bastante popular denominado k-Means. O k-Means é um
+A clusterização implementada no Empurrando Juntos é baseada em um algoritmo bastante popular denominado k-Means. O k-Means é um
 algoritmo particional e de clusterização exclusiva que forma k clusters a partir de k centróides, onde k é um número definido na aplicação 
 \cite{clustering_review, tan2013data}. Um centróide é entendido, conceitualmente, como um ponto central \cite{han2011data}.
 
@@ -236,11 +233,6 @@ de K e seus coeficientes de silhueta.
 
 \vfill
 \pagebreak
-\section{Considerações finais}
-
-Neste capítulo foram discutidos os principais aspectos relacionados à plataforma Empurrando Juntos, contexto deste trabalho.
-Foram apresentados os conceitos relacionados à clusterização que é a técnica utilizada para a realização do agrupamento 
-das pessoas de acordo com seus votos nas conversas. 
 
 Os métodos e técnicas apresentados fazem parte do algoritmo implementado no módulo de clusterização da plataforma 
 e possuem um objetivo específico. O fluxo seguido pelo algoritmo de clusterização do Empurrando Juntos pode ser resumido de acordo comm
@@ -253,5 +245,5 @@ a Figura \ref{fig:resumo_clusterizao_ej} que apresenta um esquemático desse mó
 \label{fig:resumo_clusterizao_ej}
 \end{figure}
 
-
+%%%fazer um gancho para a API
 
