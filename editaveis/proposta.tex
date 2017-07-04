@@ -5,8 +5,7 @@ Em um primeiro momento, a etapa de diagnóstico foi realizada e os sistemas rela
 foram apresentadas no Capítulo \ref{cap:sistemas_relacionados}. Neste capítulo é apresentado o resultado da segunda etapa
 que é a descrição da proposta do trabalho de acordo com os objetivos estabelecidos.
 
-Para a plataforma Empurrando Juntos é prevista uma arquitetura cliente-servidor a fim de possibilitar a criação de aplicações e
-aplicativos. A estrutura que contempla o lado servidor é denominada Pentano e pode ser visualizada na Figura \ref{fig:pentano}. 
+Para a plataforma ``Empurrando Juntos'' o lado servidor da arquitetura definida é denominado Pentano e pode ser visualizado na Figura \ref{fig:pentano}. 
 O Pentano é constituído por dois módulos: o \textit{server}, 
 que é o módulo da API a ser criada neste trabalho e o \textit{Math} que é o módulo responsável pela clusterização. 
 
@@ -17,10 +16,10 @@ que é o módulo da API a ser criada neste trabalho e o \textit{Math} que é o m
 \label{fig:pentano}
 \end{figure}
 
-\section{Requisitos da solução}
+\section{Requisitos da solução} \label{sec:requisitos}
 
-Uma avaliação do escopo da plataforma Empurrando Juntos permitiu o levantamento de características do sistema e por consequência
-os requisitos associados, o que foi resumido na Tabela \ref{tab:requisitos}.
+Uma avaliação do escopo da plataforma ``Empurrando Juntos'' permitiu o levantamento de características do sistema e por consequência
+os requisitos associados, que foram sumarizados na Tabela \ref{tab:requisitos}.
 
 \begin{table}[h!]
 \centering
@@ -58,7 +57,7 @@ Esse mapeamento pode ser visto na Figura \ref{fig:entidades}.
 Os requisitos supracitados e as entidades mapeadas serão providas para a plataforma por meio dos serviços REST a serem implementados.
 A tecnologia escolhida para implementação da API foi a linguagem Python juntamente com os \textit{frameworks} Django e Django Rest Framework.
 
-Considerando a estrutura proposta pelo Empurrando Juntos e a tecnologia escolhida foram identificados os seguintes requisitos não funcionais:
+Considerando a estrutura proposta pelo ``Empurrando Juntos'' e a tecnologia escolhida foram identificados os seguintes requisitos não funcionais:
 
 \begin{itemize}
  \item Autenticação por token;
@@ -69,8 +68,22 @@ Considerando a estrutura proposta pelo Empurrando Juntos e a tecnologia escolhid
 
 \section{Arquitetura da solução}
 
-Considerando os requisitos funcionais e não funcionais da solução especificados anteriormente a arquitetura da solução foi definida 
-conforme a Figura \ref{fig:arquitetura}.
+Considerando os requisitos funcionais e não funcionais da solução especificados anteriormente, a arquitetura da solução foi definida 
+conforme a Figura \ref{fig:arquitetura_api}.
+
+\begin{figure}[h!]
+\centering
+\includegraphics[scale=0.5]{figuras/arquitetura_api.png}
+\caption{Entidades da API}
+\label{fig:arquitetura_api}
+\end{figure}
+
+O módulo de serviço foi dividido em duas aplicações e ambas foram definidas em uma arquitetura
+em 3 camadas: \textit{models}, \textit{views} e \textit{serializers}. A camada \textit{model} contém
+aspectos negociais e apresenta os atributos de cada uma das entidades definida na Seção \ref{sec:requisitos}.
+A camada \textit{serializer} é responsável pela leitura e conversão dos dados renderizados em JSON e os tipos e relações
+definidas na aplicação. Por fim, a camada \textit{view} recebe e responde as requisições provenientes do cliente e
+estabelece a comunicação com o módulo de clusterização.
 
 % Para execução do trabalho foi estabelecido um cronograma que pode ser visto na Figura \ref{fig:cronograma}.
 % Foram contempladas as atividades iniciais realizadas e o planejamento para implementação da solução.
