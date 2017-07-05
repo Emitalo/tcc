@@ -28,10 +28,9 @@ os requisitos associados, que foram sumarizados na Tabela \ref{tab:requisitos}.
 \begin{tabular}{@{}cl@{}}
 \toprule
 \textbf{Característica}                      & \multicolumn{1}{c}{\textbf{Requisito}}                                                                                                \\ \midrule
-\multirow{4}{*}{Gerenciamento de Usuário}    & O sistema deve permitir o cadastro de usuários                                                                                        \\
+\multirow{3}{*}{Gerenciamento de Usuário}    & O sistema deve permitir o cadastro de usuários                                                                                        \\
                                              & O sistema deve permitir a alteração de usuários                                                                                       \\
                                              & O sistema deve permitir a exclusão de usuários                                                                                         \\
-                                             & O sistema deve permitir login pelo facebook                                                                                           \\\midrule
 \multirow{3}{*}{Gerenciamento de Conversa}   & O sistema deve permitir o cadastro de conversas                                                                                       \\
                                              & O sistema deve permitir a alteração de conversas                                                                                      \\
                                              & O sistema deve permitir a exclusão de conversas                                                                                       \\ \midrule
@@ -44,17 +43,7 @@ Agrupamento de usuários                      & \begin{tabular}[c]{@{}l@{}}O sis
 \end{table}
 
 
-Para contemplar os requisitos elicitados foram mapeadas as entidades principais, alguns de seus atributos e os relacionamentos entre elas. 
-Esse mapeamento pode ser visto na Figura \ref{fig:entidades}.
-
-\begin{figure}[h!]
-\centering
-\includegraphics[scale=0.6]{figuras/entidades.png}
-\caption{Entidades da API}
-\label{fig:entidades}
-\end{figure}
-
-Os requisitos supracitados e as entidades mapeadas serão providas para a plataforma por meio dos serviços REST a serem implementados.
+Os requisitos supracitados serão providos para a plataforma por meio dos serviços REST a serem implementados.
 A tecnologia escolhida para implementação da API foi a linguagem Python juntamente com os \textit{frameworks} Django e Django Rest Framework.
 
 Considerando a estrutura proposta pelo ``Empurrando Juntos'' e a tecnologia escolhida foram identificados os seguintes requisitos não funcionais:
@@ -68,6 +57,16 @@ Considerando a estrutura proposta pelo ``Empurrando Juntos'' e a tecnologia esco
 
 \section{Arquitetura da solução}
 
+Para contemplar os requisitos elicitados foram mapeadas as entidades principais e os relacionamentos entre elas. 
+Esse mapeamento pode ser visto na Figura \ref{fig:entidades}.
+
+\begin{figure}[h!]
+\centering
+\includegraphics[scale=0.6]{figuras/entidades.png}
+\caption{Entidades da API}
+\label{fig:entidades}
+\end{figure}
+
 Considerando os requisitos funcionais e não funcionais da solução especificados anteriormente, a arquitetura da solução foi definida 
 conforme a Figura \ref{fig:arquitetura_api}.
 
@@ -79,33 +78,63 @@ conforme a Figura \ref{fig:arquitetura_api}.
 \end{figure}
 
 O módulo de serviço foi dividido em duas aplicações e ambas foram definidas em uma arquitetura
-em 3 camadas: \textit{models}, \textit{views} e \textit{serializers}. A camada \textit{model} contém
-aspectos negociais e apresenta os atributos de cada uma das entidades definida na Seção \ref{sec:requisitos}.
+em 3 camadas: \textit{models}, \textit{views} e \textit{serializers}. 
+A camada \textit{view} recebe e responde as requisições provenientes do cliente.
 A camada \textit{serializer} é responsável pela leitura e conversão dos dados renderizados em JSON e os tipos e relações
-definidas na aplicação. Por fim, a camada \textit{view} recebe e responde as requisições provenientes do cliente e
-estabelece a comunicação com o módulo de clusterização.
+definidas na aplicação.  
 
-% Para execução do trabalho foi estabelecido um cronograma que pode ser visto na Figura \ref{fig:cronograma}.
-% Foram contempladas as atividades iniciais realizadas e o planejamento para implementação da solução.
-% O desenvolvimento da API será por meio de um processo iterativo e incremental. 
+Por fim, a camada \textit{model} contém aspectos negociais relacionados a cada uma das entidades definidas na 
+Figura \ref{fig:entidades}. Além disso, nessa camada é estabelecida a comunicação com o módulo de clusterização através de sinais.
+Os sinais criados são disparados durante as requisições de realização de novos votos e o módulo de clusterização é registrado
+como \textit{listener} desse evento.
 
-% \begin{figure}[h!]
-% \centering
-% \includegraphics[scale=0.6]{figuras/cronograma.png}
-% \caption{Cronograma de execução}
-% \label{fig:cronograma}
-% \end{figure}
+Na Figura \ref{fig:resumo_ej_api} é apresentado o fluxo de funcionamento do ``Empurrando Juntos'' de acordo com a arquitetura
+estabelecida para o Pentano.
 
-% \section{Resultados Esperados}
+\begin{figure}[bt!]
+\centering
+\includegraphics[scale=0.6]{figuras/resumo_ej_api.png}
+\caption{Funcionamento do Empurrando Juntos - Comunicação entre os módulos}
+\label{fig:resumo_ej_api}
+\end{figure}
 
-% No final do trabalho é esperado uma API Rest que seja capaz de fornecer um serviço de participação com conversas, comentários
-% e votos que agrupe pessoas de acordo com os votos.
+\vfill
+\pagebreak
 
-% Com esse serviço, espera-se contribuir com a plataforma Empurrando Juntos através da implementação da parte servidor da 
-% arquitetura definida.
+\section{Planejamento}
 
-% Dentro do contexto social, o objetivo é que a API possa contribuir no apoio à mulheres vítimas de violência, através
-% da promoção de discussões mais efetivas e a criação de uma rede de apoio entre mulheres que passam ou passaram por essa situação.
+Para execução do trabalho foi realizado um planejamento que pode ser visto na Figura \ref{tab:planejamento}.
+Foram contempladas as duas últimas etapas do trabalho, conforme definido no Capítulo \ref{cap:introducao}.
+A etapa de Desenvolvimento da API será por meio de um processo iterativo e incremental com iterações de duas semanas. 
+
+\begin{table}[h!]
+\centering
+\caption{Planejamento do trabalho}
+\label{tab:planejamento}
+\begin{tabular}{@{}cl@{}}
+\toprule
+\multicolumn{2}{c}{\textbf{Metas}}                                                                                                                         \\ \midrule
+\multirow{3}{*}{Iteração 1}           & Estabelecimento da arquitetura                                                                                     \\
+                                      & Implementação da feature de Gerenciamento de Usuário                                                               \\
+                                      & Autenticação                                                                                                       \\ \midrule
+\multirow{2}{*}{Iteração 2}           & Implementação da feature de Gerenciamento de Conversa                                                              \\
+                                      & Implementação da feature de Gerenciamento de Comentário                                                            \\ \midrule
+\multirow{2}{*}{Iteração 3}           & Implementação da feature de Agrupamento de usuários                                                                \\
+                                      & Definição dinâmica da semântica dos votos                                                                          \\ \midrule
+\multirow{2}{*}{Aplicação em um caso} & \begin{tabular}[c]{@{}l@{}}Estudo da adaptação da API para a temática de violência \\ contra a mulher\end{tabular} \\
+                                      & Construção de um exemplo de uso da API                                                                             \\ \bottomrule
+\end{tabular}
+\end{table}
+
+\section{Resultados Esperados}
+
+No final do trabalho é esperado uma API REST que seja capaz de fornecer um serviço de participação com conversas, comentários
+e votos que agrupe pessoas a partir de suas opiniões. A criação da API contribuirá para a formação da plataforma ``Empurrando Juntos'' 
+através da implementação da parte servidor da arquitetura definida.
+
+No contexto social, o objetivo é que a API possa contribuir no apoio à mulheres vítimas de violência dentro das plataformas existentes, através
+da promoção de discussões mais efetivas,da criação de uma rede de apoio entre mulheres que passam ou passaram por essa situação
+e da possibilidade de promover políticas públicas.
 
 
 
