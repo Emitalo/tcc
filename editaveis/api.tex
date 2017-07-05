@@ -160,7 +160,24 @@ definidas. E assim estabelecer a comunicação através da troca de mensagens es
     \end{table}
 
 \section{Comparação entre as arquiteturas}
-
-
-
-
+      
+    Apesar de ambas as tecnologias proverem meios para fornecer serviços pela \textit{web}, o estilo arquitetural REST se destacou
+    e as principais diferenças entre as tecnologias que culminaram na escolha do REST, são apresentadas na Tabela \ref{soap_vs_rest}.
+    
+    \begin{table}[ht!]
+    \centering
+    \caption{Principais diferenças entre SOAP e REST. Adaptado de \cite{wagh2012comparative}.}
+    \label{soap_vs_rest}
+    \begin{tabular}{l|l}
+    \hline
+    \multicolumn{1}{c|}{\textbf{SOAP}}                & \multicolumn{1}{c}{\textbf{REST}}                \\ \hline
+    XML obrigatório como tipo de dado                                                            & \begin{tabular}[c]{@{}l@{}}Tipo de dado flexível\\ (geralmente JSON para APIs)\end{tabular} \\ \hline
+    \begin{tabular}[c]{@{}l@{}}Complicado de implementar,\\ requer ferramentas\end{tabular}      & Mais simples de implementar                                                                 \\ \hline
+    Requisições mais pesadas                                                                     & Requisições mais leves                                                                      \\ \hline
+    \begin{tabular}[c]{@{}l@{}}Interações mais acopladas\\ entre cliente e servidor\end{tabular} & \begin{tabular}[c]{@{}l@{}}Interações desacopladas entre\\  cliente e servidor\end{tabular} \\ \hline
+    \begin{tabular}[c]{@{}l@{}}Agnóstico de protocolo de\\  camada de aplicação\end{tabular}     & Assume HTTP como protocolo                                                                  \\ \hline
+    \end{tabular}
+    \end{table}
+    
+    
+    
