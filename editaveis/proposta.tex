@@ -5,9 +5,15 @@ Em um primeiro momento, a etapa de diagnóstico foi realizada e os sistemas rela
 foram apresentadas no Capítulo \ref{cap:sistemas_relacionados}. Neste capítulo é apresentado o resultado da segunda etapa
 que é a descrição da proposta do trabalho de acordo com os objetivos estabelecidos.
 
-Para a plataforma ``Empurrando Juntos'' o lado servidor da arquitetura definida é denominado Pentano e pode ser visualizado na Figura \ref{fig:pentano}. 
-O Pentano é constituído por dois módulos: o \textit{server}, 
-que é o módulo da API a ser criada neste trabalho e o \textit{Math} que é o módulo responsável pela clusterização. 
+Para a plataforma ``Empurrando Juntos'', o lado servidor será implementado em uma aplicação chamada Pentano.
+O Pentano será responsável por gerenciar as conversas, comentários, votos, agrupar os usuários
+e cuidar de todos os aspectos da autenticação das aplicações.
+
+O Pentano pode ser abstraído em dois módulos principais, que podem ser vistos na Figura \ref{fig:pentano}: o \textit{Server}, 
+que é o módulo responsável por prover os serviços para as aplicações; e o \textit{Math} que é o módulo responsável por realizar
+a clusterização, criando os grupos com os respectivos usuários.
+Portanto, a contribuição deste trabalho será a criação do módulo \textit{Server} do Pentano, que proverá serviços para realizar as
+propostas da plataforma ``Empurrando Juntos''.
 
 \begin{figure}[h!]
 \centering
@@ -18,43 +24,55 @@ que é o módulo da API a ser criada neste trabalho e o \textit{Math} que é o m
 
 \section{Requisitos da solução} \label{sec:requisitos}
 
-Uma avaliação do escopo da plataforma ``Empurrando Juntos'' permitiu o levantamento de características do sistema e por consequência
-os requisitos associados, que foram sumarizados na Tabela \ref{tab:requisitos}.
+Esta seção apresenta os requisitos funcionais e não funcionais identificados inicialmente para a aplicação.
+Os requisitos aqui apresentados foram considerados, inicialmente, para a solidificação e validação da arquitetura proposta.
 
-\begin{table}[h!]
-\centering
-\caption{Requisitos da aplicação}
-\label{tab:requisitos}
-\begin{tabular}{@{}cl@{}}
-\toprule
-\textbf{Característica}                      & \multicolumn{1}{c}{\textbf{Requisito}}                                                                                                \\ \midrule
-\multirow{3}{*}{Gerenciamento de Usuário}    & O sistema deve permitir o cadastro de usuários                                                                                        \\
-                                             & O sistema deve permitir a alteração de usuários                                                                                       \\
-                                             & O sistema deve permitir a exclusão de usuários                                                                                         \\
-\multirow{3}{*}{Gerenciamento de Conversa}   & O sistema deve permitir o cadastro de conversas                                                                                       \\
-                                             & O sistema deve permitir a alteração de conversas                                                                                      \\
-                                             & O sistema deve permitir a exclusão de conversas                                                                                       \\ \midrule
-\multirow{4}{*}{Gerenciamento de Comentário} & O sistema deve permitir o cadastro de comentários em conversas                                                                        \\
-                                             & O sistema deve permitir a alteração de comentários                                                                                    \\
-                                             & O sistema deve permitir a exclusão de comentários                                                                                     \\ 
-                                             & O sistema deve permitir que o usuário vote em comentários                                                                             \\ \midrule
-Agrupamento de usuários                      & \begin{tabular}[c]{@{}l@{}}O sistema deve permitir a visualização dos usuários agrupados \\ de acordo com os votos dados\end{tabular} \\ \bottomrule
-\end{tabular}
-\end{table}
+\subsection*{Requisitos funcionais}
+  
+    Uma avaliação do escopo da plataforma ``Empurrando Juntos'' permitiu o levantamento de características desejadas do sistema e,
+    consequentemente, alguns requisitos associados, que foram sumarizados na Tabela \ref{tab:requisitos}.
+
+    \begin{table}[h!]
+    \centering
+    \caption{Requisitos de alto nível da aplicação.}
+    \label{tab:requisitos}
+    \begin{tabular}{@{}cl@{}}
+    \toprule
+    \textbf{Característica}                      & \multicolumn{1}{c}{\textbf{Requisito}}                                                                                                \\ \midrule
+    \multirow{3}{*}{Gerenciamento de Usuário}    & O sistema deve permitir o cadastro de usuários                                                                                        \\
+						& O sistema deve permitir a alteração de usuários                                                                                       \\
+						& O sistema deve permitir a exclusão de usuários                                                                                         \\
+    \multirow{3}{*}{Gerenciamento de Conversa}   & O sistema deve permitir o cadastro de conversas                                                                                       \\
+						& O sistema deve permitir a alteração de conversas                                                                                      \\
+						& O sistema deve permitir a exclusão de conversas                                                                                       \\ \midrule
+    \multirow{4}{*}{Gerenciamento de Comentário} & O sistema deve permitir o cadastro de comentários em conversas                                                                        \\
+						& O sistema deve permitir a alteração de comentários                                                                                    \\
+						& O sistema deve permitir a exclusão de comentários                                                                                     \\ 
+						& O sistema deve permitir que o usuário vote em comentários                                                                             \\ \midrule
+    Agrupamento de usuários                      & \begin{tabular}[c]{@{}l@{}}O sistema deve permitir a visualização dos usuários agrupados \\ de acordo com os votos dados\end{tabular} \\ \bottomrule
+    \end{tabular}
+    \end{table}
 
 
-Os requisitos supracitados serão providos para a plataforma por meio dos serviços REST a serem implementados.
-A tecnologia escolhida para implementação da API foi a linguagem Python juntamente com os \textit{frameworks} Django e Django Rest Framework.
-
-Considerando a estrutura proposta pelo ``Empurrando Juntos'' e a tecnologia escolhida foram identificados os seguintes requisitos não funcionais:
-
-\begin{itemize}
- \item Autenticação por token;
- \item Definição dinâmica da semântica dos votos;
- \item Integração com o módulo \textit{Math};
- \item Utilização do PEP8.
-\end{itemize}
-
+ \subsection*{Requisitos não funcionais}
+    
+      O Pentano deve prover serviços para realizar os requisitos funcionais listados acima.
+      Estes serviços serão providos para a plataforma por meio de uma interface HTTP/HTTPS utilizando o estilo arquitetural REST.
+      
+      A autenticação e autorização das aplicações, e seus respectivos usuários, que utilizarão o Pentano deverá ser feita seguindo
+      o protocolo OAuth \footnotemark, visando uma maior escalabilidade da solução futuramente.
+      \footnotetext{OAuth Protocol. Disponível em \href{https://oauth.net/}{https://oauth.net}.}
+      
+      A tecnologia definida para implementação da solução proposta foi a linguagem Python juntamente com os \textit{frameworks}
+      Django e Django Rest Framework, utilizando o banco de dados PostgreSQL.
+      
+      Outro aspecto importante para esta aplicação é a questão da manutenibilidade, pois como será um software livre, a solução
+      deve ser desenvolvida de uma maneira que seja possível evoluir facilmente pela da comunidade.
+      Com isto em mente, foram definidos seguintes padrões para o desenvolvimento da aplicação, considerando as tecnologias definidas:
+      utilização do PEP8 \footnotemark como folha de estilos e a utilização da especificação JSON API \footnotemark para formatação das respostas da API.
+      \footnotetext{Folha de estilos PEP8. Disponível em \href{https://www.python.org/dev/peps/pep-0008/}{https://www.python.org/dev/peps/pep-0008}.}
+      \footnotetext{Especificação JSON API. Disponível em \href{http://jsonapi.org/}{http://jsonapi.org}.}
+      
 \section{Arquitetura da solução}
 
 Para contemplar os requisitos elicitados foram mapeadas as entidades principais e os relacionamentos entre elas. 
@@ -80,13 +98,13 @@ conforme a Figura \ref{fig:arquitetura_api}.
 O módulo de serviço foi dividido em duas aplicações e ambas foram definidas em uma arquitetura
 em 3 camadas: \textit{models}, \textit{views} e \textit{serializers}. 
 A camada \textit{view} recebe e responde as requisições provenientes do cliente.
-A camada \textit{serializer} é responsável pela leitura e conversão dos dados renderizados em JSON e os tipos e relações
-definidas na aplicação.  
+A camada \textit{serializer} é responsável pelo tratamento e formatação dos dados das \textit{models}
+para renderização em JSON, seguindo a especificação JSON API.
 
 Por fim, a camada \textit{model} contém aspectos negociais relacionados a cada uma das entidades definidas na 
 Figura \ref{fig:entidades}. Além disso, nessa camada é estabelecida a comunicação com o módulo de clusterização através de sinais.
 Os sinais criados são disparados durante as requisições de realização de novos votos e o módulo de clusterização é registrado
-como \textit{listener} desse evento.
+como \textit{listener} desse evento, reagrupando os usuários quando um novo voto é cadastrado.
 
 Na Figura \ref{fig:resumo_ej_api} é apresentado o fluxo de funcionamento do ``Empurrando Juntos'' de acordo com a arquitetura
 estabelecida para o Pentano.
