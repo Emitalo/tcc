@@ -68,7 +68,7 @@ Os requisitos aqui apresentados foram considerados, inicialmente, para a solidif
       
       Outro aspecto importante para esta aplicação é a questão da manutenibilidade, pois como será um software livre, a solução
       deve ser desenvolvida de uma maneira que seja possível evoluir facilmente pela da comunidade.
-      Com isto em mente, foram definidos seguintes padrões para o desenvolvimento da aplicação, considerando as tecnologias definidas:
+      Com isto em mente, foram definidos os seguintes padrões para o desenvolvimento da aplicação, considerando as tecnologias definidas:
       utilização do PEP8 \footnotemark como folha de estilos e a utilização da especificação JSON API \footnotemark para formatação das respostas da API.
       \footnotetext{Folha de estilos PEP8. Disponível em \href{https://www.python.org/dev/peps/pep-0008/}{https://www.python.org/dev/peps/pep-0008}.}
       \footnotetext{Especificação JSON API. Disponível em \href{http://jsonapi.org/}{http://jsonapi.org}.}
@@ -76,27 +76,36 @@ Os requisitos aqui apresentados foram considerados, inicialmente, para a solidif
 \section{Arquitetura da solução}
 
 Para contemplar os requisitos elicitados foram mapeadas as entidades principais e os relacionamentos entre elas. 
-Esse mapeamento pode ser visto na Figura \ref{fig:entidades}.
+As principais entidades que foram identificadas são Usuário, Conversa e Comentário. Um usuário pode criar
+conversas e comentários para cada conversa e participar de outras conversas, criadas por outros usuários.
+A participação de um usuário em uma conversa é dada pelo ato de criação de comentários naquela conversa ou
+no ato de votar em um comentário de uma conversa. Esse mapeamento pode ser visto na Figura \ref{fig:entidades}.
 
 \begin{figure}[h!]
 \centering
 \includegraphics[scale=0.5]{figuras/entidades.png}
-\caption{Entidades da API}
+\caption{Relacionamento das principais entidades da API}
 \label{fig:entidades}
 \end{figure}
 
+Como o framework Django foi escolhido como tecnologia de implementação da API, a arquitetura proposta foi pensada valendo-se de 
+recursos providos pelo própria arquitetura do framework.
+No Django, uma aplicação web é abstraída como um projeto, e um projeto é composto por uma coleção de aplicações
+(ou, de forma abreviada, \textit{apps}) independentes, que
+são pacotes Python que proveem um conjunto de funcionalidades relacionadas e podem ser reutilizados \cite{django_apps}.
+Com o intuito de manter os \textit{apps} independentes e desacoplados o Django ainda conta com uma arquitetura de despache
+de sinais para que partes interessadas sejam notificadas de ações que ocorreram em outra parte da aplicação, permitindo uma comunicação
+desacoplada entre os \textit{apps} \cite{django_signals}.
+
+Portanto, toda a solução foi componentizada utilizando \textit{apps} do 
+Django e parte da comunicação entre os \textit{apps} é feita através de sinais do Django, dentro do projeto \emph{Pentano}.
 Considerando os requisitos funcionais e não funcionais da solução especificados anteriormente, a arquitetura da solução foi definida 
-conforme a Figura \ref{fig:arquitetura_api}.
+conforme a Figura \ref{fig:arquitetura_api}, onde no módulo \textit{Server} temos dois \textit{apps} independentes, um responsável
+por cuidar de toda parte de autenticação da aplicação (\textit{app} de contas) e o outro para gerenciar as entidades apresentadas na
+Figura \ref{fig:entidades} (\textit{app} de conversas).
 
-\begin{figure}[h!]
-\centering
-\includegraphics[scale=0.5]{figuras/arquitetura_api.png}
-\caption{Entidades da API}
-\label{fig:arquitetura_api}
-\end{figure}
-
-O módulo de serviço foi dividido em duas aplicações e ambas foram definidas em uma arquitetura
-em 3 camadas: \textit{models}, \textit{views} e \textit{serializers}. 
+No módulo \textit{Server}, para cada \textit{app} foi definida uma arquitetura
+em 3 camadas: \textit{models}, \textit{views} e \textit{serializers}.
 A camada \textit{view} recebe e responde as requisições provenientes do cliente.
 A camada \textit{serializer} é responsável pelo tratamento e formatação dos dados das \textit{models}
 para renderização em JSON, seguindo a especificação JSON API.
@@ -106,8 +115,20 @@ Figura \ref{fig:entidades}. Além disso, nessa camada é estabelecida a comunica
 Os sinais criados são disparados durante as requisições de realização de novos votos e o módulo de clusterização é registrado
 como \textit{listener} desse evento, reagrupando os usuários quando um novo voto é cadastrado.
 
-Na Figura \ref{fig:resumo_ej_api} é apresentado o fluxo de funcionamento do ``Empurrando Juntos'' de acordo com a arquitetura
-estabelecida para o Pentano.
+\begin{figure}[h!]
+\centering
+\includegraphics[scale=0.5]{figuras/arquitetura_api.png}
+\caption{Entidades da API}
+\label{fig:arquitetura_api}
+\end{figure}
+
+Na Figura \ref{fig:resumo_ej_api} é apresentado o fluxo de funcionamento do Empurrando Juntos de acordo com a arquitetura
+estabelecida para o Pentano. Inicialmente, um usuário faz o cadastro na aplicação, cuja requisição é tratada pelo \textit{app} de contas.
+Após a autenticação do usuário, ele pode criar conversas e comentários na aplicação. Outros usuários podem criar comentários e votar
+nos comentários. Todas essas operações relacionadas à conversas, comentários e votos são tratadas pelo \textit{app} de conversas.
+Quando um novo voto é realizado em algum comentário de uma conversa, o \textit{app} de conversas dispara um sinal informando que um novo
+voto foi criado. Esse sinal é recebido pelo \textit{app} de \textit{cluster}, que calcula novamente os \textit{clusters} considerando
+o usuário do novo voto, gerando novos grupos de usuários.
 
 \begin{figure}[bt!]
 \centering
@@ -121,7 +142,7 @@ estabelecida para o Pentano.
 
 \section{Planejamento}
 
-Para execução do trabalho foi realizado um planejamento que pode ser visto na Figura \ref{tab:planejamento}.
+Para execução do trabalho foi realizado um planejamento que pode ser visto na Tabela \ref{tab:planejamento}.
 Foram contempladas as duas últimas etapas do trabalho, conforme definido no Capítulo \ref{cap:introducao}.
 A etapa de Desenvolvimento da API será por meio de um processo iterativo e incremental com iterações de duas semanas. 
 
