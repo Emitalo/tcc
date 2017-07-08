@@ -4,7 +4,7 @@ De acordo com \citeonline{understanding_web}, uma API é uma interface que permi
 usuários interajam ou respondam a dados ou serviços solicitados de outro programa, outros
 aplicativos ou sites. No contexto da Web, as APIs facilitam a troca de dados entre 
 aplicações, permitem a criação de novas aplicações e constituem a base para o conceito de 
-"Web como uma plataforma".
+``Web como uma plataforma''.
 
 A criação de uma API para o contexto deste trabalho é adequada, pois promove um fraco acoplamento
 entre os componentes da aplicação, não sobrecarregando o ``Empurrando Juntos'' com funcionalidades genéricas
@@ -24,44 +24,19 @@ objetos e processos de diferentes sistemas, sejam expostos como um serviço.
 Para prover esses serviços através de uma API duas arquiteturas se destacam atualmente como representantes do provimento
 de serviços via \textit{Web}: SOAP e REST.
 
-\section{\textit{Simple Object Access Protocol} (SOAP)}
-
-O protocolo SOAP é uma arquitetura de web \textit{service} baseada em três entidades: o provedor, o registrador e o consumidor do serviço. O provedor é entendido como o serviço endereçado na rede
+O protocolo SOAP é uma arquitetura de web \textit{service} baseada em três entidades: o provedor, o registrador e o consumidor do serviço. 4
+O provedor é entendido como o serviço endereçado na rede
 que aceita requisições. O consumidor é uma aplicação, serviço ou outro tipo de software que
 requisita um serviço e um registrador é um diretório na rede que contém os serviços disponíveis \cite{mumbaikar}.
-
-% colocar o significado de cada sigla.
-A comunicação é realizada através de mensagens que podem ser trocadas por meio dos protocolos SMTP, FTP e HTTP. 
-Cada mensagem é um documento XML estruturado em duas partes: o cabeçalho e o corpo da mensagem. No cabeçalho
-estão contidas as informações relacionadas ao protocolo, mas que não são visíveis à aplicação e o corpo da mensagem  
-contém as mensagens e os métodos a serem chamados \cite{mumbaikar, unraveling_soap, soap_and_ws}. 
 Um serviço implementado com SOAP sempre retorna um documento XML \cite{wagh2012comparative}.
 
-Abaixo, é apresentada a estrutura de uma mensagem SOAP, adaptado de \citeonline{unraveling_soap}. 
-
-%  CODE EXAMPLE FROM - UNRAVELING THE WEB SERVICES  - unraveling_soap
-\lstset{language=XML}
-\begin{lstlisting}
-<SOAP:Envelope xmlns:SOAP= “http://schemas.xmlsoap.org/soap/envelope/”>
-    <SOAP:Header>
-    <!— conteúdo do cabeçalho —>
-    </SOAP:Header>
-    <SOAP:Body>
-    <!— conteúdo do corpo (Mensagens, métodos, atributos)—>
-    </SOAP:Body>
-</SOAP:Envelope> 
-\end{lstlisting}
-
-Todas as definições de métodos disponíveis, entradas e saídas (requisições e respostas) são definidas utilizando uma linguagem específica: Web Services Description Language (WSDL) \cite{soap_and_ws}. Essa definição também é feita em um documento XML e é utilizada para conhecimento de como o serviço funciona.
-
-Desse modo, a aplicação que deseja consumir o serviço provido por meio do SOAP deve conhecer esse documento de definições e implementar suas requisições com as entradas
-definidas. E assim estabelecer a comunicação através da troca de mensagens estruturadas em documentos XML. O protocolo SOAP mostra-se bastante eficiente em seu propósito, todavia é relatado que o uso de XML pode comprometer a performance da aplicação, considerando a sua estrutura com informações legíveis aos seres humanos \cite{wagh2012comparative, soap_and_ws}.
+O protocolo SOAP mostra-se bastante eficiente em seu propósito, 
+todavia é relatado que o uso de XML pode comprometer a performance da aplicação, considerando a sua estrutura com informações 
+legíveis aos seres humanos \cite{wagh2012comparative, soap_and_ws}.
 
 % \citeonline{wagh2012comparative} afirma que as mensagens SOAP tem um conteúdo pesado e por esse motivo não sendo sendo indicadas para dispositivos móveis.
 
-\section{\textit{Representational State Transfer} (REST) }
-
-  A Transferência de Estado Representacional (do inglês, \textit{Representational State Transfer} ou REST)
+A Transferência de Estado Representacional (do inglês, \textit{Representational State Transfer} ou REST)
   é um estilo arquitetural introduzido por \citeonline{fielding2002} que serve como um modelo abstrato
   para guiar o uso do \textit{Hypertext Transfer Protocol} (HTTP) e do \textit{Uniform Resource Identifier} (URI)
   na arquitetura da Web moderna, abstraindo os elementos arquiteturais participantes de um sistema de
@@ -74,7 +49,28 @@ definidas. E assim estabelecer a comunicação através da troca de mensagens es
   O estilo REST é um conjunto coordenado de restrições arquiteturais que possibilita baixo acoplamento entre os componentes,
   minimização da latência da comunicação e favorece a escalabilidade da implementação dos componentes \cite{fielding2002}.
   
-  \subsection{Elementos de processamento}
+   Apesar de ambas as tecnologias proverem meios para fornecer serviços pela \textit{web}, o estilo arquitetural REST se destacou
+  e as principais diferenças entre as tecnologias que culminaram na escolha do REST são apresentadas na Tabela \ref{soap_vs_rest}.
+  
+  \begin{table}[ht!]
+  \centering
+  \caption{Principais diferenças entre SOAP e REST. Adaptado de \cite{wagh2012comparative}.}
+  \label{soap_vs_rest}
+  \begin{tabular}{l|l}
+  \hline
+  \multicolumn{1}{c|}{\textbf{SOAP}}                & \multicolumn{1}{c}{\textbf{REST}}                \\ \hline
+  XML obrigatório como tipo de dado                                                            & \begin{tabular}[c]{@{}l@{}}Tipo de dado flexível\\ (geralmente JSON para APIs)\end{tabular} \\ \hline
+  \begin{tabular}[c]{@{}l@{}}Complicado de implementar,\\ requer ferramentas\end{tabular}      & Mais simples de implementar                                                                 \\ \hline
+  Requisições mais pesadas                                                                     & Requisições mais leves                                                                      \\ \hline
+  \begin{tabular}[c]{@{}l@{}}Interações mais acopladas\\ entre cliente e servidor\end{tabular} & \begin{tabular}[c]{@{}l@{}}Interações desacopladas entre\\  cliente e servidor\end{tabular} \\ \hline
+  \begin{tabular}[c]{@{}l@{}}Agnóstico de protocolo de\\  camada de aplicação\end{tabular}     & Assume HTTP como protocolo                                                                  \\ \hline
+  \end{tabular}
+  \end{table}
+  
+  Considerando que a arquitetura REST foi escolhida como mais adequada para o contexto deste trabalho, é necessário
+  entender os elementos que fazem parte desse estilo arquitetural.
+    
+  \section{Elementos de processamento}
   
     Componentes REST se comunicam transferindo uma representação do dado (informação) em algum formato padrão que pode
     ser selecionado dinamicamente com base nas preferências do destinatário \cite{fielding2002}. Além dos dados contidos na 
@@ -103,7 +99,7 @@ definidas. E assim estabelecer a comunicação através da troca de mensagens es
     \end{tabular}
     \end{table}
   
-  \subsection{Elementos de dados}
+  \section{Elementos de dados}
     
     No estilo REST, uma informação é abstraída em um recurso, que pode ser qualquer informação que possa ser nomeada
     (documentos, imagens, serviços, entre outros).
@@ -134,7 +130,7 @@ definidas. E assim estabelecer a comunicação através da troca de mensagens es
     \end{tabular}
     \end{table}
   
-  \subsection{Elementos de conexão}
+  \section{Elementos de conexão}
   
     Os conectores na arquitetura REST fornecem uma interface genérica para acessar e manipular o conjunto de valores de um ou mais recursos,
     encapsulando as atividades de acesso aos recursos e de transferência de representações de recursos \cite{fielding2002}.
@@ -158,26 +154,7 @@ definidas. E assim estabelecer a comunicação através da troca de mensagens es
     túnel                                              & SOCKS, SSL                             \\ \hline
     \end{tabular}
     \end{table}
-
-\section{Comparação entre as arquiteturas}
-      
-    Apesar de ambas as tecnologias proverem meios para fornecer serviços pela \textit{web}, o estilo arquitetural REST se destacou
-    e as principais diferenças entre as tecnologias que culminaram na escolha do REST são apresentadas na Tabela \ref{soap_vs_rest}.
-    
-    \begin{table}[ht!]
-    \centering
-    \caption{Principais diferenças entre SOAP e REST. Adaptado de \cite{wagh2012comparative}.}
-    \label{soap_vs_rest}
-    \begin{tabular}{l|l}
-    \hline
-    \multicolumn{1}{c|}{\textbf{SOAP}}                & \multicolumn{1}{c}{\textbf{REST}}                \\ \hline
-    XML obrigatório como tipo de dado                                                            & \begin{tabular}[c]{@{}l@{}}Tipo de dado flexível\\ (geralmente JSON para APIs)\end{tabular} \\ \hline
-    \begin{tabular}[c]{@{}l@{}}Complicado de implementar,\\ requer ferramentas\end{tabular}      & Mais simples de implementar                                                                 \\ \hline
-    Requisições mais pesadas                                                                     & Requisições mais leves                                                                      \\ \hline
-    \begin{tabular}[c]{@{}l@{}}Interações mais acopladas\\ entre cliente e servidor\end{tabular} & \begin{tabular}[c]{@{}l@{}}Interações desacopladas entre\\  cliente e servidor\end{tabular} \\ \hline
-    \begin{tabular}[c]{@{}l@{}}Agnóstico de protocolo de\\  camada de aplicação\end{tabular}     & Assume HTTP como protocolo                                                                  \\ \hline
-    \end{tabular}
-    \end{table}
     
     
     
+\textbf{FINALIZAR CAPÍTULO.............}
