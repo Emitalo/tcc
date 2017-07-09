@@ -11,7 +11,7 @@ com as classes de dados previamente definidas e conhecidas. \citeonline{han2011d
 Na classificação não supervisionada, os rótulos de classe são obtidos a partir da análise dos dados dos objetos, tão somente \cite{tan2013data}.
 
 Uma técnica de classificação não supervisionada é a clusterização \cite{clustering_review, tan2013data}, na qual os rótulos de classes dos objetos 
-podem não existir ainda e o método empregado na clusterização pode gerar rótulos para um grupo de dados do conjunto \cite{han2011data}. 
+podem não existir ainda, como no caso do ``Empurrando Juntos''. O método empregado gera rótulos para um grupo de dados do conjunto \cite{han2011data}. 
 
 A clusterização foi denominada por \citeonline{clustering_review} como uma técnica para organização ou agrupamento em \textit{clusters} 
 de uma coleção de elementos que sigam padrões baseado em similaridade.
@@ -54,17 +54,16 @@ Para todos os tipos de clusterização a serem realizados, alguns passos são ne
 A clusterização pode ser resumida nos passos apresentados na Figura \ref{fig:tasks_clustering}.
 A seleção de características é o processo de identificação do subconjunto das características para ser utilizado na clusterização, 
 e a extração de características é o uso de uma ou mais transformações das características de entrada para 
-produzir mais efetivas para a clusterização. O objetivo de ambos é produzir o conjunto de objetos e dados a serem clusterizados \cite{clustering_review}.
+torná-las mais efetivas para a clusterização. O objetivo de ambos é produzir o conjunto de objetos e dados a serem clusterizados \cite{clustering_review}.
 
 A representação de padrões é o número de classes, número de padrões e o número, tipo e escala
-das características disponíveis para a clusterização \cite{clustering_review}.
-
+das características disponíveis para a clusterização.
 A similaridade é medida, em geral, por uma função de distância entre um par de objetos. Além disso, utiliza-se também
 o conceito inverso de dissimilaridade para calcular o quanto objetos são diferentes. Essa função de distância pode variar de acordo 
-com o contexto da aplicação e tipo dos dados. 
+com o contexto da aplicação e tipo dos dados \cite{clustering_review}. 
 
 E por fim, o agrupamento pode ser realizado com uso de inúmeras técnicas e algoritmos diferentes \cite{clustering_review}.
-Os objetos são agrupados (ou "clusterizados") buscando maximizar a similaridade intraclasse e minimizar a similaridade interclasse.
+Os objetos são agrupados (ou ``clusterizados'') buscando maximizar a similaridade intraclasse e minimizar a similaridade interclasse.
 Em outras palavras, o objetivo é formar \textit{clusters} cujos elementos tenham alta similaridade entre si em um mesmo \textit{cluster} 
 e baixa similaridade a elementos de outros \textit{clusters} \cite{han2011data}.
 
@@ -133,7 +132,7 @@ No ``Empurrando Juntos'' a entrada para os \textit{clusters} é a combinação e
 comentário e o voto. Essa combinação gera uma entrada de N dimensões para N comentários.
 Frequentemente antes de medir a similaridade entre os objetos é necessário
 reduzir a dimensionalidade, isso acontece, pois para espaços de alta dimensão as distâncias euclidianas
-tendem a inflar e reduzir a dimensionalidade pode aliviar esse problema e reduzir o tempo de cálculo.
+tendem a inflar. Reduzir a dimensionalidade pode aliviar esse problema e diminuir o tempo de cálculo.
 Um dos métodos mais utilizados para realizar essa redução é a Análise de 
 Componentes Principais (PCA, do inglês) \cite{han2011data, sklearn}.
 
@@ -151,12 +150,12 @@ de vetores inicial, porém trata-se de um conjunto menor. Para aplicação desse
 
 No final dos quatro procedimentos, os componentes principais restantes são uma boa aproximação dos dados originais \cite{han2011data}.
 
-Definir previamente o valor de K, ou seja, o número de \textit{clusters} é considerada uma das desvantagens desse algoritmo. Todavia,
+Na utilização do k-Means, definir previamente o valor de K, ou seja, o número de \textit{clusters} é considerada uma das desvantagens desse algoritmo. Todavia,
 é possível contornar essa desvantagem escolhendo um intervalo de valores para execução do algoritmo e em seguida aplicar
 uma técnica analítica para definir o melhor valor \cite{han2011data}. Uma técnica analítica para a definição do melhor valor para K utilizada pelo ``Empurrando Juntos''
-é conhecida como Coeficiente de silhueta \cite{sklearn}.
+é conhecida como Coeficiente de Silhueta \cite{sklearn}.
 
-Essa técnica tem por objetivo combinar a avaliação de coesão e separação dos clusters por meio do cálculo de um coeficiente (o de silhueta) que 
+Essa técnica tem por objetivo combinar a avaliação de coesão e separação dos \textit{clusters} por meio do cálculo de um coeficiente (o de silhueta) que 
 varia de -1 a 1 e é dado pela fórmula \ref{eq:coeficiente} \cite{tan2013data}.
 
 \begin{equation} \label{eq:coeficiente}
@@ -170,7 +169,7 @@ varia de -1 a 1 e é dado pela fórmula \ref{eq:coeficiente} \cite{tan2013data}.
     
     $b_{i}$ é o valor mínimo entre o objeto e os demais \textit{clusters}. 
     
-	  \footnotesize \indent \indent A distância entre o objeto e outro \textit{cluster} é média da distância entre o objeto \\ \indent \indent e todos os objetos do outro \textit{cluster}.
+	  \footnotesize \indent \indent A distância entre o objeto e outro \textit{cluster} é média das distâncias entre o objeto \\ \indent \indent e todos os objetos do outro \textit{cluster}.
 }
 
 Um coeficiente negativo representa que o elemento está no \textit{cluster} errado, pois isso significa que a distância entre o objeto e outro \textit{cluster} 
@@ -178,7 +177,7 @@ Um coeficiente negativo representa que o elemento está no \textit{cluster} erra
 a distância entre o objeto e outros \textit{clusters} e entre o objeto e os objetos de seu \textit{cluster} é a mesma. E por fim, quanto mais próximo do valor 1, melhor
 está a distribuição dos \textit{clusters}, pois significa que o valor de $a_i$ é menor que o valor de $b_i$.
 
-Dessa forma, com a escolha de um intervalo de valores para K, como sugerido por \citeonline{han2011data} e \citeonline{sklearn}, permite testar os valores 
+Dessa forma, com a escolha de um intervalo de valores para K, como sugerido por \citeonline{han2011data} e \citeonline{sklearn}, é possível testar os valores 
 para o coeficiente de silhueta e escolher o melhor valor de K dentro do intervalo. 
 
 \begin{figure}[bt!]
