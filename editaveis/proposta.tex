@@ -104,6 +104,14 @@ conforme a Figura \ref{fig:arquitetura_api}, onde no módulo \textit{Server} tem
 por cuidar de toda parte de autenticação da aplicação (\textit{app} de contas) e o outro para gerenciar as entidades apresentadas na
 Figura \ref{fig:entidades} (\textit{app} de conversas).
 
+\begin{figure}[h!]
+\centering
+\includegraphics[scale=0.5]{figuras/arquitetura_api.png}
+\caption{Entidades da API}
+\label{fig:arquitetura_api}
+\end{figure}
+
+
 No módulo \textit{Server}, para cada \textit{app} foi definida uma arquitetura
 em 3 camadas: \textit{models}, \textit{views} e \textit{serializers}.
 A camada \textit{view} recebe e responde as requisições provenientes do cliente.
@@ -115,12 +123,15 @@ Figura \ref{fig:entidades}. Além disso, nessa camada é estabelecida a comunica
 Os sinais criados são disparados durante as requisições de realização de novos votos e o módulo de clusterização é registrado
 como \textit{listener} desse evento, reagrupando os usuários quando um novo voto é cadastrado.
 
-\begin{figure}[h!]
+\vfill
+\pagebreak
+\begin{figure}[bt!]
 \centering
-\includegraphics[scale=0.5]{figuras/arquitetura_api.png}
-\caption{Entidades da API}
-\label{fig:arquitetura_api}
+\includegraphics[scale=0.6]{figuras/resumo_ej_api.png}
+\caption{Funcionamento do Empurrando Juntos - Comunicação entre os módulos}
+\label{fig:resumo_ej_api}
 \end{figure}
+
 
 Na Figura \ref{fig:resumo_ej_api} é apresentado o fluxo de funcionamento do Empurrando Juntos de acordo com a arquitetura
 estabelecida para o Pentano. Inicialmente, um usuário faz o cadastro na aplicação, cuja requisição é tratada pelo \textit{app} de contas.
@@ -129,41 +140,6 @@ nos comentários. Todas essas operações relacionadas à conversas, comentário
 Quando um novo voto é realizado em algum comentário de uma conversa, o \textit{app} de conversas dispara um sinal informando que um novo
 voto foi criado. Esse sinal é recebido pelo \textit{app} de \textit{cluster}, que calcula novamente os \textit{clusters} considerando
 o usuário do novo voto, gerando novos grupos de usuários.
-
-\begin{figure}[bt!]
-\centering
-\includegraphics[scale=0.6]{figuras/resumo_ej_api.png}
-\caption{Funcionamento do Empurrando Juntos - Comunicação entre os módulos}
-\label{fig:resumo_ej_api}
-\end{figure}
-
-\vfill
-\pagebreak
-
-\section{Planejamento}
-
-Para execução do trabalho foi realizado um planejamento que pode ser visto na Tabela \ref{tab:planejamento}.
-Foram contempladas as duas últimas etapas do trabalho, conforme definido no Capítulo \ref{cap:introducao}.
-A etapa de Desenvolvimento da API será por meio de um processo iterativo e incremental com iterações de duas semanas. 
-
-\begin{table}[h!]
-\centering
-\caption{Planejamento do trabalho}
-\label{tab:planejamento}
-\begin{tabular}{@{}cl@{}}
-\toprule
-\multicolumn{2}{c}{\textbf{Metas}}                                                                                                                         \\ \midrule
-\multirow{3}{*}{Iteração 1}           & Estabelecimento da arquitetura                                                                                     \\
-                                      & Implementação da feature de Gerenciamento de Usuário                                                               \\
-                                      & Autenticação                                                                                                       \\ \midrule
-\multirow{2}{*}{Iteração 2}           & Implementação da feature de Gerenciamento de Conversa                                                              \\
-                                      & Implementação da feature de Gerenciamento de Comentário                                                            \\ \midrule
-\multirow{2}{*}{Iteração 3}           & Implementação da feature de Agrupamento de usuários                                                                \\
-                                      & Definição dinâmica da semântica dos votos                                                                          \\ \midrule
-\multirow{2}{*}{Aplicação em um caso} & \begin{tabular}[c]{@{}l@{}}Estudo da adaptação da API para a temática de violência \\ contra a mulher\end{tabular} \\
-                                      & Construção de um exemplo de uso da API                                                                             \\ \bottomrule
-\end{tabular}
-\end{table}
 
 % \section{Resultados Esperados}
 
