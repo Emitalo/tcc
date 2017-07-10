@@ -22,7 +22,7 @@ Essa arquitetura permite que os componentes de software, o que inclui funções,
 objetos e processos de diferentes sistemas, sejam expostos como um serviço.
 
 Para prover esses serviços através de uma API duas arquiteturas se destacam atualmente como representantes do provimento
-de serviços via \textit{Web}: SOAP e REST.
+de serviços via \textit{Web}: \textit{Simple Object Access Protocol} (SOAP) e \textit{Representational State Transfer} (REST).
 
 O protocolo SOAP é uma arquitetura de web \textit{service} baseada em três entidades: o provedor, o registrador e o consumidor do serviço.
 O provedor é entendido como o serviço endereçado na rede
@@ -70,7 +70,7 @@ A Transferência de Estado Representacional (do inglês, \textit{Representationa
   Considerando que a arquitetura REST foi escolhida como mais adequada para o contexto deste trabalho, é necessário
   entender os elementos que fazem parte desse estilo arquitetural.
     
-  \section{Elementos de processamento}
+  \section*{Elementos de processamento}
   
     Componentes REST se comunicam transferindo uma representação do dado (informação) em algum formato padrão que pode
     ser selecionado dinamicamente com base nas preferências do destinatário \cite{fielding2002}. Além dos dados contidos na 
@@ -99,7 +99,7 @@ A Transferência de Estado Representacional (do inglês, \textit{Representationa
     \end{tabular}
     \end{table}
   
-  \section{Elementos de dados}
+  \section*{Elementos de dados}
     
     No estilo REST, uma informação é abstraída em um recurso, que pode ser qualquer informação que possa ser nomeada
     (documentos, imagens, serviços, entre outros).
@@ -130,7 +130,7 @@ A Transferência de Estado Representacional (do inglês, \textit{Representationa
     \end{tabular}
     \end{table}
   
-  \section{Elementos de conexão}
+  \section*{Elementos de conexão}
   
     Os conectores na arquitetura REST fornecem uma interface genérica para acessar e manipular o conjunto de valores de um ou mais recursos,
     encapsulando as atividades de acesso aos recursos e de transferência de representações de recursos \cite{fielding2002}.
