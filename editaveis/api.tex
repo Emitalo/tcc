@@ -19,18 +19,15 @@ um dos objetivos deste trabalho.
 \citeonline{wagh2012comparative} afirmam que existem vários métodos para interação entre o  
 usuário e a Internet, através de serviços web (web \textit{services}).
 Essa arquitetura permite que os componentes de software, o que inclui funções,
-objetos e processos de diferentes sistemas, sejam expostos como um serviço.
-
-Para prover esses serviços através de uma API duas arquiteturas se destacam atualmente como representantes do provimento
+objetos e processos de diferentes sistemas, sejam expostos como um serviço. Para prover esses serviços através de uma API duas arquiteturas se destacam atualmente como representantes do provimento
 de serviços via \textit{Web}: \textit{Simple Object Access Protocol} (SOAP) e \textit{Representational State Transfer} (REST).
 
 O protocolo SOAP é uma arquitetura de web \textit{service} baseada em três entidades: o provedor, o registrador e o consumidor do serviço.
 O provedor é entendido como o serviço endereçado na rede
 que aceita requisições. O consumidor é uma aplicação, serviço ou outro tipo de software que
 requisita um serviço e um registrador é um diretório na rede que contém os serviços disponíveis \cite{mumbaikar}.
-Um serviço implementado com SOAP sempre retorna um documento XML \cite{wagh2012comparative}.
-
-O protocolo SOAP mostra-se bastante eficiente em seu propósito, 
+Um serviço implementado com SOAP sempre retorna um documento XML \cite{wagh2012comparative}. Trata-se de uma arquitetura 
+bastante eficiente em seu propósito, 
 todavia é relatado que o uso de XML pode comprometer a performance da aplicação, considerando a sua estrutura com informações 
 legíveis aos seres humanos \cite{wagh2012comparative, soap_and_ws}.
 
@@ -92,28 +89,22 @@ A Transferência de Estado Representacional (do inglês, \textit{Representationa
     \begin{tabular}{l|l}
     \hline
     \multicolumn{1}{c|}{\textbf{Tipos de componentes}} & \multicolumn{1}{c}{\textbf{Exemplos}} \\ \hline
-    servidor de origem                                  & Apache httpd, Nginx                    \\ \hline
-    \textit{gateway}                                    & Squid, CGI, Proxy reverso              \\ \hline
-    proxy                                               & CERN Proxy, Netscape Proxy             \\ \hline
-    agente de usuário                                   & Google Chrome, Mozilla Firefox, Lynx   \\ \hline
+    Servidor de origem                                  & Apache httpd, Nginx                    \\ \hline
+    \textit{Gateway}                                    & Squid, CGI, Proxy reverso              \\ \hline
+    Proxy                                               & CERN Proxy, Netscape Proxy             \\ \hline
+    Agente de usuário                                   & Google Chrome, Mozilla Firefox, Lynx   \\ \hline
     \end{tabular}
     \end{table}
   
   \section*{Elementos de dados}
     
     No estilo REST, uma informação é abstraída em um recurso, que pode ser qualquer informação que possa ser nomeada
-    (documentos, imagens, serviços, entre outros).
-    
-    Para \citeonline{fielding2002}, um recurso é um mapeamento conceitual para um conjunto de entidades e não a entidade mapeada
+    (documentos, imagens, serviços, entre outros). Para \citeonline{fielding2002}, um recurso é um mapeamento conceitual para um conjunto de entidades e não a entidade mapeada
     em um determinado espaço no tempo. Em termos matemáticos, um recurso \textit{R} é uma função de associação variável no tempo, a qual, em um 
     determinado tempo \textit{t}, mapeia um conjunto de valores, onde esses valores podem ser representações do recurso em questão ou
-    outros identificadores de recursos.
-    Com essa definição abstrata de um recurso é importante salientar que a semântica de um mapeamento de um recurso dever permanecer
-    estática, uma vez que esta semântica é o que permite distinguir os recursos \cite{fielding2002}.
-    Para identificar um recurso específico na interação entre dois componentes, o REST utiliza um identificador de recurso \cite{fielding2002}.
-    
-    A Tabela \ref{rest-data-elements} apresenta os elementos de dados no REST.
-    
+    outros identificadores de recursos. A Tabela \ref{rest-data-elements} apresenta os elementos de dados no REST.
+
+       
     \begin{table}[ht!]
     \centering
     \caption{Elementos de dados da arquitetura REST. Traduzido de \cite{fielding2002}.}
@@ -121,23 +112,23 @@ A Transferência de Estado Representacional (do inglês, \textit{Representationa
     \begin{tabular}{l|l}
     \hline
     \multicolumn{1}{c|}{\textbf{Elementos de dados}} & \multicolumn{1}{c}{\textbf{Exemplos}}                                                             \\ \hline
-    recurso                                           & \begin{tabular}[c]{@{}l@{}}alvo conceitual desejado de uma\\ referência de hipertexto\end{tabular} \\ \hline
-    identificador de recurso                          & URI, URN                                                                                           \\ \hline
-    representação                                     & documento HTML, imagem JPEG                                                                        \\ \hline
-    metadados da representação                        & tipo de mídia, last-modified-time                                                                  \\ \hline
-    metadados do recurso                              & link da fonte, alternativas                                                                        \\ \hline
-    dados de controle                                 & if-modified-since, cache-control                                                                   \\ \hline
+    Recurso                                           & \begin{tabular}[c]{@{}l@{}}alvo conceitual desejado de uma\\ referência de hipertexto\end{tabular} \\ \hline
+    Identificador de recurso                          & URI, URN                                                                                           \\ \hline
+    Representação                                     & documento HTML, imagem JPEG                                                                        \\ \hline
+    Metadados da representação                        & tipo de mídia, last-modified-time                                                                  \\ \hline
+    Metadados do recurso                              & link da fonte, alternativas                                                                        \\ \hline
+    Dados de controle                                 & if-modified-since, cache-control                                                                   \\ \hline
     \end{tabular}
     \end{table}
+    
+    Com essa definição abstrata de um recurso é importante salientar que a semântica de um mapeamento de um recurso dever permanecer
+    estática, uma vez que esta semântica é o que permite distinguir os recursos \cite{fielding2002}. Para identificar um recurso específico na interação entre dois componentes, o REST utiliza um identificador de recurso \cite{fielding2002}.
+ 
   
   \section*{Elementos de conexão}
   
     Os conectores na arquitetura REST fornecem uma interface genérica para acessar e manipular o conjunto de valores de um ou mais recursos,
     encapsulando as atividades de acesso aos recursos e de transferência de representações de recursos \cite{fielding2002}.
-    Os conectores gerenciam a comunicação de rede de um componente. 
-    O encapsulamento possibilitado pelos conectores permite que seja possível se comunicar na Web por meio de diferentes protocolos,
-    embora o HTTP seja o protocolo de transferência primário \cite{fielding2002}.
-    
     A Tabela \ref{rest-connectors-elements} apresenta os tipos de conectores no REST.
     
     \begin{table}[ht!]
@@ -147,11 +138,17 @@ A Transferência de Estado Representacional (do inglês, \textit{Representationa
     \begin{tabular}{l|l}
     \hline
     \multicolumn{1}{c|}{\textbf{Tipos de conectores}} & \multicolumn{1}{c}{\textbf{Exemplos}} \\ \hline
-    cliente                                            & libwww, libwww-perl                    \\ \hline
-    servidor                                           & libwww, Apache API                     \\ \hline
-    cache                                              & browser cache, Akamai cache network    \\ \hline
-    resolvedor                                         & bind (biblioteca DNS)                  \\ \hline
-    túnel                                              & SOCKS, SSL                             \\ \hline
+    Cliente                                            & libwww, libwww-perl                    \\ \hline
+    Servidor                                           & libwww, Apache API                     \\ \hline
+    Cache                                              & browser cache, Akamai cache network    \\ \hline
+    Resolvedor                                         & bind (biblioteca DNS)                  \\ \hline
+    Túnel                                              & SOCKS, SSL                             \\ \hline
     \end{tabular}
     \end{table}
+    
+    Os conectores gerenciam a comunicação de rede de um componente. 
+    O encapsulamento possibilitado pelos conectores permite que seja possível se comunicar na Web por meio de diferentes protocolos,
+    embora o HTTP seja o protocolo de transferência primário \cite{fielding2002}. 
+    
+    
     
