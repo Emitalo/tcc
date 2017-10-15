@@ -4,52 +4,7 @@
 
 \chapter{Módulo matemático 0}
 
-Um módulo matemático implementado no ``Empurrando Juntos'' é baseado em um algoritmo bastante popular denominado k-Means. O k-Means é um
-algoritmo particional e de clusterização exclusiva que forma $k$ clusters a partir de $k$ centróides, onde $k$ é um número definido na aplicação 
-\cite{clustering_review, tan2013data}. Um centróide é entendido, conceitualmente, como um ponto central \cite{han2011data}.
-
-O algoritmo foi descrito por \citeonline{tan2013data} e \citeonline{han2011data} da seguinte forma:
-
-
-\begin{center}
-  \lstset{language=HTML, numbers=left, stepnumber=1}
-  \begin{lstlisting}
-  Escolha k pontos, dentro do conjunto de pontos a serem clusterizados ou não, como centróides iniciais
-  Repita:
-    Forme k clusters de acordo com a menor distância dos pontos ao centróide, movendo os pontos para cada cluster.
-    Recalcule o centróide de cada cluster baseado nos pontos do cluster.
-  Até que os centróides não mudem.
-  \end{lstlisting}
-\end{center}
-
-
-Nota-se que o número de centróides escolhidos determina a quantidade de clusters no final do processamento.
-Para o cálculo da distância entre os pontos é utilizado um cálculo conhecido como distância Euclidiana, 
-dado pela fórmula \ref{eq:euclidiana} \cite{clustering_review, tan2013data, han2011data}.
-
-\begin{equation} \label{eq:euclidiana}
-  d_{2}(x_i, x_j) = (\sum_{k=1}^{d} (x_{i,k} - x_{j,k})^2)^{1/2}
-\end{equation}
-
-A variação dentro do cluster é calculada pela fórmula \ref{eq:variacao}, na qual a 
-função \textit{dist} representa a distância Euclidiana entre um ponto do
-cluster e seu centróide. Ou seja, a variação é a soma dos quadrados
-das distâncias de todos os pontos do cluster.
-
-\begin{equation} \label{eq:variacao}
-  E = \sum_{i=1}^{k} \sum_{p \epsilon C_{i}} dist(p, c_i)^2
-\end{equation}
-
-Na Figura \ref{fig:iteracoes_kmeans} é apresentada um exemplo das iterações utilizando o algoritmo descrito acima para um $k = 3$,
-onde três pontos são escolhidos inicialmente como centróides e depois recalculados a cada iteração, gerando \textit{clusters} mais
-refinados.
-
-\begin{figure}[h!]
-\centering
-\includegraphics[scale=0.6]{figuras/iteracoes_kmeans.png}
-\caption{Iterações de clusterização utilizando k-Means. Adaptado de \citeonline{tan2013data}}
-\label{fig:iteracoes_kmeans}
-\end{figure}
+Um módulo matemático implementado no ``Empurrando Juntos'' é baseado no algoritmo k-Means, apresentado no Capítulo \ref{cap:clusterizacao}. 
 
 No ``Empurrando Juntos'' a entrada para os \textit{clusters} é a combinação entre participante,  
 comentário e o voto. Essa combinação gera uma entrada de N dimensões para N comentários.
@@ -58,7 +13,6 @@ reduzir a dimensionalidade, isso acontece, pois para espaços de alta dimensão 
 tendem a inflar. Reduzir a dimensionalidade pode aliviar esse problema e diminuir o tempo de cálculo.
 Um dos métodos mais utilizados para realizar essa redução é a Análise de 
 Componentes Principais (PCA, do inglês) \cite{han2011data, sklearn}.
-
 
 \citeonline{han2011data} afirmam que o PCA cria $k$ vetores ortogonais que possuem o mesmo significado que o conjunto
 de vetores inicial, porém trata-se de um conjunto menor. Para aplicação desse método são realizados basicamente quatro procedimentos.
@@ -72,11 +26,7 @@ de vetores inicial, porém trata-se de um conjunto menor. Para aplicação desse
 \end{enumerate}
 
 No final dos quatro procedimentos, os componentes principais restantes são uma boa aproximação dos dados originais \cite{han2011data}.
-
-Na utilização do k-Means, definir previamente o valor de $k$, ou seja, o número de \textit{clusters} é considerada uma das desvantagens desse algoritmo. Todavia,
-é possível contornar essa desvantagem escolhendo um intervalo de valores para execução do algoritmo e em seguida aplicar
-uma técnica analítica para definir o melhor valor \cite{han2011data}. Uma técnica analítica para a definição do melhor valor para $k$ utilizada pelo ``Empurrando Juntos''
-é conhecida como Coeficiente de Silhueta \cite{sklearn}.
+Além disso, foi aplicada uma técnica analítica para a definição do melhor valor para $k$, conhecida como Coeficiente de Silhueta \cite{sklearn}.
 
 Essa técnica tem por objetivo combinar a avaliação de coesão e separação dos \textit{clusters} por meio do cálculo de um coeficiente (o de silhueta) que 
 varia de -1 a 1 e é dado pela fórmula \ref{eq:coeficiente} \cite{tan2013data}.

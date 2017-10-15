@@ -1,10 +1,9 @@
 \chapter{Clusterização} \label{cap:clusterizacao}
 
 O processo de encontrar um modelo que possa descrever e distinguir classes de dados, ou seja, formar 
-grupos, como proposto no projeto ``Empurrando Juntos'', é conhecido como classificação \cite{han2011data}.
+grupos, como proposto no projeto ``Empurrando Juntos'', é conhecido como classificação e pode
+ser dividida em dois tipos: supervisionada e não supervisionada. \cite{tan2013data, han2011data, clustering_review}.
 
-\citeonline{tan2013data}, \citeonline{han2011data} e \citeonline{clustering_review} apresentam dois tipos de 
-classificação: supervisionada e não supervisionada.
 Na classificação supervisionada os objetos de dados são analisados a partir de rótulos de classe predefinidos nos objetos, ou seja, 
 com as classes de dados previamente definidas e conhecidas. \citeonline{han2011data} chamam esse tipo de dado de ``dado treinado''
 (dados cujos rótulos são conhecidos), onde o modelo que o descreve é obtido a partir da análise dos rótulos.
@@ -16,33 +15,36 @@ podem não existir ainda, como no caso do ``Empurrando Juntos''. O método empre
 A clusterização foi denominada por \citeonline{clustering_review} como uma técnica para organização ou agrupamento em \textit{clusters} 
 de uma coleção de elementos que sigam padrões baseado em similaridade.
 \citeonline{tan2013data} definem a análise de \textit{clusters}, ou clusterização, como a ação que agrupa objetos de dados
-baseado apenas nas informações contidas nos dados do próprio objeto que permitam descrever os objetos e suas relações. Um \textit{cluster}
+baseada apenas nas informações contidas nos dados do próprio objeto que permitam descrever os objetos e suas relações. Um \textit{cluster}
 então pode ser visto como uma classe de objetos da qual é possível derivar regras para o grupo \cite{han2011data}.
 
 Trata-se de uma técnica bastante utilizada em análise exploratórias, agrupamentos, 
 tomada de decisão e implementações de aprendizado de máquina, como:
 mineração de dados, recuperação de documentos, segmentação de imagens e padronização \cite{clustering_review}.
 
+\section{Tipos de clusterização}
 A técnica de clusterização pode ser dividida em alguns tipos: hierárquica ou particional; exclusiva, sobreposta ou \textit{fuzzy}; 
 completa ou parcial \cite{tan2013data, clustering_review}. Na clusterização particional o agrupamento dos 
 objetos de dados é realizado em simples \textit{clusters}, o que significa que pertencem apenas a um \textit{cluster} \cite{tan2013data}.
 
-No processo de clusterização, os objetos de dados podem pertencer a um único \textit{cluster} exclusivamente ou podem
-pertencer a diferentes \textit{clusters} ao mesmo tempo. O primeiro caso é conhecido como clusterização exclusiva e o segundo como sobreposta \cite{tan2013data}. 
-Para todos os tipos de clusterização a serem realizados, alguns passos são necessários para obter os dados classificados ao final do processo.
-% 
-% \citeonline{clustering_review} definem uma clusterização hierárquica quando ela produz uma série
-% de partições aninhadas baseadas em um critério para junção ou separação dos \textit{clusters} por meio de similaridade. 
-% \citeonline{tan2013data} afirmam que esse tipo de clusterização acontece quando algoritmo
-% produz um resultado no qual é possível obter \textit{subclusters} e dessa forma os \textit{clusters} são aninhados
-% e organizados como uma árvore, seguindo a ideia de hierarquia.
-% 
-% Já o tipo \textit{fuzzy} trata da pertinência dos objetos a um grupo de forma probabilística, 
-% ou em um grau de pertinência, em vez de determinar se o objeto pertence ou não àquele grupo \cite{tan2013data, clustering_review}.
-% 
-% Por fim, \citeonline{tan2013data} definem uma clusterização como completa quando no resultado todos os objetos estão em pelo menos um grupo. 
-% Pois, na clusterização parcial alguns elementos podem ficar sem grupo caso não sejam compatíveis com algum \textit{cluster} formado.
+\citeonline{clustering_review} definem uma clusterização hierárquica quando ela produz uma série
+de partições aninhadas baseadas em um critério para junção ou separação dos \textit{clusters} por meio de similaridade. 
+\citeonline{tan2013data} afirmam que esse tipo de clusterização acontece quando algoritmo
+produz um resultado no qual é possível obter \textit{subclusters} e dessa forma os \textit{clusters} são aninhados
+e organizados como uma árvore, seguindo a ideia de hierarquia.
 
+No processo de clusterização, os objetos de dados podem pertencer a um único \textit{cluster} exclusivamente ou podem
+pertencer a diferentes \textit{clusters} ao mesmo tempo. O primeiro caso é o que caracteriza uma clusterização exclusiva e o segundo caracteriza a sobreposta \cite{tan2013data}. 
+Já o tipo \textit{fuzzy} trata da pertinência dos objetos a um grupo de forma probabilística, 
+ou em um grau de pertinência, em vez de determinar se o objeto pertence ou não àquele grupo \cite{tan2013data, clustering_review}.
+
+Por fim, \citeonline{tan2013data} definem uma clusterização como completa quando no resultado todos os objetos estão em pelo menos um grupo. 
+Pois, na clusterização parcial alguns elementos podem ficar sem grupo caso não sejam compatíveis com algum \textit{cluster} formado.
+
+\section{Passos para a clusterização}
+
+Embora, cada tipo de clusterização tenha sua particularidade, para todos eles existem alguns passos necessários, apresentados na Figura \ref{fig:tasks_clustering}, 
+para obter os dados classificados ao final do processo.
 
 \begin{figure}[h!]
 \centering
@@ -51,10 +53,10 @@ Para todos os tipos de clusterização a serem realizados, alguns passos são ne
 \label{fig:tasks_clustering}
 \end{figure}
 
-A clusterização pode ser resumida nos passos apresentados na Figura \ref{fig:tasks_clustering}.
-A seleção de características é o processo de identificação do subconjunto das características para ser utilizado na clusterização, 
-e a extração de características é o uso de uma ou mais transformações das características de entrada para 
-torná-las mais efetivas para a clusterização. O objetivo de ambos é produzir o conjunto de objetos e dados a serem clusterizados \cite{clustering_review}.
+O primeiro passo, seleção/extração de características tem como objetivo produzir o conjunto de objetos e dados a serem clusterizados. 
+A seleção é o processo de identificação do subconjunto das características para ser utilizado na clusterização e 
+a extração é o uso de uma ou mais transformações das características de entrada para 
+torná-las mais efetivas para a clusterização \cite{clustering_review}.
 
 A representação de padrões é o número de classes, número de padrões e o número, tipo e escala
 das características disponíveis para a clusterização.
@@ -81,8 +83,69 @@ de pontos (a) que pode ser agrupado de formas diferentes gerando quantidades dif
 Por isso para a construção de um algoritmo de clusterização deve-se definir, além do algoritmo principal a ser utilizado, as funções
 de cálculo de similaridade e dissimilaridade para delimitação dos \textit{clusters}.
 
+\section{Algoritmos de clusterização}
+Conforme supracitado, existem diversos algoritmos criados para realizar a clusterização dos dados, que também são classificados em tipos
+conforme os tipos de clusterização. A Figura \ref{fig:tipos_algoritmo} apresenta um esquemático dos tipos de algoritmos de clusterização de acordo
+com \citeonline{gan2007data}.
+
+\begin{figure}[h!]
+\centering
+\includegraphics[scale=0.5]{figuras/algoritmos.png}
+\caption{Algoritmos de clusterização}
+\label{fig:tipos_algoritmo}
+\end{figure}
+
+% Nesta seção serão apresentados
+% alguns dos algoritmos mais conhecidos e utilizados de acordo com os estudos de \citeonline{tan2013data} e \citeonline{clustering_review}.
+...
+\subsection{k-Means}
+O k-Means é um
+algoritmo particional e de clusterização exclusiva que forma $k$ clusters a partir de $k$ centróides, onde $k$ é um número definido na aplicação 
+\cite{clustering_review, tan2013data}. Um centróide é entendido, conceitualmente, como um ponto central \cite{han2011data}.
+
+O algoritmo foi descrito por \citeonline{tan2013data} e \citeonline{han2011data} da seguinte forma:
 
 
+\begin{center}
+  \lstset{language=HTML, numbers=left, stepnumber=1}
+  \begin{lstlisting}
+  Escolha k pontos, dentro do conjunto de pontos a serem clusterizados ou não, como centróides iniciais
+  Repita:
+    Forme k clusters de acordo com a menor distância dos pontos ao centróide, movendo os pontos para cada cluster.
+    Recalcule o centróide de cada cluster baseado nos pontos do cluster.
+  Até que os centróides não mudem.
+  \end{lstlisting}
+\end{center}
 
 
+Nota-se que o número de centróides escolhidos determina a quantidade de clusters no final do processamento.
+Para o cálculo da distância entre os pontos podem ser utilizadas diversas técnicas. Contudo, é comum a utilização de um cálculo conhecido como distância Euclidiana, 
+dado pela fórmula \ref{eq:euclidiana} \cite{clustering_review, tan2013data, han2011data}.
 
+\begin{equation} \label{eq:euclidiana}
+  d_{2}(x_i, x_j) = (\sum_{k=1}^{d} (x_{i,k} - x_{j,k})^2)^{1/2}
+\end{equation}
+
+A variação dentro do cluster é calculada pela fórmula \ref{eq:variacao}, na qual a 
+função \textit{dist} representa a distância Euclidiana entre um ponto do
+cluster e seu centróide. Ou seja, a variação é a soma dos quadrados
+das distâncias de todos os pontos do cluster.
+
+\begin{equation} \label{eq:variacao}
+  E = \sum_{i=1}^{k} \sum_{p \epsilon C_{i}} dist(p, c_i)^2
+\end{equation}
+
+Na Figura \ref{fig:iteracoes_kmeans} é apresentada um exemplo das iterações utilizando o algoritmo descrito acima para um $k = 3$,
+onde três pontos são escolhidos inicialmente como centróides e depois recalculados a cada iteração, gerando \textit{clusters} mais
+refinados.
+
+\begin{figure}[h!]
+\centering
+\includegraphics[scale=0.6]{figuras/iteracoes_kmeans.png}
+\caption{Iterações de clusterização utilizando k-Means. Adaptado de \citeonline{tan2013data}}
+\label{fig:iteracoes_kmeans}
+\end{figure}
+
+Na utilização do k-Means, definir previamente o valor de $k$, ou seja, o número de \textit{clusters} é considerada uma das desvantagens desse algoritmo. Todavia,
+é possível contornar essa desvantagem escolhendo um intervalo de valores para execução do algoritmo e em seguida aplicar
+uma técnica analítica para definir o melhor valor \cite{han2011data}.
