@@ -86,7 +86,7 @@ de cálculo de similaridade e dissimilaridade para delimitação dos \textit{clu
 \section{Algoritmos de clusterização}
 Conforme supracitado, existem diversos algoritmos criados para realizar a clusterização dos dados, que também são classificados em tipos
 conforme os tipos de clusterização. A Figura \ref{fig:tipos_algoritmo} apresenta um esquemático dos tipos de algoritmos de clusterização de acordo
-com \citeonline{gan2007data}.
+com \citeonline{gan2007data, han2011data, clustering_review}.
 
 \begin{figure}[h!]
 \centering
@@ -148,3 +148,40 @@ refinados.
 Na utilização do k-Means, definir previamente o valor de $k$, ou seja, o número de \textit{clusters} é considerada uma das desvantagens desse algoritmo. Todavia,
 é possível contornar essa desvantagem escolhendo um intervalo de valores para execução do algoritmo e em seguida aplicar
 uma técnica analítica para definir o melhor valor \cite{han2011data}.
+
+
+\subsection{Métodos hierárquicos aglomerativos}
+
+De acordo com \citeonline{tan2013data}, a categoria de técnicas de clusterização hierárquica é considerada a segunda mais 
+importante categoria. Os algoritmos de clusterização hierárquicos aglomerativos produzem um tipo de dendograma 
+com um agrupamento aninhado de padrões e níveis de similaridade \cite{han2011data, tan2013data}.  
+
+Esse tipo de técnica trata, inicialmente, cada ponto como um \textit{cluster} e a cada passo mescla pares próximos de \textit{clusters}.
+Para isso, é definida a noção de proximidade destes grupos \cite{tan2013data}.
+
+A depender das medidas de distância utilizadas, esses algoritmos podem ser subdivididos em técnicas específicas \cite{gan2007data}. 
+Nas subseções seguintes serão descritos alguns destes algoritmos.
+
+\subsubsection*{Método de Ward}
+
+Este algoritmo foi proposto por Ward Jr. e seu objetivo é realizar um procedimento de clusterização que minimize a perda 
+de informação associada a cada passo \cite{gan2007data}. Para isso, o algoritmo é baseada em alguma função objetiva, em geral, 
+o erro quadrados...
+
+
+\subsubsection*{Complete Link Method}
+
+\subsubsection*{Group Average Method}
+
+
+\subsection{\textit{Density-Based Spatial Clustering of Applications with Noise}}
+O \textit{Density-Based Spatial Clustering of Applications with Noise} (DBSCAN) é um algoritmo baseado em densidade, 
+cuja abordagem é capaz de encontrar aleatoriamente \textit{clusters} definidos em regiões densas, separando os pontos
+em regiões de baixa densidade \cite{gan2007data}. Estes pontos de baixas densidade são classificados como ruídos (\textit{noise})
+e são omitidos no resultado final \cite{gan2007data, tan2013data}.
+
+% Validar se é interessante falar sobre
+
+\subsection{Birch}
+
+\subsection{Gaussian Clustering models}

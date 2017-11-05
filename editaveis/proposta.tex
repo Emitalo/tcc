@@ -65,8 +65,10 @@ na qual são indicados os dois tipos de módulos tratados na solução: API e \t
 
 O módulo de API é responsável por gerenciar as conversas, comentários, votos
 e cuidar de todos os aspectos da autenticação das aplicações. Os módulos \textit{Math} são responsáveis por realizar
-a clusterização, criando os grupos com os respectivos usuários. Cada módulo implementa a clusterização de uma forma diferente
-dos demais. O módulo matemático utilizado pela API deve ser configurado no momento da implantação do sistema.
+a clusterização, criando os grupos com os respectivos usuários. 
+A ideia é que esses módulos sejam outras aplicações que implementem a interface definida no protocolo. Ou seja, 
+fica a cargo da implantação do sistema de associar a API desenvolvida neste trabalho com algum módulo matemático 
+existente ou novo.
 
 Para o módulo de API, foram mapeadas as entidades principais e os relacionamentos entre elas. 
 As principais entidades que foram identificadas são Usuário, Conversa e Comentário. Um usuário pode criar
@@ -91,16 +93,16 @@ Portanto, toda a solução foi componentizada utilizando \textit{apps} do
 Django. Considerando os requisitos funcionais e não funcionais da solução, especificados anteriormente, a arquitetura da solução foi definida 
 conforme a Figura \ref{fig:arquitetura_api}, onde no módulo \textit{API} temos dois \textit{apps} independentes, um responsável
 por cuidar de toda parte de autenticação da aplicação (\textit{app} de contas) e o outro para gerenciar as entidades apresentadas na
-Figura \ref{fig:entidades} (\textit{app} de conversas). E no módulo \textit{math} temos os \textit{apps} dos módulos matemáticos implementados.
+Figura \ref{fig:entidades} (\textit{app} de conversas). 
 
 \begin{figure}[h!]
 \centering
-\includegraphics[scale=0.5]{figuras/arquitetura_api.png}
+\includegraphics[scale=0.8]{figuras/arquitetura_api.png}
 \caption{Entidades da API}
 \label{fig:arquitetura_api}
 \end{figure}
 
-No módulo \textit{Server}, para cada \textit{app} foi definida uma arquitetura
+Para cada \textit{app} foi definida uma arquitetura
 em 3 camadas: \textit{models}, \textit{views} e \textit{serializers}.
 A camada \textit{view} recebe e responde as requisições provenientes do cliente.
 A camada \textit{serializer} é responsável pelo tratamento e formatação dos dados das \textit{models}
@@ -110,35 +112,63 @@ Figura \ref{fig:entidades}.
 
 \section{Protocolo de Comunicação}
 
-% Para a comunicação entre a API e o módulo matemático escolhido, foi desenvolvido um protocolo de comunicação com base
-% em uma plataforma de execução de tarefas assíncronas, o Celery \footnotemark. Essa ferramenta em conjunto com a interface definida 
-% formam a comunicação entre a API e o módulo responsável pela clusterização. Uma visão geral do protocolo pode ser vista na 
-% Figura \ref{fig:protocolo}.
-% \footnotetext{http://www.celeryproject.org/}
-% 
-% \begin{figure}[bt!]
-% \centering
-% \includegraphics[scale=0.6]{figuras/protocolo.png}
-% \caption{Protocolo de comunicação entre os módulos - API e \textit{Math}
-% \label{fig:protocolo}
-% \end{figure}
-% 
+Para a comunicação entre a API e o módulo matemático escolhido, foi desenvolvido um protocolo de comunicação com base
+em uma plataforma de execução de tarefas assíncronas, o Celery \footnotemark. 
+Essa ferramenta em conjunto com a interface definida e um \textit{message broker}, que é uma plataforma intermediária
+entre duas aplicações para troca de mensagens, formam a comunicação entre a API e o módulo responsável pela clusterização. 
+Uma visão geral do protocolo pode ser vista na 
+Figura \ref{fig:protocolo}.
+\footnotetext{http://www.celeryproject.org/}
+
+\begin{figure}[bt!]
+\centering
+\includegraphics[scale=0.6]{figuras/protocolo.png}
+\caption{Protocolo de comunicação entre os módulos - API e \textit{Math}}
+\label{fig:protocolo}
+\end{figure}
+
+Para estabelecer comunicação com a API, o módulo matemático deve seguir as seguintes diretrizes:
+\begin{itemize}
+  \item Deve ser uma aplicação que execute o Celery em um de seus apps;
+  \item Deve possuir um arquivo de \textit{tasks}, no qual devem constar as tarefas a serem executadas na aplicação pelo Celery;
+  \item Deve implementar as 4 tarefas especificadas na Tabela \ref{tab:tasks};
+  \item Deve implementar as entidades e os atributos especificados na Tabela \ref{tab:entidades_math}.
+\end{itemize}
+
+%  TABELA TASKS
 
 
-% \vfill
-% \pagebreak
-% \begin{figure}[bt!]
-% \centering
-% \includegraphics[scale=0.6]{figuras/resumo_ej_api.png}
-% \caption{Funcionamento do Empurrando Juntos - Comunicação entre os módulos}
-% \label{fig:resumo_ej_api}
-% \end{figure}
-% 
-% 
-% Na Figura \ref{fig:resumo_ej_api} é apresentado o fluxo de funcionamento do Empurrando Juntos de acordo com a arquitetura
-% estabelecida para o Pentano. Inicialmente, um usuário faz o cadastro na aplicação, cuja requisição é tratada pelo \textit{app} de contas.
-% Após a autenticação do usuário, ele pode criar conversas e comentários na aplicação. Outros usuários podem criar comentários e votar
-% nos comentários. Todas essas operações relacionadas à conversas, comentários e votos são tratadas pelo \textit{app} de conversas.
-% Quando um novo voto é realizado em algum comentário de uma conversa, o \textit{app} de conversas dispara um sinal informando que um novo
-% voto foi criado. Esse sinal é recebido pelo \textit{app} de \textit{cluster}, que calcula novamente os \textit{clusters} considerando
-% o usuário do novo voto, gerando novos grupos de usuários.
+%  TABELA Entidades MATH
+
+
+Considerando que o módulo matemático implemente todas as diretrizes definidas acima, a comunicação é realizada com 
+os seguintes passos:
+  
+\begin{enumerate}
+ \item O cliente realiza uma das requisições relacionada a uma das 4 tarefas da Tabela \ref{tab:tasks};
+ \item A API processa a requisição e faz a chamada da tarefa para o \textit{message broker};
+ \item O Celery executando no projeto onde encontra-se o módulo matemático captura a chamada da tarefa através do mesmo \textit{message broker} e 
+ executa a tarefa especificada;
+ \item O módulo matemático retorna o resultado de execução da tarefa;
+ \item A API recebe o resultado retornado do módulo matemático, identificando o sucesso ou a falha da tarefa executada.
+\end{enumerate}
+
+\vfill
+\pagebreak
+\begin{figure}[bt!]
+\centering
+\includegraphics[scale=0.6]{figuras/resumo_ej_api.png}
+\caption{Funcionamento do Empurrando Juntos - Comunicação entre os módulos}
+\label{fig:resumo_ej_api}
+\end{figure}
+
+
+Na Figura \ref{fig:resumo_ej_api} é apresentado o fluxo de funcionamento do Empurrando Juntos de acordo com a arquitetura
+estabelecida e a API desenvolvida. Inicialmente, um usuário faz o cadastro e/ou autentica na aplicação, cuja requisição é tratada pelo \textit{app} de contas.
+Após a autenticação do usuário, ele pode criar conversas e comentários na aplicação. Outros usuários podem criar comentários e votar
+nos comentários. Todas essas operações relacionadas à conversas, comentários e votos são tratadas pelo \textit{app} de conversas.
+Quando uma nova conversa é criada, um novo comentário ou um novo voto é realizado em algum comentário de uma conversa, o 
+\textit{app} de conversas faz uma chamada para a tarefa correspondente. Essa chamada é recebida pelo módulo que realiza a clusterização, 
+com base no Celery e no textit{message broker}. Quando o número de votos configurado no sistema é atingido o \textit{app} de conversas
+faz uma chamada para a tarefa de clusterização que ao ser recebida pelo módulo matemático, é a tarefa responsável por calcular
+os \textit{clusters} considerando o usuário do novo voto, gerando novos grupos de usuários.
