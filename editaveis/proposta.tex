@@ -135,11 +135,32 @@ Para estabelecer comunicação com a API, o módulo matemático deve seguir as s
   \item Deve implementar as entidades e os atributos especificados na Tabela \ref{tab:entidades_math}.
 \end{itemize}
 
-%  TABELA TASKS
+\begin{table}[]
+\centering
+\caption{Tarefas dos módulos matemáticos}
+\label{tab:tasks}
+\begin{tabular}{@{}lll@{}}
+\multicolumn{1}{c}{\textbf{Tarefa}}                                                & \multicolumn{1}{c}{\textbf{Parâmetros}}                                                                               & \multicolumn{1}{c}{\textbf{Retorno}} \\ \midrule
+\begin{tabular}[c]{@{}l@{}}Adicionar nova conversa \\ (pentano.new\_conversation)\end{tabular} & Identificador da conversa                                                                                             & Confirmação de Sucesso               \\ \midrule
+\begin{tabular}[c]{@{}l@{}}Adicionar novo comentário \\ (pentano.add\_comment)\end{tabular}    & \begin{tabular}[c]{@{}l@{}}Identificador da conversa\\ Identificador do comentário\\ Texto do comentário\end{tabular} & Confirmação de Sucesso               \\ \midrule
+\begin{tabular}[c]{@{}l@{}}Adicionar novo voto\\ (pentano.add\_votes)\end{tabular}             & \begin{tabular}[c]{@{}l@{}}Identificador da conversa\\ DataFrame com o usuário e o voto\end{tabular}                                             & Confirmação de Sucesso               \\ \midrule
+\begin{tabular}[c]{@{}l@{}}Clusterizar\\ (pentano.get\_cluster)\end{tabular}                   & \begin{tabular}[c]{@{}l@{}}Identificador da conversa\\ Identificadores dos usuários amigos\end{tabular}               & Grupos de usuários (clusters)        \\ \bottomrule
+\end{tabular}
+\end{table}
 
-
-%  TABELA Entidades MATH
-
+\begin{table}[]
+\centering
+\caption{Entidades e atributos dos módulos matemáticos}
+\label{tab:entidades_math}
+\begin{tabular}{@{}ll@{}}
+\toprule
+\multicolumn{1}{c}{\textbf{Entidade}} & \multicolumn{1}{c}{\textbf{Atributos}} \\ \midrule
+Usuário                               & Identificador                          \\
+Conversa                              & Identificador                          \\
+Comentário                            & Identificador                          \\
+Voto                                  & Valor                                  \\ \bottomrule
+\end{tabular}
+\end{table}
 
 Considerando que o módulo matemático implemente todas as diretrizes definidas acima, a comunicação é realizada com 
 os seguintes passos:
