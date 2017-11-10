@@ -1,30 +1,32 @@
 \chapter{Clusterização} \label{cap:clusterizacao}
 
-O processo de encontrar um modelo que possa descrever e distinguir classes de dados, ou seja, formar 
-grupos, como proposto no projeto ``Empurrando Juntos'', é conhecido como classificação e pode
-ser dividida em dois tipos: supervisionada e não supervisionada. \cite{tan2013data, han2011data, clustering_review}.
+As técnicas de classificação que são utilizadas para caracterizar classes de dados, podem
+ser divididas em dois tipos: classificação supervisionada e classificação não supervisionada. \cite{tan2013data, han2011data, clustering_review}.
 
-Na classificação supervisionada os objetos de dados são analisados a partir de rótulos de classe predefinidos nos objetos, ou seja, 
+Nas técnicas supervisionadas os objetos de dados são analisados a partir de rótulos de classe predefinidos nos objetos, ou seja, 
 com as classes de dados previamente definidas e conhecidas. \citeonline{han2011data} chamam esse tipo de dado de ``dado treinado''
-(dados cujos rótulos são conhecidos), onde o modelo que o descreve é obtido a partir da análise dos rótulos.
+(aqueles cujos rótulos são conhecidos), onde o modelo que o descreve é obtido a partir da análise dos rótulos.
 Na classificação não supervisionada, os rótulos de classe são obtidos a partir da análise dos dados dos objetos, tão somente \cite{tan2013data}.
 
-Uma técnica de classificação não supervisionada é a clusterização \cite{clustering_review, tan2013data}, na qual os rótulos de classes dos objetos 
-podem não existir ainda, como no caso do ``Empurrando Juntos''. O método empregado gera rótulos para um grupo de dados do conjunto \cite{han2011data}. 
+Uma das técnicas de classificação não supervisionada é a clusterização \cite{clustering_review, tan2013data}, na qual os rótulos de classes dos objetos 
+podem não existir ainda. O método empregado gera rótulos para um grupo de dados do conjunto \cite{han2011data}. Considerando estes aspectos, 
+foi a técnica escolhida para o primeiro módulo matemático do ``Empurrando Juntos''. 
 
 A clusterização foi denominada por \citeonline{clustering_review} como uma técnica para organização ou agrupamento em \textit{clusters} 
 de uma coleção de elementos que sigam padrões baseado em similaridade.
 \citeonline{tan2013data} definem a análise de \textit{clusters}, ou clusterização, como a ação que agrupa objetos de dados
 baseada apenas nas informações contidas nos dados do próprio objeto que permitam descrever os objetos e suas relações. Um \textit{cluster}
-então pode ser visto como uma classe de objetos da qual é possível derivar regras para o grupo \cite{han2011data}.
+então, pode ser visto como uma classe de objetos da qual é possível derivar regras para o grupo \cite{han2011data}.
 
 Trata-se de uma técnica bastante utilizada em análise exploratórias, agrupamentos, 
 tomada de decisão e implementações de aprendizado de máquina, como:
 mineração de dados, recuperação de documentos, segmentação de imagens e padronização \cite{clustering_review}.
 
+\citeonline{tan2013data, clustering_review} apresentam a clusterização dividida em alguns tipos: 
+hierárquica ou particional; exclusiva, sobreposta ou \textit{fuzzy}; completa ou parcial.
+
 \section{Tipos de clusterização}
-A técnica de clusterização pode ser dividida em alguns tipos: hierárquica ou particional; exclusiva, sobreposta ou \textit{fuzzy}; 
-completa ou parcial \cite{tan2013data, clustering_review}. Na clusterização particional o agrupamento dos 
+Na clusterização particional o agrupamento dos 
 objetos de dados é realizado em simples \textit{clusters}, o que significa que pertencem apenas a um \textit{cluster} \cite{tan2013data}.
 
 \citeonline{clustering_review} definem uma clusterização hierárquica quando ela produz uma série
@@ -86,7 +88,7 @@ de cálculo de similaridade e dissimilaridade para delimitação dos \textit{clu
 \section{Algoritmos de clusterização}
 Conforme supracitado, existem diversos algoritmos criados para realizar a clusterização dos dados, que também são classificados em tipos
 conforme os tipos de clusterização. A Figura \ref{fig:tipos_algoritmo} apresenta um esquemático dos tipos de algoritmos de clusterização de acordo
-com \citeonline{gan2007data, han2011data, clustering_review}.
+com as definições de \citeonline{gan2007data, han2011data, clustering_review}.
 
 \begin{figure}[h!]
 \centering
@@ -95,11 +97,12 @@ com \citeonline{gan2007data, han2011data, clustering_review}.
 \label{fig:tipos_algoritmo}
 \end{figure}
 
-A partir da figura apresentada, é notório que existe uma diversidade de algoritmos conhecidos. Nesta seção, serão descritos
-de uma forma geral apenas alguns algoritmos bastante utilizados.
+A partir da figura apresentada, é notório que existe uma diversidade de algoritmos conhecidos. Neste trabalho, será descrito
+apenas o algoritmo k-Means que foi escolhido como algoritmo de teste para o primeiro módulo do ``Empurrando Juntos'' e que de 
+acordo com \citeonline{gan2007data, clustering_review}, é um dos mais utilizados.
 
 \subsection{k-Means}
-O k-Means é um algoritmo particional e de clusterização exclusiva que forma $k$ clusters a partir de $k$ centróides, onde $k$ é um número definido na aplicação 
+O k-Means é um algoritmo particional e de clusterização exclusiva que forma $k$ \textit{clusters} a partir de $k$ centróides, onde $k$ é um número definido na aplicação 
 \cite{clustering_review, tan2013data}. Um centróide é entendido, conceitualmente, como um ponto central \cite{han2011data}.
 
 O algoritmo foi descrito por \citeonline{tan2013data} e \citeonline{han2011data} da seguinte forma:
@@ -109,15 +112,14 @@ O algoritmo foi descrito por \citeonline{tan2013data} e \citeonline{han2011data}
   \lstset{language=HTML, numbers=left, stepnumber=1}
   \begin{lstlisting}
   Escolha k pontos, dentro do conjunto de pontos a serem clusterizados ou não, como centróides iniciais
-  Repita:
+  Repita, até que os centróides não mudem:
     Forme k clusters de acordo com a menor distância dos pontos ao centróide, movendo os pontos para cada cluster.
     Recalcule o centróide de cada cluster baseado nos pontos do cluster.
-  Até que os centróides não mudem.
   \end{lstlisting}
 \end{center}
 
 
-Nota-se que o número de centróides escolhidos determina a quantidade de clusters no final do processamento.
+Nota-se que o número de centróides escolhidos determina a quantidade de \textit{clusters} no final do processamento.
 Para o cálculo da distância entre os pontos podem ser utilizadas diversas técnicas. Contudo, é comum a utilização de um cálculo conhecido como distância Euclidiana, 
 dado pela fórmula \ref{eq:euclidiana} \cite{clustering_review, tan2013data, han2011data}.
 
@@ -149,39 +151,41 @@ Na utilização do k-Means, definir previamente o valor de $k$, ou seja, o núme
 é possível contornar essa desvantagem escolhendo um intervalo de valores para execução do algoritmo e em seguida aplicar
 uma técnica analítica para definir o melhor valor \cite{han2011data}.
 
+O algoritmo K-Means foi implementado em um módulo matemático em um trabalho anterior. O detalhamento do funcionamento do algoritmo
+para o módulo matemático e sua responsabilidade no fluxo do "Empurrando Juntos`` pode ser visto no Apêndice \ref{apd:kmeans}.
 
-\subsection{Métodos hierárquicos aglomerativos}
-
-De acordo com \citeonline{tan2013data}, a categoria de técnicas de clusterização hierárquica é considerada a segunda mais 
-importante categoria. Os algoritmos de clusterização hierárquicos aglomerativos produzem um tipo de dendograma 
-com um agrupamento aninhado de padrões e níveis de similaridade \cite{han2011data, tan2013data}.  
-
-Esse tipo de técnica trata, inicialmente, cada ponto como um \textit{cluster} e a cada passo mescla pares próximos de \textit{clusters}.
-Para isso, é definida a noção de proximidade destes grupos \cite{tan2013data}.
-
-A depender das medidas de distância utilizadas, esses algoritmos podem ser subdivididos em técnicas específicas \cite{gan2007data}. 
-Nas subseções seguintes serão descritos alguns destes algoritmos.
-
-\subsubsection*{Método de Ward}
-
-Este algoritmo foi proposto por Ward Jr. e seu objetivo é realizar um procedimento de clusterização que minimize a perda 
-de informação associada a cada passo \cite{gan2007data}. Para isso, o algoritmo é baseada em alguma função objetiva, em geral, 
-o erro quadrados...
-
-
-\subsubsection*{Complete Link Method}
-
-\subsubsection*{Group Average Method}
-
-
-\subsection{\textit{Density-Based Spatial Clustering of Applications with Noise}}
-O \textit{Density-Based Spatial Clustering of Applications with Noise} (DBSCAN) é um algoritmo baseado em densidade, 
-cuja abordagem é capaz de encontrar aleatoriamente \textit{clusters} definidos em regiões densas, separando os pontos
-em regiões de baixa densidade \cite{gan2007data}. Estes pontos de baixas densidade são classificados como ruídos (\textit{noise})
-e são omitidos no resultado final \cite{gan2007data, tan2013data}.
-
-% Validar se é interessante falar sobre
-
-\subsection{Birch}
-
-\subsection{Gaussian Clustering models}
+% \subsection{Métodos hierárquicos aglomerativos}
+% 
+% De acordo com \citeonline{tan2013data}, a categoria de técnicas de clusterização hierárquica é considerada a segunda mais 
+% importante categoria. Os algoritmos de clusterização hierárquicos aglomerativos produzem um tipo de dendograma 
+% com um agrupamento aninhado de padrões e níveis de similaridade \cite{han2011data, tan2013data}.  
+% 
+% Esse tipo de técnica trata, inicialmente, cada ponto como um \textit{cluster} e a cada passo mescla pares próximos de \textit{clusters}.
+% Para isso, é definida a noção de proximidade destes grupos \cite{tan2013data}.
+% 
+% A depender das medidas de distância utilizadas, esses algoritmos podem ser subdivididos em técnicas específicas \cite{gan2007data}. 
+% Nas subseções seguintes serão descritos alguns destes algoritmos.
+% 
+% \subsubsection*{Método de Ward}
+% 
+% Este algoritmo foi proposto por Ward Jr. e seu objetivo é realizar um procedimento de clusterização que minimize a perda 
+% de informação associada a cada passo \cite{gan2007data}. Para isso, o algoritmo é baseada em alguma função objetiva, em geral, 
+% o erro quadrados...
+% 
+% 
+% \subsubsection*{Complete Link Method}
+% 
+% \subsubsection*{Group Average Method}
+% 
+% 
+% \subsection{\textit{Density-Based Spatial Clustering of Applications with Noise}}
+% O \textit{Density-Based Spatial Clustering of Applications with Noise} (DBSCAN) é um algoritmo baseado em densidade, 
+% cuja abordagem é capaz de encontrar aleatoriamente \textit{clusters} definidos em regiões densas, separando os pontos
+% em regiões de baixa densidade \cite{gan2007data}. Estes pontos de baixas densidade são classificados como ruídos (\textit{noise})
+% e são omitidos no resultado final \cite{gan2007data, tan2013data}.
+% 
+% % Validar se é interessante falar sobre
+% 
+% \subsection{Birch}
+% 
+% \subsection{Gaussian Clustering models}
