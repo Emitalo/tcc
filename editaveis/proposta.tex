@@ -1,4 +1,4 @@
-\chapter{API para módulos de matemáticos plugáveis} \label{cap:proposta}
+\chapter{API para módulos matemáticos plugáveis} \label{cap:proposta}
 
 Considerando as necessidades do ``Empurrando Juntos'', foram identificados requisitos funcionais e não funcionais 
 da aplicação.
@@ -38,12 +38,12 @@ Agrupamento de usuários                      & \begin{tabular}[c]{@{}l@{}}O sis
 Todos os serviços da API serão providos para a plataforma por meio de uma interface HTTP/HTTPS utilizando o estilo arquitetural REST.
 A API deve possibilitar a escolha do módulo matemático a ser utilizado, considerando as opções previamente implementadas.
 
-A autenticação e autorização das aplicações, e seus respectivos usuários devem ser realizadas por meio de \textit{tokens}.
+% A autenticação e autorização das aplicações, e seus respectivos usuários devem ser realizadas por meio de \textit{tokens}.
 
 A tecnologia definida para implementação da solução proposta foi a linguagem Python juntamente com os \textit{frameworks}
 Django e Django Rest Framework, utilizando o banco de dados PostgreSQL.
 
-Outro aspecto importante para esta aplicação é a questão da manutenibilidade, pois como será um software livre, a solução
+Outro aspecto importante para esta aplicação é a questão da manutenibilidade pois, como será um software livre, a solução
 deve ser desenvolvida de uma maneira que seja possível evoluir facilmente pela da comunidade.
 Com isto em mente, foram definidos os seguintes padrões para o desenvolvimento da aplicação, considerando as tecnologias definidas:
 utilização do PEP8 \footnotemark como folha de estilos e a utilização da especificação JSON API \footnotemark para formatação das respostas da API.

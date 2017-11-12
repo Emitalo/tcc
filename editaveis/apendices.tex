@@ -2,8 +2,7 @@
 
 \partapendices
 
-\chapter{Módulo matemático 0}
-\label{apd:kmeans}
+\chapter{Módulo matemático 0} \label{apd:kmeans}
 
 Um módulo matemático implementado no ``Empurrando Juntos'' é baseado no algoritmo k-Means, apresentado no Capítulo \ref{cap:clusterizacao}. 
 
@@ -15,18 +14,30 @@ tendem a inflar. Reduzir a dimensionalidade pode aliviar esse problema e diminui
 Um dos métodos mais utilizados para realizar essa redução é a Análise de 
 Componentes Principais (PCA, do inglês) \cite{han2011data, sklearn}.
 
-\citeonline{han2011data} afirmam que o PCA cria $k$ vetores ortogonais que possuem o mesmo significado que o conjunto
-de vetores inicial, porém trata-se de um conjunto menor. Para aplicação desse método são realizados basicamente quatro procedimentos.
+\citeonline{mackiewicz1993principal} afirmam que a redução de dimensionalidade no PCA é
+obtida com a criação de uma nova combinação linear das variáveis que caracterizam os
+objetos estudados, satisfazendo condições matemáticas e estatísticas.
+\citeonline{shlens2014tutorial} afirma que o principal objetivo da técnica é identificar
+uma base para expressar um conjunto de dados que elimine os ruídos e revele 
+outros dados escondidos. 
+
+\citeonline{han2011data} afirmam que o PCA 
+cria $k$ vetores ortogonais que possuem o mesmo significado que o conjunto
+de vetores inicial, porém trata-se de um conjunto menor. 
+
+
+A aplicação da técnica pode ser resumida nos seguintes passos listados abaixo.
+No final, os componentes principais restantes são uma boa aproximação dos 
+dados originais \cite{han2011data, mackiewicz1993principal, varella2008analise}: 
 
 \begin{enumerate}
- \item Normalizar os dados de entrada, para que eles estejam dentro da mesma variação;
- \item Computar $k$ vetores ortonormais, ou seja, vetores de magnitude 1, nos quais cada ponto é perpendicular aos outros;
-  \subitem Esses vetores são chamados de componentes principais.
- \item Ordenar decrescentemente os componentes principais pela significância;
- \item Remover os componentes ``fracos'', ou seja, aqueles com pouca variância.
+ \item Criar uma matriz que represente os objetos estudados (n x p), onde as linhas representam cada objeto e as colunas representam as características;
+ \item Criar uma matriz de covariância (p x p) com os dados normalizados, caso as unidades sejam diferentes,
+  ara que eles estejam dentro da mesma variação;
+ \item Calcular os autovalores e autovetores da matriz de covariância, que 
+ são os componentes principais.
 \end{enumerate}
 
-No final dos quatro procedimentos, os componentes principais restantes são uma boa aproximação dos dados originais \cite{han2011data}.
 Além disso, foi aplicada uma técnica analítica para a definição do melhor valor para $k$, conhecida como Coeficiente de Silhueta \cite{sklearn}.
 
 Essa técnica tem por objetivo combinar a avaliação de coesão e separação dos \textit{clusters} por meio do cálculo de um coeficiente (o de silhueta) que 
