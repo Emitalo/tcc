@@ -1,68 +1,53 @@
 \chapter[Introdução]{Introdução} \label{cap:introducao}
-% \addcontentsline{toc}{chapter}{Introdução}
 
 A democracia digital é resumida por \citeonline{penteadoencontro} como o uso da Internet para consolidação da democracia.
-Este uso tem acarretado um crescente número de discussões acerca de temas políticos, 
-o que permitiu que interessados na área analisassem esse fenômeno e observassem uma 
-polarização das mensagens trocadas nas redes sociais \cite{empurrandojuntos}.
+\citeonline{marques2008participaccao}, com base em seu levantamento de outros estudos na temática, afirma que este uso
+eleva a aplicação das atividades democráticas em diversos aspectos, principalmente, no que se refere a agilidade e quantidade
+de informações transferidas de uma pessoa para outra. \citeonline{mendoncca2011democracia} também relatam a importância da tecnologia
+para aproximação dos cidadãos e da política, através de novas formas de participação. 
 
-\citeonline{empurrandojuntos} afirmaram que as discussões realizadas, principalmente em redes sociais, 
-acabavam refletindo sempre a opinião da maioria e que as pessoas estão sempre presentes em uma bolha de opinião. 
-Isto é, os algoritmos dessas plataformas selecionam o conteúdo a ser apresentado de acordo com o comportamento anterior,
-no qual foi coletada a opinião deste usuário.
-Dessa forma, essa polarização dificulta a explanação das ideias da minoria e restringe a apresentação de 
-pensamentos diferentes para quem usa essas redes sociais. 
+Por essa razão, interessados passaram a analisar esse fenômeno, notando um crescente número de discussões acerca de temas políticos 
+e uma polarização das mensagens trocadas,
+principalmente em redes sociais. \citeonline{empurrandojuntos} afirmaram que as discussões realizadas
+acabavam refletindo sempre o ponto de vista da maioria, resultando em pessoas sempre presentes em uma bolha de opinião. \citeonline{marques2008participaccao}
+apresenta este ponto como um dos malefícios dessa nova forma de participação política, ao relatar sobre a influência de grandes grupos 
+sobre os assuntos apresentados.
 
-Observando esse aspecto, o Instituto Cidade Democrática\footnote{Site do Cidade Democrática: \url{http://www.cidadedemocratica.org.br/}} 
-apresenta a plataforma ``Empurrando Juntos'' cujo objetivo 
-é dar voz para a minoria e tornar as discussões mais efetivas para os seus propósitos \cite{empurrandojuntos}.
+Além da relação de evidência de opiniões desses grupos dominantes, os algoritmos
+das plataformas comumente utilizadas, em sua maioria, selecionam o conteúdo a ser apresentado de acordo com o comportamento anterior,
+no qual foi coletada a opinião deste usuário. Essas características reforçam a formação das bolhas de opinião, 
+dificultam a explanação das ideias da minoria e restringem a apresentação de pensamentos diferentes para quem usa essas plataformas. 
 
-A ideia é que um usuário entre em um \textit{website} ou em um aplicativo de celular para criar conversas e 
-participar de conversas criadas por outros usuários. Essa participação 
-acontece de duas formas: comentando uma conversa ou votando em um comentário de outro participante. Entende-se por voto
-o ato de concordar com o comentário realizado (uma espécie de \textit{like}) ou discordar do comentário. Além disso, é permitido
-que o usuário pule aquele comentário, ou seja, não atribua nenhum tipo de voto \cite{empurrandojuntos}. 
+Nesse sentido, surge uma nova geração de plataformas sociais com o intuito de tornar essas discussões mais efetivas 
+e evidenciar todas as opiniões, inclusive a da minoria. O Instituto Cidade Democrática\footnote{Site do Cidade Democrática: \url{http://www.cidadedemocratica.org.br/}},
+tem trabalhado em uma ideia para esse tipo de plataforma. Entitulado de ``Empurrando Juntos'', 
+trata-se de um software livre que tem como requisito principal agrupar pessoas que votaram de forma parecida, 
+possibilitando uma fácil visualização das semelhanças e divergências nas opiniões acerca de um assunto \cite{empurrandojuntos}. 
 
-Com os votos realizados, é possível agrupar pessoas que responderam de maneira parecida, ou seja, concordaram e
-discordaram dos mesmos comentários. Com os grupos formados, é possível ver a convergência e divergência de opiniões, 
-prover ao usuário uma visão ampliada acerca do assunto e promover a interação entre os usuários com 
-pensamentos divergentes. A Figura \ref{fig:resumo_ej} ilustra o funcionamento completo do sistema.
+A ideia é que um usuário entre em um \textit{website} ou em um aplicativo de celular para criar e participar de conversas, 
+por meio da criação de comentários e atribuição de ``votos'' em comentários de outros usuários.
+Os votos são realizados para concordar ou discordar do comentário realizado, semelhante ao conceito de \textit{like} ou \textit{dislike}.
+A partir desta interação o sistema é responsável por formar os grupos de pessoas, em tempo real, de acordo com a semelhança nas opiniões.
 
-\begin{figure}[h!]
-\centering
-\includegraphics[scale=0.6]{figuras/resumo_ej.png}
-\caption{Funcionamento do ``Empurrando Juntos''}
-\label{fig:resumo_ej}
-\end{figure}
-
-Os usuários interagem com as conversas e o sistema é responsável por agrupá-los de acordo com essa interação.
-Observa-se que o sistema é dividido em dois processamentos: gestão de usuários 
-e conversas (conversas, comentários e votos) e agrupamento de pessoas com base em seus votos. 
-
-Este agrupamento deve ser realizado em tempo real, ou seja, conforme as pessoas votam os grupos são formados ou modificados. 
-Portanto, não há estabelecimento prévio dos grupos, são conhecidos apenas os dados em comum entre os usuários, que são os votos nas conversas. 
-Desta maneira, esta formação de grupos pode ser executada utilizando técnicas de classificação,
-pois essas técnicas, de acordo com \citeonline{tan2013data, han2011data, clustering_review} , 
+Na ausência de um estabelecimento prévio dos conjuntos de pessoas, técnicas de classificação podem ser utilizadas para os agrupamentos
+levando em consideração os dados em comum entre os usuários, que são os votos nos comentários.
+De acordo com \citeonline{tan2013data, han2011data, clustering_review}, essas técnicas
 têm como objetivo encontrar um modelo que possa descrever e distinguir classes de dados.
-Sendo assim, nota-se a necessidade de um processo de classificação para que esses grupos sejam formados. 
+Sendo assim, nota-se a necessidade de um processo de classificação para que esses grupos sejam formados.
 
-Existem diversas técnicas de classificação que podem ser utilizadas no contexto do ``Empurrando Juntos'', uma delas é a
-clusterização que, de acordo com \citeonline{tan2013data, clustering_review}, é uma técnica utilizada para agrupamentos 
-nos quais os rótulos não necessitam ser definidos. Além da diversidade de métodos de classificação, a própria clusterização pode ser implementada com o uso de 
-diferentes técnicas e algoritmos. 
+É possível dividir então o sistema em dois processamentos: 
+gestão de usuários e conversas e agrupamento de pessoas com opinião semelhante. 
+Observando isto em conjunto com a possibilidade do uso de diferentes técnicas para classificação 
+e a característica do ``Empurrando Juntos'' de ser uma aplicação multiplataforma, notou-se
+a necessidade do estabelecimento de uma arquitetura modularizada e do provimento dos serviços necessários para a realização
+dos dois processamentos.
 
-Considerando os dois processamentos envolvidos, a possibilidade do uso de diferentes técnicas para a 
-realização do agrupamento e a característica do ``Empurrando Juntos'' de ser uma aplicação multiplataforma, notou-se
-a necessidade do estabelecimento de uma arquitetura em três módulos: servidor, cliente e matemático. Na qual, o módulo servidor 
-consistiria em uma \textit{Application Programming Interface} (API) que, de acordo com \citeonline{wagh2012comparative, understanding_web}
+Segundo \citeonline{wagh2012comparative, understanding_web}, uma \textit{Application Programming Interface} (API)
 é uma interface que expõe os seus componentes como um serviço, permitindo que outras aplicações interajam com esses 
 componentes. Desse modo, possibilita o compartilhamento dos dados armazenados com as aplicações que a consomem.
-
-A parte cliente da aplicação seria responsável pela interface visual e comunicação com a parte servidor no processamento
-de usuários e ações no sistema. E o módulo matemático teria a finalidade de formar os grupos de pessoas de acordo com os votos realizados.
-
-Dessa forma, o objetivo do trabalho foi estabelecer a arquitetura do ``Empurrando Juntos'' e implementar
-o módulo de API, permitindo a utilização de diferentes plataformas para o módulo cliente e diferentes algoritmos para o módulo matemático.
+Portanto, o objetivo do trabalho foi implementar uma API que sirva como contribuição para o ``Empurrando Juntos'',
+capaz de fornecer os serviços de gerenciamento das conversas e de agrupamento de usuários, de forma que seja possível substituir
+o método de classificação utilizado para o agrupamento.
 
 Para realização do objetivo proposto, o trabalho foi dividido em cinco etapas, conforme a Figura \ref{fig:etapas_trabalho}. 
 
@@ -73,17 +58,18 @@ Para realização do objetivo proposto, o trabalho foi dividido em cinco etapas,
 \label{fig:etapas_trabalho}
 \end{figure}
 
-A etapa de ``Diagnóstico'' compreendeu o entendimento do escopo da plataforma ``Empurrando Juntos''. 
+A etapa de ``Diagnóstico'' compreendeu o entendimento do escopo da plataforma ``Empurrando Juntos''.
 A etapa de ``Definição da Proposta'' foi caracterizada pela definição de escopo, 
-da arquitetura da API e da comunicação com os módulos matemáticos. Na terceira etapa, 
+da arquitetura da API e da comunicação com serviço de classificação. Na terceira etapa, 
 foi feito o planejamento da execução do trabalho com o estabelecimento
 de um cronograma das atividades das próximas etapas. 
 
 Na etapa de ``Desenvolvimento'' foram realizadas as iterações de implementação, teste e adaptação da API. 
-Por fim, na etapa de ``Aplicação em um caso'' a API foi utilizada em uma plataforma de exemplo em comunicação com os outros dois módulos: cliente e matemático.
+Por fim, na etapa de ``Aplicação em um caso'' a API foi consumida em uma plataforma de exemplo.
 
-Nesse contexto, este trabalho, além desta introdução, está organizado em outros quatro capítulos. 
-O Capítulo \ref{cap:clusterizacao} aborda os conceitos e técnicas de 
-classificação, com foco na técnica utilizada no módulo matemático implementado. 
-A solução proposta no trabalho é apresentada no Capítulo \ref{cap:proposta}. No Capítulo \ref{cap:aplicacao_exemplo} é
+Nesse contexto, este trabalho, além desta introdução, está organizado em outros cinco capítulos.
+No Capítulo \ref{cap:empurrandojuntos} é apresentada a descrição, histórico e o escopo da plataforma ``Empurrando Juntos'' 
+detalhado na primeira etapa do trabalho.
+O Capítulo \ref{cap:classificacao} aborda os conceitos de classificação, com foco em uma das técnicas implementadas na plataforma. 
+A solução proposta na segunda etapa do trabalho é apresentada no Capítulo \ref{cap:proposta}. No Capítulo \ref{cap:aplicacao_exemplo} é
 apresentado o caso de exemplo do uso da API. E por fim são apresentadas as conclusões no Capítulo \ref{cap:consideracoes_finais}.
