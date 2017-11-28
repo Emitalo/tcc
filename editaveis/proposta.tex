@@ -26,14 +26,12 @@ na arquitetura da Web moderna, atuando como um conjunto coordenado de restriçõ
 entre os componentes e minimização da latência da comunicação e que favorece a escalabilidade
 da implementação dos componentes \cite{fielding2002}.
 
-Necessidades do  ``Empurrando Juntos'':
-
-\begin{itemize}
- \item Gerenciamento das conversas, comentários e votos;
- \item Agrupamento dos usuários a partir dos votos;
-\end{itemize}
-
-Considerando as necessidades do ``Empurrando Juntos'', foi estabelecida uma arquitetura de três módulos principais:
+% Necessidades do  ``Empurrando Juntos'':
+% 
+% \begin{itemize}
+%  \item Gerenciamento das conversas, comentários e votos;
+%  \item Agrupamento dos usuários a partir dos votos;
+% \end{itemize}
 
 A seção \ref{requirements} apresenta os requisitos identificados para a solução.
 A seção \ref{architecture} apresenta a descrição da arquitetura definida para a solução.
@@ -61,7 +59,6 @@ A seção \ref{architecture} apresenta a descrição da arquitetura definida par
     \textbf{Característica}                      & \multicolumn{1}{c}{\textbf{Requisito}}                                                                                                \\ \midrule
     \multirow{5}{*}{Gerenciamento de Usuário}    & O sistema deve permitir o cadastro de usuários                                                                                        \\
 						& O sistema deve permitir a alteração de usuários                                                                                       \\
-						& O sistema deve permitir a exclusão de usuários                                                                                         \\
 						& \begin{tabular}[c]{@{}l@{}}O sistema deve permitir a autenticação de usuários \\ cadastrados na plataforma\end{tabular}			\\
 						&  \begin{tabular}[c]{@{}l@{}}O sistema deve permitir a autenticação de usuários \\ cadastrados no Facebook\end{tabular}                     \\ \midrule
     \multirow{3}{*}{Gerenciamento de Conversa}   & O sistema deve permitir o cadastro de conversas                                                                                       \\
@@ -119,7 +116,7 @@ A seção \ref{architecture} apresenta a descrição da arquitetura definida par
     
     Para a comunicação entre a API e os módulos matemáticos escolhidos, foi utilizada
     uma plataforma de execução de tarefas assíncronas, o Celery \footnotemark, que é uma aplicação
-    madura, estável, bem acolhida pela comunidade e ser de fácil integração com o projetos em Python.
+    madura, estável, bem acolhida pela comunidade e que é de fácil integração com projetos em Python.
     O Celery funciona a partir da definição de tarefas que podem ser executadas de forma assíncrona
     e utiliza um \textit{message broker}, que é uma plataforma intermediária
     entre duas aplicações para troca de mensagens, para enfileirar e delegar as tarefas para execução.
@@ -215,7 +212,7 @@ A seção \ref{architecture} apresenta a descrição da arquitetura definida par
 
 	\begin{table}[h!]
 	\centering
-	\caption{Tarefas dos módulos matemáticos}
+	\caption{Interface de comunicação entre a API e os módulos matemáticos}
 	\label{tab:tasks}
 	\begin{tabular}{@{}lll@{}}
 	\multicolumn{1}{c}{\textbf{Tarefa}}                                                & \multicolumn{1}{c}{\textbf{Parâmetros}}                                                                               & \multicolumn{1}{c}{\textbf{Retorno}} \\ \midrule
