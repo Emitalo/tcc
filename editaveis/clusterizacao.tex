@@ -1,23 +1,26 @@
+\chapter{Classificação de Dados} \label{cap:classificação}
 
-% Existem diversas técnicas de classificação que podem ser utilizadas no contexto do ``Empurrando Juntos'', uma delas é a
-% clusterização que, de acordo com \citeonline{tan2013data, clustering_review}, é uma técnica utilizada para agrupamentos 
-% nos quais os rótulos não necessitam ser definidos. Além da diversidade de métodos de classificação, 
-% a própria clusterização pode ser implementada com o uso de 
-% diferentes técnicas e algoritmos.
-
-\chapter{Classificação} \label{cap:classificação}
-
-As técnicas de classificação que são utilizadas para caracterizar classes de dados, podem
-ser divididas em dois tipos: classificação supervisionada e classificação não supervisionada. \cite{tan2013data, han2011data, clustering_review}.
+A classificação consiste em atribuir categorias a objetos, ou dados e pode ser realizada por meio de inúmeras técnicas, as quais podem
+ser divididas em dois tipos: supervisionada e não supervisionada. \cite{tan2013data, han2011data, clustering_review}.
 
 Nas técnicas supervisionadas os objetos de dados são analisados a partir de rótulos de classe predefinidos nos objetos, ou seja, 
-com as classes de dados previamente definidas e conhecidas. \citeonline{han2011data} chamam esse tipo de dado de ``dado treinado''
+com as categorias previamente definidas e conhecidas. \citeonline{han2011data} chamam esse tipo de dado de ``dado treinado''
 (aqueles cujos rótulos são conhecidos), onde o modelo que o descreve é obtido a partir da análise dos rótulos.
-Na classificação não supervisionada, os rótulos de classe são obtidos a partir da análise dos dados dos objetos, tão somente \cite{tan2013data}.
 
-Uma das técnicas de classificação não supervisionada é a clusterização \cite{clustering_review, tan2013data}, na qual os rótulos de classes dos objetos 
-podem não existir ainda. O método empregado gera rótulos para um grupo de dados do conjunto \cite{han2011data}. Considerando estes aspectos, 
-foi a técnica escolhida para o primeiro módulo matemático do ``Empurrando Juntos''. 
+Na classificação não supervisionada, os rótulos de classe são obtidos a partir da análise dos dados dos objetos, tão somente \cite{tan2013data}.
+Essa característica das estratégias não supervisionadas demonstra que este tipo de classificação é adequado para o contexto
+do ``Empurrando Juntos'', no qual os grupos são formados com base em cada voto.
+
+\section{Técnicas de classificação não supervisionada}
+
+
+
+
+Dentre estas estratégias, existe a clusterização que é uma técnica já utilizada em ferramentas relacionadas
+e por essa razão foi a técnica escolhida para o primeiro módulo matemático do ``Empurrando Juntos''. 
+
+
+\section{Clusterização}
 
 A clusterização foi denominada por \citeonline{clustering_review} como uma técnica para organização ou agrupamento em \textit{clusters} 
 de uma coleção de elementos que sigam padrões baseado em similaridade.
@@ -32,7 +35,7 @@ mineração de dados, recuperação de documentos, segmentação de imagens e pa
 \citeonline{tan2013data, clustering_review} apresentam a clusterização dividida em alguns tipos: 
 hierárquica ou particional; exclusiva, sobreposta ou \textit{fuzzy}; completa ou parcial.
 
-\section{Tipos de clusterização}
+\subsection{Tipos de clusterização}
 Na clusterização particional o agrupamento dos 
 objetos de dados é realizado em simples \textit{clusters}, o que significa que pertencem apenas a um \textit{cluster} \cite{tan2013data}.
 
@@ -50,7 +53,7 @@ ou em um grau de pertinência, em vez de determinar se o objeto pertence ou não
 Por fim, \citeonline{tan2013data} definem uma clusterização como completa quando no resultado todos os objetos estão em pelo menos um grupo. 
 Pois, na clusterização parcial alguns elementos podem ficar sem grupo caso não sejam compatíveis com algum \textit{cluster} formado.
 
-\section{Passos para a clusterização}
+\subsection{Passos para a clusterização}
 
 Embora, cada tipo de clusterização tenha sua particularidade, para todos eles existem alguns passos necessários, apresentados na Figura \ref{fig:tasks_clustering}, 
 para obter os dados classificados ao final do processo.
@@ -92,7 +95,7 @@ de pontos (a) que pode ser agrupado de formas diferentes gerando quantidades dif
 Por isso para a construção de um algoritmo de clusterização deve-se definir, além do algoritmo principal a ser utilizado, as funções
 de cálculo de similaridade e dissimilaridade para delimitação dos \textit{clusters}.
 
-\section{Algoritmos de clusterização}
+\subsection{Algoritmos de clusterização}
 Conforme supracitado, existem diversos algoritmos criados para realizar a clusterização dos dados, que também são classificados em tipos
 conforme os tipos de clusterização. A Figura \ref{fig:tipos_algoritmo} apresenta um esquemático dos tipos de algoritmos de clusterização de acordo
 com as definições de \citeonline{gan2007data, han2011data, clustering_review}.
@@ -108,7 +111,7 @@ A partir da figura apresentada, é notório que existe uma diversidade de algori
 apenas o algoritmo k-Means que foi escolhido como algoritmo de teste para o primeiro módulo do ``Empurrando Juntos'' e que de 
 acordo com \citeonline{gan2007data, clustering_review}, é um dos mais utilizados.
 
-\subsection{k-Means}
+\subsection*{k-Means}
 O k-Means é um algoritmo particional e de clusterização exclusiva que forma $k$ \textit{clusters} a partir de $k$ centróides, onde $k$ é um número definido na aplicação 
 \cite{clustering_review, tan2013data}. Um centróide é entendido, conceitualmente, como um ponto central \cite{han2011data}.
 
