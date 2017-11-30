@@ -12,15 +12,20 @@
   \end{figure}
   
   A Figura \ref{fig:whole_solution} apresenta a solução completa implementada, que
-  é composta pela a aplicação cliente do Pentano,
-  que é uma aplicação \textit{web} amigável ao usuário que fornece fácil acesso aos serviços providos pela API;
-  a API do Pentano, que fornece os serviços
-  de autenticação e gerenciamento das conversas, comentários e votos; uma instância do módulo matemático,
-  que fornece o serviço de clusterização para agrupar os usuários; e uma instância do RabbitMQ \footnotemark para
-  intermediar a comunicação entre a API e o módulo matemático, servindo como meio de transporte das
-  mensagens disparadas pelo Celery.
-  \footnotetext{https://www.rabbitmq.com/}
+  é composta por:
   
+  \begin{enumerate}
+      \item a aplicação cliente do Pentano, que é uma aplicação \textit{web} amigável ao usuário que fornece 
+      fácil acesso aos serviços providos pela API;
+      \item a API do Pentano, que fornece os serviços de autenticação e gerenciamento das conversas, comentários e votos; 
+      \item uma instância do módulo matemático,
+	  que fornece o serviço de clusterização para agrupar os usuários; e
+      \item uma instância do RabbitMQ\footnotemark para
+	  intermediar a comunicação entre a API e o módulo matemático, servindo como meio de transporte das
+	  mensagens disparadas pelo Celery.
+	  \footnotetext{https://www.rabbitmq.com/}
+  \end{enumerate}
+
   Nas próximas seções são apresentados os detalhes de cada parte desta solução implementada
   para validar a arquitetura proposta.
   
@@ -30,11 +35,11 @@
     
     A aplicação cliente serve como interface gráfica para os serviços de 
     gerenciamento de conversas, comentários e votos providos pela API e foi
-    criada para consolidar a API desenvolvida e fornecer uma interface mais
+    criada para consolidar as funcionalidades desenvolvidas e fornecer uma interface mais
     amigável para o sistema.
     
     Foram implementados todos os requisitos descritos na seção \ref{functional_requirements}
-    em uma aplicação Angular 2 \footnotemark para
+    em uma aplicação Angular 2\footnotemark para
     testar a integração com todos os \textit{endpoints} da API e demonstrar o comportamento da API.
     \footnotetext{https://angular.io/}
     
@@ -50,7 +55,7 @@
     
     Quando um nova conversa, comentário ou voto são criados na aplicação cliente,
     a API é invocada para a criação do respectivo dado, que por sua vez
-    notitifica o módulo matemático do ação recém ocorrida para que o mesmo possa reagir de acordo.
+    notitifica o módulo matemático da ação recém ocorrida para que o mesmo possa reagir de acordo.
     Esta comunicação é feita através de tarefas do Celery e são transportadas como mensagens assíncronas
     através do RabbitMQ para o módulo matemático.
     
@@ -68,7 +73,7 @@
     matemático começa a trabalhar, realizando todo o processo de clusterização dos usuários
     a partir dos votos em comentários da respectiva conversa solicitada.
     
-    O módulo matemático criado utiliza o algoritmo k-Means, apresentado no Capítulo \ref{cap:clusterizacao},
+    O módulo matemático criado utiliza o algoritmo k-Means, apresentado no Capítulo \ref{cap:classificacao},
     para realizar a composição dos \textit{clusters} de usuários.
     Os detalhes dessa implementação são apresentados a seguir.
 
