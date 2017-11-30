@@ -1,2 +1,29 @@
 \chapter{Conclusão} \label{cap:consideracoes_finais}
 
+  Neste trabalho foi implementada e validada uma API para o ``Empurrando Juntos'' com os serviços de gestão de usuários, 
+  conversas, comentários, votos e formação de grupos. Este último com a possibilidade da utilização de qualquer método de classificação 
+  de dados.
+  
+  Considerando a arquitetura modularizada do sistema e a API como sendo apenas uma parte do todo, 
+  foram conectados os outros dois módulos para a validação 
+  da solução. Na comunicação com aplicação cliente foi possível confirmar a escolha adequada da arquitetura dos serviços e 
+  constatar o correto funcionamento dos \textit{endpoints}.
+  
+  Na conexão com o módulo matemático já existente, contudo adaptado para o novo protocolo, foi possível validar a interface de 
+  comunicação definida e no conjunto dos módulos, a formação dos grupos. Com isso foi possível verificar e validar o escopo 
+  inicial da aplicação de acordo com a proposta do ``Empurrando Juntos'', incluindo a escolha da clusterização 
+  como um primeiro método para a realização dos agrupamentos. 
+  
+  A arquitetura de comunicação definida mostrou-se adequada para a proposta do trabalho, na qual o módulo matemático 
+  deve ser configurado no momento da implantação do sistema completo, ou seja, os três módulos. Dessa forma, os resultados obtidos
+  com a validação utilizando apenas uma opção de aplicação de classificação são considerados pertinentes, ainda que seja interessante e recomendado
+  o teste da API com outros algoritmos implementados em outras aplicações.
+  
+  O Celery e o RabbitMQ funcionaram apropriadamente nas trocas de mensagens e na execução do protocolo estabelecido com a configuração
+  da comunicação apenas de uma aplicação para outra. Em um trabalho futuro, essa estrutura pode ser expansível para o funcionamento do sistema com mais 
+  de um módulo ao mesmo tempo, atribuindo a escolha ao usuário da aplicação.
+  
+  Como outros trabalhos futuros são propostas a implementação das funcionalidades do ``Empurrando Juntos'' não tratadas no escopo deste trabalho,
+  como por exemplo, o elemento de gamificação e a implementação de outros módulos matemáticos com diferentes técnicas
+  de classificação dos dados para validação do protocolo apresentado e para estudos de métodos mais apropriados para o contexto.
+  

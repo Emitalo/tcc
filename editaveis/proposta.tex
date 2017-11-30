@@ -202,20 +202,8 @@ A seção \ref{architecture} apresenta a descrição da arquitetura definida par
 	  \item Deve garantir que as tarefas estão registradas no Celery com os nomes apresentados na Tabela \ref{tab:tasks}.
 	  \item Deve garantir que o Celery esteja configurado para escutar no mesmo \textit{message broker} que a API.
 	\end{itemize}
-
-	\begin{table}[h!]
-	\centering
-	\caption{Interface de comunicação entre a API e os módulos matemáticos}
-	\label{tab:tasks}
-	\begin{tabular}{@{}lll@{}}
-	\multicolumn{1}{c}{\textbf{Tarefa}}                                                & \multicolumn{1}{c}{\textbf{Parâmetros}}                                                                               & \multicolumn{1}{c}{\textbf{Retorno}} \\ \midrule
-	\begin{tabular}[c]{@{}l@{}}Adicionar nova conversa \\ (pentano.new\_conversation)\end{tabular} & Identificador da conversa                                                                                             & Confirmação de Sucesso               \\ \midrule
-	\begin{tabular}[c]{@{}l@{}}Adicionar novo comentário \\ (pentano.add\_comment)\end{tabular}    & \begin{tabular}[c]{@{}l@{}}Identificador da conversa\\ Identificador do comentário\\ Texto do comentário\end{tabular} & Confirmação de Sucesso               \\ \midrule
-	\begin{tabular}[c]{@{}l@{}}Adicionar novo voto\\ (pentano.add\_votes)\end{tabular}             & \begin{tabular}[c]{@{}l@{}}Identificador da conversa\\ Lista de votos e seus usuários\end{tabular}                                             & Confirmação de Sucesso               \\ \midrule
-	\begin{tabular}[c]{@{}l@{}}Clusterizar\\ (pentano.get\_cluster)\end{tabular}                   & \begin{tabular}[c]{@{}l@{}}Identificador da conversa\\ Identificadores dos usuários amigos\end{tabular}               & Grupos de usuários (clusters)        \\ \bottomrule
-	\end{tabular}
-	\end{table}
-
+	
+	
 	Considerando que o módulo matemático implemente todas as diretrizes definidas acima, a comunicação é realizada com 
 	os seguintes passos:
 	  
@@ -227,6 +215,23 @@ A seção \ref{architecture} apresenta a descrição da arquitetura definida par
 	\item O módulo matemático retorna o resultado de execução da tarefa;
 	\item A API recebe o resultado retornado do módulo matemático, identificando o sucesso ou a falha da tarefa executada.
 	\end{enumerate}
+
+	\begin{table}[h!]
+	\centering
+	\caption{Interface de comunicação entre a API e os módulos matemáticos}
+	\label{tab:tasks}
+	  \begin{tabular}{@{}lll@{}}
+	  \multicolumn{1}{c}{\textbf{Tarefa}}                                                & \multicolumn{1}{c}{\textbf{Parâmetros}}                                                                               & \multicolumn{1}{c}{\textbf{Retorno}} \\ \midrule
+	  \begin{tabular}[c]{@{}l@{}}Adicionar nova conversa \\ (pentano.new\_conversation)\end{tabular} & Identificador da conversa                                                                                             & Confirmação de Sucesso               \\ \midrule
+	  \begin{tabular}[c]{@{}l@{}}Adicionar novo comentário \\ (pentano.add\_comment)\end{tabular}    & \begin{tabular}[c]{@{}l@{}}Identificador da conversa\\ Identificador do comentário\\ Texto do comentário\end{tabular} & Confirmação de Sucesso               \\ \midrule
+	  \begin{tabular}[c]{@{}l@{}}Adicionar novo voto\\ (pentano.add\_votes)\end{tabular}             & \begin{tabular}[c]{@{}l@{}}Identificador da conversa\\ Lista de votos e seus usuários\end{tabular}                                             & Confirmação de Sucesso               \\ \midrule
+	  \begin{tabular}[c]{@{}l@{}}Clusterizar\\ (pentano.get\_cluster)\end{tabular}                   & \begin{tabular}[c]{@{}l@{}}Identificador da conversa\\ Identificadores dos usuários amigos\end{tabular}               & \begin{tabular}[c]{@{}l@{}}Grupos de usuários \\(clusters)\end{tabular}\\ \midrule
+	  \begin{tabular}[c]{@{}l@{}}Excluir conversa\\ (pentano.delete\_conversation)\end{tabular}                   & Identificador da conversa & Confirmação de Sucesso         \\ \midrule
+	  \begin{tabular}[c]{@{}l@{}}Excluir comentário \\ (pentano.delete\_comment)\end{tabular}                   & Identificador do comentário              & Confirmação de Sucesso         \\ \midrule
+	  \begin{tabular}[c]{@{}l@{}}Excluir voto\\ (pentano.delete\_vote)\end{tabular}                   & Identificador do voto & Confirmação de Sucesso         \\ \bottomrule
+	\end{tabular}
+	\end{table}
+	
  
 	Com a utilização do Celery os módulos matemáticos podem ser aplicações independentes que utilizem qualquer tecnologia,
 	estrutura de aplicação e algoritmo de clusterização desejados. Além de permitir o baixo acoplamento, possibilita

@@ -8,19 +8,8 @@ com as categorias previamente definidas e conhecidas. \citeonline{han2011data} c
 (aqueles cujos rótulos são conhecidos), onde o modelo que o descreve é obtido a partir da análise dos rótulos.
 
 Na classificação não supervisionada, os rótulos de classe são obtidos a partir da análise dos dados dos objetos, tão somente \cite{tan2013data}.
-Essa característica das estratégias não supervisionadas demonstra que este tipo de classificação é adequado para o contexto
+A clusterização é uma das estratégias não supervisionadas mais conhecida e utilizada e demontra-se adequada para o contexto
 do ``Empurrando Juntos'', no qual os grupos são formados com base em cada voto.
-
-\section{Técnicas de classificação não supervisionada}
-
-
-
-
-Dentre estas estratégias, existe a clusterização que é uma técnica já utilizada em ferramentas relacionadas
-e por essa razão foi a técnica escolhida para o primeiro módulo matemático do ``Empurrando Juntos''. 
-
-
-\section{Clusterização}
 
 A clusterização foi denominada por \citeonline{clustering_review} como uma técnica para organização ou agrupamento em \textit{clusters} 
 de uma coleção de elementos que sigam padrões baseado em similaridade.
@@ -35,7 +24,7 @@ mineração de dados, recuperação de documentos, segmentação de imagens e pa
 \citeonline{tan2013data, clustering_review} apresentam a clusterização dividida em alguns tipos: 
 hierárquica ou particional; exclusiva, sobreposta ou \textit{fuzzy}; completa ou parcial.
 
-\subsection{Tipos de clusterização}
+\section{Tipos de clusterização}
 Na clusterização particional o agrupamento dos 
 objetos de dados é realizado em simples \textit{clusters}, o que significa que pertencem apenas a um \textit{cluster} \cite{tan2013data}.
 
@@ -53,12 +42,12 @@ ou em um grau de pertinência, em vez de determinar se o objeto pertence ou não
 Por fim, \citeonline{tan2013data} definem uma clusterização como completa quando no resultado todos os objetos estão em pelo menos um grupo. 
 Pois, na clusterização parcial alguns elementos podem ficar sem grupo caso não sejam compatíveis com algum \textit{cluster} formado.
 
-\subsection{Passos para a clusterização}
+\section{Passos para a clusterização}
 
 Embora, cada tipo de clusterização tenha sua particularidade, para todos eles existem alguns passos necessários, apresentados na Figura \ref{fig:tasks_clustering}, 
 para obter os dados classificados ao final do processo.
 
-\begin{figure}[h!]
+\begin{figure}[h]
 \centering
 \includegraphics[scale=0.5]{figuras/tasks_clustering.png}
 \caption{Passos para clusterização. Adaptado de \citeonline{clustering_review}}
@@ -95,7 +84,7 @@ de pontos (a) que pode ser agrupado de formas diferentes gerando quantidades dif
 Por isso para a construção de um algoritmo de clusterização deve-se definir, além do algoritmo principal a ser utilizado, as funções
 de cálculo de similaridade e dissimilaridade para delimitação dos \textit{clusters}.
 
-\subsection{Algoritmos de clusterização}
+\section{Algoritmos de clusterização}
 Conforme supracitado, existem diversos algoritmos criados para realizar a clusterização dos dados, que também são classificados em tipos
 conforme os tipos de clusterização. A Figura \ref{fig:tipos_algoritmo} apresenta um esquemático dos tipos de algoritmos de clusterização de acordo
 com as definições de \citeonline{gan2007data, han2011data, clustering_review}.
