@@ -1,36 +1,13 @@
 \chapter{API desenvolvida} \label{cap:proposta}
 
-De acordo com \citeonline{understanding_web}, uma API é uma interface que permite que os 
-usuários interajam ou respondam a dados ou serviços solicitados de outro programa, outros
-aplicativos ou sites. No contexto da Web, as APIs facilitam a troca de dados entre 
-aplicações, permitem a criação de novas aplicações e constituem a base para o conceito de 
-``Web como uma plataforma''.
-
-A criação de uma API para o contexto deste trabalho é adequada, pois promove baixo acoplamento
-entre os componentes da aplicação, não sobrecarregando o ``Empurrando Juntos'' com funcionalidades genéricas
-para as conversas e de agrupamento dos usuários,
-permitindo a reutilização dos serviços de clusterização por qualquer
-outra aplicação que já existe ou que venha a ser criada, tanto \textit{web} como \textit{mobile}.
-
-\citeonline{wagh2012comparative} afirmam que existem vários métodos para interação entre o  
-usuário e a Internet, através de serviços web (web \textit{services}).
-Essa arquitetura permite que os componentes de software, o que inclui funções,
-objetos e processos de diferentes sistemas, sejam expostos como um serviço.
-Para prover esses serviços através de uma API o estilo arquitetural \textit{Representational State Transfer} (REST)
-se destaca atualmente como representante do provimento de serviços via \textit{Web} e, portanto, foi escolhido para
-guiar a implementação da API proposta.
-
-O REST é um estilo arquitetural introduzido por \citeonline{fielding2002} que serve como um modelo abstrato
-para guiar o uso do \textit{Hypertext Transfer Protocol} (HTTP) e do \textit{Uniform Resource Identifier} (URI)
-na arquitetura da Web moderna, atuando como um conjunto coordenado de restrições arquiteturais que possibilita baixo acoplamento 
-entre os componentes e minimização da latência da comunicação e que favorece a escalabilidade
-da implementação dos componentes \cite{fielding2002}.
-
-A seção \ref{requirements} apresenta os requisitos identificados para a solução.
-A seção \ref{architecture} apresenta a descrição da arquitetura definida para a solução.
-
-\vfill
-\pagebreak
+  A criação de uma API RESTFul para o contexto deste trabalho é adequada, pois promove baixo acoplamento
+  entre os componentes da aplicação, não sobrecarregando o ``Empurrando Juntos'' com funcionalidades genéricas
+  para as conversas e de agrupamento dos usuários,
+  permitindo a reutilização dos serviços de clusterização por qualquer
+  outra aplicação que já existe ou que venha a ser criada, tanto \textit{web} como \textit{mobile}.
+  
+  A seção \ref{requirements} apresenta os requisitos identificados para a solução.
+  A seção \ref{architecture} apresenta a descrição da arquitetura definida para a solução.
 
 \section{Requisitos da solução} \label{requirements}
 

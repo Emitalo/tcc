@@ -1,40 +1,28 @@
-\chapter{\textit{Application Programming Interface}} \label{cap:api}
+\chapter{Clusterização como um serviço} \label{cap:api}
 
-De acordo com \citeonline{understanding_web}, uma API é uma interface que permite que os 
-usuários interajam ou respondam a dados ou serviços solicitados de outro programa, outros
-aplicativos ou sites. No contexto da Web, as APIs facilitam a troca de dados entre 
-aplicações, permitem a criação de novas aplicações e constituem a base para o conceito de 
-``Web como uma plataforma''.
+  Uma solução para atender as necessidades do ``Empurrando Juntos'' é oferecer
+  o processo de clusterização, juntamente com as funcionalidades de gerenciamento
+  de conversas, comentários e votos, como um serviço.
+  Uma forma de conseguir essa integração com o ``Empurrando Juntos'' é oferecer
+  esses serviços através de uma \textit{Application Programming Interface} (API).
 
-A criação de uma API para o contexto deste trabalho é adequada, pois promove baixo acoplamento
-entre os componentes da aplicação, não sobrecarregando o ``Empurrando Juntos'' com funcionalidades genéricas
-para as conversas e de agrupamento dos usuários,
-permitindo a reutilização dos serviços de clusterização por qualquer
-outra aplicação que já existe ou que venha a ser criada, tanto \textit{web} como \textit{mobile}.
+  De acordo com \citeonline{understanding_web}, uma API é uma interface que permite que os 
+  usuários interajam ou respondam a dados ou serviços solicitados de outro programa, outros
+  aplicativos ou sites. No contexto da Web, as APIs facilitam a troca de dados entre 
+  aplicações, permitem a criação de novas aplicações e constituem a base para o conceito de 
+  ``Web como uma plataforma''.
 
-% Com uma API é possível criar uma solução que contribua para o propósito do ``Empurrando Juntos'' e que também
-% possa ser utilizada em outras aplicações, como uma plataforma para apoio à mulheres vítimas de violência, que é
-% um dos objetivos deste trabalho.
+  \citeonline{wagh2012comparative} afirmam que existem vários métodos para interação entre o  
+  usuário e a Internet, através de serviços web (web \textit{services}).
+  Essa arquitetura permite que os componentes de software, o que inclui funções,
+  objetos e processos de diferentes sistemas, sejam expostos como um serviço.
 
-\citeonline{wagh2012comparative} afirmam que existem vários métodos para interação entre o  
-usuário e a Internet, através de serviços web (web \textit{services}).
-Essa arquitetura permite que os componentes de software, o que inclui funções,
-objetos e processos de diferentes sistemas, sejam expostos como um serviço. Para prover esses serviços através de uma API duas arquiteturas se destacam atualmente como representantes do provimento
-de serviços via \textit{Web}: \textit{Simple Object Access Protocol} (SOAP) e \textit{Representational State Transfer} (REST).
+  Para prover esses serviços através de uma API, o estilo arquitetural Transferência de Estado 
+  Representacional (do inglês, \textit{Representational State Transfer} ou REST)
+  se destaca atualmente como representante do provimento de serviços via \textit{Web} e, portanto, foi escolhido para
+  guiar a implementação da API proposta.
 
-O protocolo SOAP é uma arquitetura de web \textit{service} baseada em três entidades: o provedor, o registrador e o consumidor do serviço.
-O provedor é entendido como o serviço endereçado na rede
-que aceita requisições. O consumidor é uma aplicação, serviço ou outro tipo de software que
-requisita um serviço e um registrador é um diretório na rede que contém os serviços disponíveis \cite{mumbaikar}.
-Um serviço implementado com SOAP sempre retorna um documento XML \cite{wagh2012comparative}. Trata-se de uma arquitetura 
-bastante eficiente em seu propósito, 
-todavia é relatado que o uso de XML pode comprometer a performance da aplicação, considerando a sua estrutura com informações 
-legíveis aos seres humanos \cite{wagh2012comparative, soap_and_ws}.
-
-% \citeonline{wagh2012comparative} afirma que as mensagens SOAP tem um conteúdo pesado e por esse motivo não sendo sendo indicadas para dispositivos móveis.
-
-A Transferência de Estado Representacional (do inglês, \textit{Representational State Transfer} ou REST)
-  é um estilo arquitetural introduzido por \citeonline{fielding2002} que serve como um modelo abstrato
+  O estilo REST é um estilo arquitetural introduzido por \citeonline{fielding2002} que serve como um modelo abstrato
   para guiar o uso do \textit{Hypertext Transfer Protocol} (HTTP) e do \textit{Uniform Resource Identifier} (URI)
   na arquitetura da Web moderna, abstraindo os elementos arquiteturais participantes de um sistema de
   hipermídia distribuído.
@@ -43,111 +31,49 @@ A Transferência de Estado Representacional (do inglês, \textit{Representationa
   elementos de dados e elementos de conexão (conectores). O estilo REST foca no papel dos componentes, nas restrições
   da interação entre componentes e na interpretação de elementos de dados significantes para a interação \cite{fielding2002}.
   
-  O estilo REST é um conjunto coordenado de restrições arquiteturais que possibilita baixo acoplamento entre os componentes e minimização da latência da comunicação e que favorece a escalabilidade da implementação dos componentes \cite{fielding2002}.
+  No estilo REST, uma informação é abstraída em um recurso, que pode ser qualquer informação que possa ser nomeada
+  (documentos, imagens, serviços, entre outros). Para identificar um recurso específico na interação entre dois
+  componentes, o REST utiliza um identificador de recurso (URI) \cite{fielding2002}.
   
-   Apesar de ambas as tecnologias proverem meios para fornecer serviços pela \textit{web}, o estilo arquitetural REST se destacou
-  e as principais diferenças entre as tecnologias que culminaram na escolha do REST são apresentadas na Tabela \ref{soap_vs_rest}.
+  Componentes REST se comunicam transferindo uma representação do dado (informação) em algum formato padrão que pode
+  ser selecionado dinamicamente com base nas preferências do destinatário \cite{fielding2002}. Além dos dados contidos na 
+  informação, uma representação contém também metadados descrevendo os dados e, possivelmente, metadados sobre os
+  metadados \cite{fielding2002}.
   
-  \begin{table}[ht!]
-  \centering
-  \caption{Principais diferenças entre SOAP e REST. Adaptado de \cite{wagh2012comparative}.}
-  \label{soap_vs_rest}
-  \begin{tabular}{l|l}
-  \hline
-  \multicolumn{1}{c|}{\textbf{SOAP}}                & \multicolumn{1}{c}{\textbf{REST}}                \\ \hline
-  XML obrigatório como tipo de dado                                                            & \begin{tabular}[c]{@{}l@{}}Tipo de dado flexível\\ (geralmente JSON para APIs)\end{tabular} \\ \hline
-  \begin{tabular}[c]{@{}l@{}}Complicado de implementar,\\ requer ferramentas\end{tabular}      & Mais simples de implementar                                                                 \\ \hline
-  Requisições mais pesadas                                                                     & Requisições mais leves                                                                      \\ \hline
-  \begin{tabular}[c]{@{}l@{}}Interações mais acopladas\\ entre cliente e servidor\end{tabular} & \begin{tabular}[c]{@{}l@{}}Interações desacopladas entre\\  cliente e servidor\end{tabular} \\ \hline
-  \begin{tabular}[c]{@{}l@{}}Agnóstico de protocolo de\\  camada de aplicação\end{tabular}     & Assume HTTP como protocolo                                                                  \\ \hline
-  \end{tabular}
-  \end{table}
+  \section{Maturidade de APIs RESTful}
   
-  Considerando que a arquitetura REST foi escolhida como mais adequada para o contexto deste trabalho, é necessário
-  entender os elementos que fazem parte desse estilo arquitetural.
-    
-  \section*{Elementos de processamento}
-  
-    Componentes REST se comunicam transferindo uma representação do dado (informação) em algum formato padrão que pode
-    ser selecionado dinamicamente com base nas preferências do destinatário \cite{fielding2002}. Além dos dados contidos na 
-    informação, uma representação contém também metadados descrevendo os dados e, possivelmente, metadados sobre os
-    metadados \cite{fielding2002}.
-    
-    O estilo REST possui uma natureza \textit{stateless} (sem estado), ou seja, cada requisição deve ser autosuficiente, sem
-    dependência de outras interações. Isso possibilita a implementação de serviços utilizando uma estrutura complexa de componentes
-    intermediários e múltiplos servidores de origem, caracterizando um aspecto interessante em um cenário distribuído \cite{fielding2002}.
-    \citeonline{fielding2002} afirmam que a arquitetura REST foi desenvolvida para atender as necessidades de um sistema de
-    hipermídia distribuído, onde a interação entre componentes consiste em transferência de grande quantidade de dados.
-    
-    A Tabela \ref{rest-components-elements} apresenta os tipos de componentes no REST.
-  
-    \begin{table}[ht!]
-    \centering
-    \caption{Tipos de componentes da arquitetura REST. Traduzido e adaptado de \cite{fielding2002}.}
-    \label{rest-components-elements}
-    \begin{tabular}{l|l}
-    \hline
-    \multicolumn{1}{c|}{\textbf{Tipos de componentes}} & \multicolumn{1}{c}{\textbf{Exemplos}} \\ \hline
-    Servidor de origem                                  & Apache httpd, Nginx                    \\ \hline
-    \textit{Gateway}                                    & Squid, CGI, Proxy reverso              \\ \hline
-    Proxy                                               & CERN Proxy, Netscape Proxy             \\ \hline
-    Agente de usuário                                   & Google Chrome, Mozilla Firefox, Lynx   \\ \hline
-    \end{tabular}
-    \end{table}
-  
-  \section*{Elementos de dados}
-    
-    No estilo REST, uma informação é abstraída em um recurso, que pode ser qualquer informação que possa ser nomeada
-    (documentos, imagens, serviços, entre outros). Para \citeonline{fielding2002}, um recurso é um mapeamento conceitual para um conjunto de entidades e não a entidade mapeada
-    em um determinado espaço no tempo. Em termos matemáticos, um recurso \textit{R} é uma função de associação variável no tempo, a qual, em um 
-    determinado tempo \textit{t}, mapeia um conjunto de valores, onde esses valores podem ser representações do recurso em questão ou
-    outros identificadores de recursos. A Tabela \ref{rest-data-elements} apresenta os elementos de dados no REST.
-
-       
-    \begin{table}[ht!]
-    \centering
-    \caption{Elementos de dados da arquitetura REST. Traduzido de \cite{fielding2002}.}
-    \label{rest-data-elements}
-    \begin{tabular}{l|l}
-    \hline
-    \multicolumn{1}{c|}{\textbf{Elementos de dados}} & \multicolumn{1}{c}{\textbf{Exemplos}}                                                             \\ \hline
-    Recurso                                           & \begin{tabular}[c]{@{}l@{}}alvo conceitual desejado de uma\\ referência de hipertexto\end{tabular} \\ \hline
-    Identificador de recurso                          & URI, URN                                                                                           \\ \hline
-    Representação                                     & documento HTML, imagem JPEG                                                                        \\ \hline
-    Metadados da representação                        & tipo de mídia, last-modified-time                                                                  \\ \hline
-    Metadados do recurso                              & link da fonte, alternativas                                                                        \\ \hline
-    Dados de controle                                 & if-modified-since, cache-control                                                                   \\ \hline
-    \end{tabular}
-    \end{table}
-    
-    Com essa definição abstrata de um recurso é importante salientar que a semântica de um mapeamento de um recurso dever permanecer
-    estática, uma vez que esta semântica é o que permite distinguir os recursos \cite{fielding2002}. Para identificar um recurso específico na interação entre dois componentes, o REST utiliza um identificador de recurso \cite{fielding2002}.
- 
-  
-  \section*{Elementos de conexão}
-  
-    Os conectores na arquitetura REST fornecem uma interface genérica para acessar e manipular o conjunto de valores de um ou mais recursos,
-    encapsulando as atividades de acesso aos recursos e de transferência de representações de recursos \cite{fielding2002}.
-    A Tabela \ref{rest-connectors-elements} apresenta os tipos de conectores no REST.
-    
-    \begin{table}[ht!]
-    \centering
-    \caption{Tipos de conectores da arquitetura REST. Traduzido de \cite{fielding2002}.}
-    \label{rest-connectors-elements}
-    \begin{tabular}{l|l}
-    \hline
-    \multicolumn{1}{c|}{\textbf{Tipos de conectores}} & \multicolumn{1}{c}{\textbf{Exemplos}} \\ \hline
-    Cliente                                            & libwww, libwww-perl                    \\ \hline
-    Servidor                                           & libwww, Apache API                     \\ \hline
-    Cache                                              & browser cache, Akamai cache network    \\ \hline
-    Resolvedor                                         & bind (biblioteca DNS)                  \\ \hline
-    Túnel                                              & SOCKS, SSL                             \\ \hline
-    \end{tabular}
-    \end{table}
-    
-    Os conectores gerenciam a comunicação de rede de um componente. 
-    O encapsulamento possibilitado pelos conectores permite que seja possível se comunicar na Web por meio de diferentes protocolos,
-    embora o HTTP seja o protocolo de transferência primário \cite{fielding2002}. 
-    
-    
-    
+      \citeonline{richardson09} propôs um modelo de maturidade para classificar
+      APIs RESTful de acordo com os mecanismos da \textit{web} utilizados,
+      que foi explicado de uma forma mais simples por \citeonline{fowler10}.
+      A Figura \ref{fig:glory_of_rest}, apresentada por \citeonline{fowler10},
+      ilustra os níveis do modelo de maturidade de \citeonline{richardson09}.
+	
+      \begin{figure}[h!]
+	\centering
+	\includegraphics[scale=0.5]{figuras/glory_of_rest.png}
+	\caption{Níveis do modelo de maturidade proposto por Richardson. Fonte: \cite{fowler10}}
+	\label{fig:glory_of_rest}
+      \end{figure}
+      
+      O nível zero consiste em utilizar o procotolo HTTP apenas como um meio de transporte de mensagens,
+      comumente utilizando apenas um verbo HTTP e apenas um URI como ponto de entrada da API, 
+      usando o HTTP com um túnel para uma comunicação remota \cite{fowler10} \cite{richardson09}.
+      Essa característica é presenciada em APIs que implementam o protocolo \textit{Simple Object Access Protocol} (SOAP).
+      
+      O primeiro nível é alcançado quando se introduz o uso de recursos na API,
+      o que permite identificar recursos individuais por meio URIs únicas,
+      fornecendo pontos de entrada mais coesos para a API \cite{fowler10} \cite{richardson09}.
+      
+      O segundo nível é atingido quando a API utiliza da forma mais semântica possível
+      os verbos e códigos de respostas providos pelo protocolo HTTP,
+      fornecendo entradas e respostas mais semanticamente corretas \cite{fowler10} \cite{richardson09}.
+      
+      O terceiro e último nível é alcançado quando controles de hipermídia
+      são introduzidos nas respostas da API \cite{fowler10} \cite{richardson09}.
+      Este último nível, carinhosamente apelido de ``Glória do REST'' por \cite{fowler10},
+      refere-se à restrição \textit{Hypertext As The Engine Of Application State} (HATEOAS) 
+      que fornece meios (\textit{hyperlinks}) para informar ao cliente o que pode ser feito em seguida,
+      para que ele possa navegar nos \textit{endpoints} da API de forma mais simples.
+      
+      Esta classificação permite identificar APIs boas e maduras para integração.
+      
