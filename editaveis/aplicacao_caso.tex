@@ -63,22 +63,35 @@
     sincroniza seu banco de dados com os novos dados.
   
   \section{Módulo matemático}
-  
-%     - Falar sobre a escolha do Sklearn 
-%     - Falar brevemente da arquitetura desenvolvida (pq isso era + trabalho do Tallys)
-%     - Subir o apêndice
-    
+     
     Quando a aplicação cliente solicita os dados dos grupos de usuários de uma conversa,
     a API delega ao módulo matemático responder o dado solicitado. A partir daí o módulo
     matemático começa a trabalhar, realizando todo o processo de clusterização dos usuários
     a partir dos votos em comentários da respectiva conversa solicitada.
     
-    O módulo matemático criado utiliza o algoritmo k-Means, apresentado no Capítulo \ref{cap:classificacao},
-    para realizar a composição dos \textit{clusters} de usuários.
-    Os detalhes dessa implementação são apresentados a seguir.
+    Em um trabalho anterior, o módulo matemático foi criado utilizando o algoritmo k-Means, descrito no Capítulo \ref{cap:classificação},
+    para realizar a composição dos \textit{clusters} de usuários. No escopo deste trabalho esse módulo foi adaptado e refatorado para contemplar
+    o protocolo de comunicação estabelecido.
+    As implementações realizadas foram feitas utilizando recursos matemáticos
+    providos pela bibloteca Python \textit{scikit-learn}\footnotemark 
+    e os detalhes dessa implementação são apresentados a seguir.
+    \footnotetext{http://scikit-learn.org/stable/}
+    
+    
+    A cada solicitação dos \textit{clusters} de uma conversa
+    o fluxo apresentado na Figura \ref{fig:resumo_clusterizao_ej} é realizado.
+    Para cada conversa, os $P$ votos realizados nos $N$ comentários são a entrada para o módulo de clusterização, 
+    gerando uma entrada de dimensão $N$. 
+    
+    
+    \begin{figure}[h!]
+      \centering
+      \includegraphics[scale=0.6]{figuras/resumo_clusterizao_ej.png}
+      \caption{Fluxo de clusterização do ``Empurrando Juntos''}
+      \label{fig:resumo_clusterizao_ej}
+    \end{figure}
+  
 
-    No ``Empurrando Juntos'' a entrada para os \textit{clusters} é a combinação entre participante,  
-    comentário e o voto. Essa combinação gera uma entrada de N dimensões para N comentários.
     Frequentemente antes de medir a similaridade entre os objetos é necessário
     reduzir a dimensionalidade, isso acontece, pois para espaços de alta dimensão as distâncias euclidianas
     tendem a inflar. Reduzir a dimensionalidade pode aliviar esse problema e diminuir o tempo de cálculo.
@@ -90,79 +103,25 @@
     objetos estudados, satisfazendo condições matemáticas e estatísticas.
     \citeonline{shlens2014tutorial} afirma que o principal objetivo da técnica é identificar
     uma base para expressar um conjunto de dados que elimine os ruídos e revele 
-    outros dados escondidos.
-
-    \citeonline{han2011data} afirmam que o PCA 
-    cria $k$ vetores ortogonais que possuem o mesmo significado que o conjunto
-    de vetores inicial, porém trata-se de um conjunto menor. 
-
-    A aplicação da técnica pode ser resumida nos seguintes passos listados abaixo.
-    No final, os componentes principais restantes são uma boa aproximação dos 
-    dados originais \cite{han2011data, mackiewicz1993principal, varella2008analise}: 
-
-    \begin{enumerate}
-      \item Criar uma matriz que represente os objetos estudados (n x p), onde as linhas representam cada objeto e as colunas representam as características;
-      \item Criar uma matriz de covariância (p x p) com os dados normalizados, caso as unidades sejam diferentes,
-	para que eles estejam dentro da mesma variação;
-      \item Calcular os autovalores e autovetores da matriz de covariância, que 
-      são os componentes principais.
-    \end{enumerate}
-
-    Além do PCA, foi aplicada uma técnica analítica para a definição do melhor valor para $k$, conhecida como Coeficiente de Silhueta \cite{sklearn}.
-
+    outros dados escondidos. Isso acontece com a criação de $k$ vetores ortogonais que possuem o mesmo significado que o conjunto
+    de vetores inicial, porém em um conjunto menor \cite{han2011data}. 
+    
+    Considerando isso, é aplicada a técnica de PCA para que
+    a dimensionalidade da combinação de comentário e votos seja reduzida. 
+    Com os dados em duas dimensões, é aplicado o algoritmo k-Means, para obtenção da disposição dos grupos de pessoas. 
+    
+    Para a definição do melhor valor para $k$, foi aplicada uma técnica analítica conhecida como Coeficiente de Silhueta \cite{sklearn}.  
     Essa técnica tem por objetivo combinar a avaliação de coesão e separação dos \textit{clusters} por meio do cálculo de um coeficiente (o de silhueta) que 
-    varia de -1 a 1 e é dado pela fórmula \ref{eq:coeficiente} \cite{tan2013data}.
-
-    \begin{equation} \label{eq:coeficiente}
-      s_{i} = \frac{(b_{i} - a_{i})}{max(a_{i}, b_{i})} \mbox{, onde:}
-    \end{equation}
-
-    {\addtolength{\leftskip}{8mm}
-	i é o objeto do \textit{cluster} que está sendo analisado
-	
-	$a_{i}$ é a média da distância entre o objeto e todos os objetos do seu \textit{cluster}
-	
-	$b_{i}$ é o valor mínimo da distância entre o objeto e os demais \textit{clusters}. 
-	
-	      \footnotesize \indent \indent A distância entre o objeto e outro \textit{cluster} é média das distâncias entre o objeto \\ \indent \indent e todos os objetos do outro \textit{cluster}.
-    }
-
-    Um coeficiente negativo representa que o elemento está no \textit{cluster} errado, pois isso significa que a distância entre o objeto e outro \textit{cluster} 
-    é menor que a distância entre o objeto e os objetos de seu \textit{cluster}. O valor ``zero'' representa que o elemento está próximo da ``borda'' do \textit{cluster}, ou seja,
-    a distância entre o objeto e outros \textit{clusters} e entre o objeto e os objetos de seu \textit{cluster} é a mesma. E por fim, quanto mais próximo do valor 1, melhor
-    está a distribuição dos \textit{clusters}, pois significa que o valor de $a_i$ é menor que o valor de $b_i$.
+    varia de -1 a 1, no qual um coeficiente negativo representa que o elemento está no \textit{cluster} errado.
+    O valor ``zero'' representa que o elemento está próximo da ``borda'' do \textit{cluster} e por fim, quanto mais próximo do valor 1, melhor
+    está a distribuição dos \textit{clusters}.
 
     Dessa forma, com a escolha de um intervalo de valores para $k$, como sugerido por \citeonline{han2011data} e \citeonline{sklearn}, é possível testar os valores 
     para o coeficiente de silhueta e escolher o melhor valor de $k$ dentro do intervalo. 
 
-    \begin{figure}[bt!]
-      \centering
-      \includegraphics[scale=1]{figuras/exemplo_silhueta.png}
-      \caption{Formação de \textit{clusters} utilizando K-means e seus coeficientes de silhueta. Adaptado de \citeonline{sklearn}}
-      \label{fig:exemplo_silhueta}
-    \end{figure}
-
-    Na Figura \ref{fig:exemplo_silhueta} é apresentado um exemplo visual de \textit{clusters} com diferentes valores
-    de $k$ e seus coeficientes de silhueta.
-
-    Os métodos e técnicas apresentados fazem parte do algoritmo implementado no módulo de clusterização da plataforma 
-    e possuem um objetivo específico.
-
-    \begin{figure}[h!]
-      \centering
-      \includegraphics[scale=0.7]{figuras/resumo_clusterizao_ej.png}
-      \caption{Fluxo de clusterização do ``Empurrando Juntos''}
-      \label{fig:resumo_clusterizao_ej}
-    \end{figure}
-
-    Quando o usuário cria uma conversa e outros participantes realizam comentários, para cada usuário é permitido realizar votos nesse comentários.
-    Atualmente, a ideia é que o voto seja concordar, discordar ou pular. 
-
-    A cada novo voto o fluxo apresentado na Figura \ref{fig:resumo_clusterizao_ej} é
-    realizado.
-    Para cada conversa, os N votos realizados nos N comentários são a entrada para o módulo de clusterização, 
-    gerando uma entrada de dimensão N. A partir disso, é aplicada a técnica de PCA para que
-    essa dimensionalidade seja reduzida. Com os dados em duas dimensões, é aplicado o algoritmo k-Means,
-    para obtenção da disposição dos grupos de pessoas. O uso da técnica é
-    feito em ciclos para a descoberta do melhor valor de $k$ por meio do cálculo do coeficiente de silhueta.
+    No fluxo de clusterização do ``Empurrando Juntos'', o k-Means é aplicado em ciclos para a descoberta do melhor valor de 
+    $k$ por meio do cálculo do coeficiente de silhueta.
     No final dos ciclos, na saída do fluxo são formados os grupos de pessoas com opiniões semelhantes, que são retornados para API.
+ 
+    Os dois módulos apresentados neste capítulo complementaram a nível de teste a arquitetura definida para o ``Empurrando Juntos'' e permitiram 
+    a visualização do funcionamento da API e do sistema por completo.

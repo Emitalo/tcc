@@ -1,8 +1,13 @@
 \chapter{Conclusão} \label{cap:consideracoes_finais}
 
   Neste trabalho foi implementada e validada uma API para o ``Empurrando Juntos'' com os serviços de gestão de usuários, 
-  conversas, comentários, votos e formação de grupos. Este último com a possibilidade da utilização de qualquer método de classificação 
-  de dados.
+  conversas, comentários, votos e formação de grupos. 
+  Este último com a possibilidade da utilização de qualquer método de classificação de dados.
+  
+  A API construída se encaixa no Nível 2 de maturidade proposto por \citeonline{richardson09},
+  pois utiliza corretamente os verbos e códigos de resposta HTTP.
+  A utilização da especificação JSONAPI motrou-se um primeiro passo para atingir o Nível 3 de maturidade,
+  adicionando alguns \textit{hyperlinks} de controle nas respostas da API.
   
   Considerando a arquitetura modularizada do sistema e a API como sendo apenas uma parte do todo, 
   foram conectados os outros dois módulos para a validação 
