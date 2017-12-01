@@ -65,7 +65,9 @@
     
     Considerando o objetivo do trabalho de implementar uma API capaz de trabalhar com 
     módulos matemáticos plugáveis, a solução proposta está representada na Figura \ref{fig:pentano}, 
-    na qual são indicados os dois módulos tratados na solução: os módulos API e Matemático.
+    na qual são indicados os dois módulos tratados na solução: os módulos API e Matemático. Estes
+    dois módulos em conjunto com a aplicação cliente formam o sistema por completo que será denominado neste trabalho
+    de \textit{Pentano}.
     
     \begin{figure}[h!]
     \centering
@@ -140,7 +142,7 @@
 	\begin{figure}[h!]
 	\centering
 	\includegraphics[scale=0.8]{figuras/arquitetura_api.png}
-	\caption{Entidades da API}
+	\caption{Arquitetura de \textit{apps} da API}
 	\label{fig:arquitetura_api}
 	\end{figure}
 
@@ -204,8 +206,7 @@
 	  \begin{tabular}[c]{@{}l@{}}Adicionar novo voto\\ (pentano.add\_votes)\end{tabular}             & \begin{tabular}[c]{@{}l@{}}Identificador da conversa\\ Lista de votos e seus usuários\end{tabular}                                             & Confirmação de Sucesso               \\ \midrule
 	  \begin{tabular}[c]{@{}l@{}}Clusterizar\\ (pentano.get\_cluster)\end{tabular}                   & \begin{tabular}[c]{@{}l@{}}Identificador da conversa\\ Identificadores dos usuários amigos\end{tabular}               & \begin{tabular}[c]{@{}l@{}}Grupos de usuários \\(clusters)\end{tabular}\\ \midrule
 	  \begin{tabular}[c]{@{}l@{}}Excluir conversa\\ (pentano.delete\_conversation)\end{tabular}                   & Identificador da conversa & Confirmação de Sucesso         \\ \midrule
-	  \begin{tabular}[c]{@{}l@{}}Excluir comentário \\ (pentano.delete\_comment)\end{tabular}                   & Identificador do comentário              & Confirmação de Sucesso         \\ \midrule
-	  \begin{tabular}[c]{@{}l@{}}Excluir voto\\ (pentano.delete\_vote)\end{tabular}                   & Identificador do voto & Confirmação de Sucesso         \\ \bottomrule
+	  \begin{tabular}[c]{@{}l@{}}Excluir comentário \\ (pentano.delete\_comment)\end{tabular}                   & Identificador do comentário              & Confirmação de Sucesso         \\ \bottomrule
 	\end{tabular}
 	\end{table}
 	
@@ -215,9 +216,7 @@
 	a execução assíncrona das tarefas e permite distribuir o processamento, sendo possível montar um \textit{pool} de
 	módulos matemáticos para balancear carga, uma vez que o processo de clusterização pode vir a ser computacionalmente custoso.
  
-	\vfill
-	\pagebreak
-	\begin{figure}[bt!]
+	\begin{figure}[h]
 	\centering
 	\includegraphics[scale=0.5]{figuras/resumo_ej_api.png}
 	\caption{Funcionamento do Empurrando Juntos - Comunicação entre os módulos}
@@ -243,4 +242,7 @@
 	Quando o número de votos configurado no sistema é atingido o \textit{app} de conversas
 	faz uma chamada para a tarefa de clusterização que, ao ser recebida pelo módulo matemático,
 	é a tarefa responsável por calcular os \textit{clusters} considerando o usuário do novo voto,
-	gerando e retornando os novos grupos de usuários.
+	gerando e retornando os novos grupos de usuários. Esse número de votos configurado é responsabilidade
+	da implementação do módulo para poder gerenciar os momentos em que deve ser realizada clusterização visando 
+	uma boa performance da aplicação.
+	
