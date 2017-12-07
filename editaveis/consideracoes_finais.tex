@@ -1,13 +1,28 @@
 \chapter{Conclusão} \label{cap:consideracoes_finais}
 
-  Neste trabalho foi implementada e validada uma API para o ``Empurrando Juntos'' com os serviços de gestão de usuários, 
-  conversas, comentários, votos e formação de grupos. 
-  Este último com a possibilidade da utilização de qualquer método de classificação de dados.
+  As plataformas digitais têm auxiliado no exercício da democracia, aproximando o cidadão da política, principalmente
+  através de discussões sobre políticas e projetos. Contudo,
+  essas plataformas geram uma polarização das mensagens trocadas e formação de bolhas de opinião, 
+  pois não estão estruturadas para apresentar opiniões sem viés.
   
-  A API construída se encaixa no Nível 2 de maturidade proposto por \citeonline{richardson09},
-  pois utiliza corretamente os verbos e códigos de resposta HTTP.
-  A utilização da especificação JSONAPI motrou-se um primeiro passo para atingir o Nível 3 de maturidade,
-  adicionando alguns \textit{hyperlinks} de controle nas respostas da API.
+  Nesse sentido, o Instituto Cidade Democrática apresentou a ideia da plataforma ``Empurrando Juntos'' com o objetivo
+  de minimizar a polarização dessas discussões ao permitir que todas as opiniões sejam visualizadas por meio de agrupamentos
+  dos usuários de acordo com seus pontos de vista. Sendo que estes agrupamentos seriam realizados por meio de técnicas 
+  de classificação de dados.
+
+  Neste trabalho foi proposta uma arquitetura modular para essa nova plataforma, da qual o módulo de serviços ou API
+  foi implementado e validado com os serviços de gestão de usuários, 
+  conversas, comentários, votos e formação de grupos. Este último com a possibilidade da utilização de qualquer método 
+  de classificação de dados.
+  
+  Para a implementação da API primeiramente foram identificados os requisitos funcionais e não funcionais da aplicação, além
+  da definição das tecnologias a serem utilizadas. A escolha do \textit{framework} Django foi considerada apropriada, pois permitiu
+  a separação em \textit{apps} provendo um baixo acoplamento na aplicação. 
+  
+%   A API construída se encaixa no Nível 2 de maturidade proposto por \citeonline{richardson09},
+%   pois utiliza corretamente os verbos e códigos de resposta HTTP.
+%   A utilização da especificação JSONAPI motrou-se um primeiro passo para atingir o Nível 3 de maturidade,
+%   adicionando alguns \textit{hyperlinks} de controle nas respostas da API.
   
   Considerando a arquitetura modularizada do sistema e a API como sendo apenas uma parte do todo, 
   foram conectados os outros dois módulos para a validação 
