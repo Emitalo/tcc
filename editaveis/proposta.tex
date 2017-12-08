@@ -97,50 +97,54 @@
     \centering
     \caption{Requisitos funcionais de alto nível da aplicação.}
     \label{tab:requisitos}
-    \begin{tabular}{@{}cl@{}}
-    \toprule
-    \textbf{Característica}                      & \multicolumn{1}{c}{\textbf{Requisito}}                                                                                                \\ \midrule
-    \multirow{5}{*}{Gerenciamento de Usuário}    & O sistema deve permitir o cadastro de usuários                                                                                        \\
-						& O sistema deve permitir a alteração de usuários                                                                                       \\
-						& \begin{tabular}[c]{@{}l@{}}O sistema deve permitir a autenticação de usuários \\ cadastrados na plataforma\end{tabular}			\\
-						&  \begin{tabular}[c]{@{}l@{}}O sistema deve permitir a autenticação de usuários \\ cadastrados no Facebook\end{tabular}                     \\ \midrule
-    \multirow{3}{*}{Gerenciamento de Conversa}   & O sistema deve permitir o cadastro de conversas                                                                                       \\
-						& O sistema deve permitir a alteração de conversas                                                                                      \\
-						& O sistema deve permitir a exclusão de conversas                                                                                       \\ \midrule
-    \multirow{4}{*}{Gerenciamento de Comentário} & O sistema deve permitir o cadastro de comentários em conversas                                                                        \\
-						& O sistema deve permitir a alteração de comentários                                                                                    \\
-						& O sistema deve permitir a exclusão de comentários                                                                                     \\ 
-						& O sistema deve permitir que o usuário vote em comentários                                                                             \\ \midrule
-    Agrupamento de usuários                      & \begin{tabular}[c]{@{}l@{}}O sistema deve permitir a 
-						  visualização dos usuários agrupados \\ de acordo com os votos dados\end{tabular} \\ \bottomrule
-      \end{tabular}
+    \resizebox{\columnwidth}{!}{
+      \begin{tabular}{@{}cl@{}}
+      \toprule
+      \textbf{Característica}                      & \multicolumn{1}{c}{\textbf{Requisito}}                                                                                                \\ \midrule
+      \multirow{5}{*}{Gerenciamento de Usuário}    & O sistema deve permitir o cadastro de usuários                                                                                        \\
+						  & O sistema deve permitir a alteração de usuários                                                                                       \\
+						  & \begin{tabular}[c]{@{}l@{}}O sistema deve permitir a autenticação de usuários \\ cadastrados na plataforma\end{tabular}			\\
+						  &  \begin{tabular}[c]{@{}l@{}}O sistema deve permitir a autenticação de usuários \\ cadastrados no Facebook\end{tabular}                     \\ \midrule
+      \multirow{3}{*}{Gerenciamento de Conversa}   & O sistema deve permitir o cadastro de conversas                                                                                       \\
+						  & O sistema deve permitir a alteração de conversas                                                                                      \\
+						  & O sistema deve permitir a exclusão de conversas                                                                                       \\ \midrule
+      \multirow{4}{*}{Gerenciamento de Comentário} & O sistema deve permitir o cadastro de comentários em conversas                                                                        \\
+						  & O sistema deve permitir a alteração de comentários                                                                                    \\
+						  & O sistema deve permitir a exclusão de comentários                                                                                     \\ 
+						  & O sistema deve permitir que o usuário vote em comentários                                                                             \\ \midrule
+      Agrupamento de usuários                      & \begin{tabular}[c]{@{}l@{}}O sistema deve permitir a 
+						    visualização dos usuários agrupados \\ de acordo com os votos dados\end{tabular} \\ \bottomrule
+	\end{tabular}
+    }
 	\end{table}
 	  
       
     \subsection*{Requisitos não funcionais}	\label{non_functional_requirements}	
 	
     Todos os serviços da API serão providos para a plataforma por meio de uma interface HTTP/HTTPS utilizando o estilo arquitetural REST.
-%     A API deve possibilitar a escolha do módulo matemático a ser utilizado, considerando as opções previamente implementadas.
-
-    A autenticação e autorização das aplicações, e seus respectivos usuários devem ser realizadas por meio de JWT \textit{tokens}.
-
-    A tecnologia definida para implementação da solução proposta foi a linguagem Python juntamente com os \textit{frameworks}
-    Django e Django Rest Framework, utilizando o banco de dados PostgreSQL.
-
-    Outro aspecto importante para esta aplicação é a questão da manutenibilidade, pois como será um software livre, a solução
-    deve ser desenvolvida de uma maneira que seja possível evoluir facilmente pela da comunidade.
-    Com isto em mente, foram definidos os seguintes padrões para o desenvolvimento da aplicação, considerando as tecnologias definidas:
-    utilização do PEP8 \footnotemark como folha de estilos e a utilização da especificação JSON API \footnotemark para formatação das respostas da API.
-    \footnotetext{Folha de estilos PEP8. Disponível em \href{https://www.python.org/dev/peps/pep-0008/}{https://www.python.org/dev/peps/pep-0008}.}
-    \footnotetext{Especificação JSON API. Disponível em \href{http://jsonapi.org/}{http://jsonapi.org}.}
+    Para isso, a linguagem Python\footnote{Versão 3.4 - \href{https://www.python.org/download/releases/3.4.0/}{https://www.python.org/download/releases/3.4.0/}} 
+    foi definida como tecnologia de implementação da solução proposta, juntamente com os \textit{frameworks}
+    Django\footnote{Versão 1.11 - \href{https://www.djangoproject.com/}{https://www.djangoproject.com/}} e 
+    Django Rest Framework\footnote{Versão 3.6.3 - \href{http://www.django-rest-framework.org/}{http://www.django-rest-framework.org/}}, 
+    utilizando o banco de dados PostgreSQL\footnote{Versão 10.1 - \href{https://www.postgresql.org/}{https://www.postgresql.org/}}.
+    Para a autenticação e autorização das aplicações, e seus respectivos usuários devem ser realizadas por meio de JWT \textit{tokens}.
+    
+    Outro aspecto importante para esta aplicação é a questão da manutenibilidade, pois como é um software livre, a solução
+    deve ser desenvolvida de uma maneira que seja possível evoluir facilmente pela comunidade.
+    Com isto em mente e considerando as tecnologias escolhidas, foram definidas as seguintes premissas para o desenvolvimento da aplicação:
+    utilização do PEP8\footnote{Folha de estilos PEP8. Disponível em \href{https://www.python.org/dev/peps/pep-0008/}{https://www.python.org/dev/peps/pep-0008}.}
+    como folha de estilos e a utilização da especificação JSON API\footnote{Especificação JSON API. Disponível em \href{http://jsonapi.org/}{http://jsonapi.org}.}
+    para formatação das respostas da API.
+    
+    
 
 \section{Arquitetura da solução} \label{architecture}
     
     Considerando o objetivo do trabalho de implementar uma API capaz de trabalhar com 
     módulos matemáticos plugáveis, a solução proposta está representada na Figura \ref{fig:pentano}, 
-    na qual são indicados os dois módulos tratados na solução: os módulos API e Matemático. Estes
+    na qual são indicados os dois módulos tratados na solução: os módulos API e Matemático. Esses
     dois módulos em conjunto com a aplicação cliente formam o sistema por completo que será denominado neste trabalho
-    de \textit{Pentano}.
+    de \textit{Pentano}\footnote{Nome da proposta em um trabalho anterior sobre o ``Empurrando Juntos''}.
     
     \begin{figure}[h!]
     \centering
@@ -150,18 +154,16 @@
     \end{figure}
     
     A arquitetura proposta é definida pelo módulo de API, o módulo Matemático
-    e o protocolo de comunicação entre esses dois módulos, como ilustra a Figura \ref{fig:pentano}.
-    
-    O módulo de API é uma aplicação independente que contém a lógica para o gerenciamento das conversas e usuários e
-    serve como ponto de entrada para o sistema.
-    
-    Os módulos matemáticos também são aplicações independentes que implementam a interface definida no protocolo
+    e o protocolo de comunicação entre esses dois módulos, como ilustra a Figura \ref{fig:pentano}. O módulo de 
+    API é uma aplicação independente que contém a lógica para o gerenciamento das conversas e usuários e
+    serve como ponto de entrada para o sistema. Os módulos matemáticos também são aplicações independentes que implementam a 
+    interface definida no protocolo
     para se comunicarem com a API, de modo que seja possível criar vários módulos matemáticos utilizando algoritmos diferentes.
     Os módulos matemáticos encapsulam a lógica de agrupar os usuários com base nos votos obtidos.
     
     Para a comunicação entre a API e os módulos matemáticos escolhidos, foi utilizada
-    uma plataforma de execução de tarefas assíncronas, o Celery \footnotemark, que é uma aplicação
-    madura, estável, bem acolhida pela comunidade e que é de fácil integração com projetos em Python.
+    uma plataforma de execução de tarefas assíncronas, o Celery\footnotemark, que é uma aplicação
+    madura, estável, bem acolhida pela comunidade do Python, logo é de fácil integração com projetos nessa linguagem.
     O Celery funciona a partir da definição de tarefas que podem ser executadas de forma assíncrona
     e utiliza um \textit{message broker}, que é uma plataforma intermediária
     entre duas aplicações para troca de mensagens, para enfileirar e delegar as tarefas para execução.
@@ -184,9 +186,8 @@
     \subsection{Módulo de API}
 
 	O módulo de API é responsável por gerenciar as conversas, comentários, votos
-	e cuidar de todos os aspectos da autenticação das aplicações. 
-
-	Para o módulo de API, foram mapeadas as entidades principais e os relacionamentos entre elas. 
+	e cuidar de todos os aspectos da autenticação das aplicações. Dessa forma, foram mapeadas as entidades principais e 
+	os relacionamentos entre elas. 
 	As principais entidades que foram identificadas são Usuário, Conversa e Comentário. Um usuário pode criar
 	conversas e comentários para cada conversa e participar de outras conversas, criadas por outros usuários.
 	A participação de um usuário em uma conversa é dada pelo ato de criação de comentários naquela conversa ou
@@ -272,15 +273,17 @@
 	\centering
 	\caption{Interface de comunicação entre a API e os módulos matemáticos}
 	\label{tab:tasks}
+	\resizebox{\columnwidth}{!}{
 	  \begin{tabular}{@{}lll@{}}
-	  \multicolumn{1}{c}{\textbf{Tarefa}}                                                & \multicolumn{1}{c}{\textbf{Parâmetros}}                                                                               & \multicolumn{1}{c}{\textbf{Retorno}} \\ \midrule
-	  \begin{tabular}[c]{@{}l@{}}Adicionar nova conversa \\ (pentano.new\_conversation)\end{tabular} & Identificador da conversa                                                                                             & Confirmação de Sucesso               \\ \midrule
-	  \begin{tabular}[c]{@{}l@{}}Adicionar novo comentário \\ (pentano.add\_comment)\end{tabular}    & \begin{tabular}[c]{@{}l@{}}Identificador da conversa\\ Identificador do comentário\\ Texto do comentário\end{tabular} & Confirmação de Sucesso               \\ \midrule
-	  \begin{tabular}[c]{@{}l@{}}Adicionar novo voto\\ (pentano.add\_votes)\end{tabular}             & \begin{tabular}[c]{@{}l@{}}Identificador da conversa\\ Lista de votos e seus usuários\end{tabular}                                             & Confirmação de Sucesso               \\ \midrule
-	  \begin{tabular}[c]{@{}l@{}}Clusterizar\\ (pentano.get\_cluster)\end{tabular}                   & \begin{tabular}[c]{@{}l@{}}Identificador da conversa\\ Identificadores dos usuários amigos\end{tabular}               & \begin{tabular}[c]{@{}l@{}}Grupos de usuários \\(clusters)\end{tabular}\\ \midrule
-	  \begin{tabular}[c]{@{}l@{}}Excluir conversa\\ (pentano.delete\_conversation)\end{tabular}                   & Identificador da conversa & Confirmação de Sucesso         \\ \midrule
-	  \begin{tabular}[c]{@{}l@{}}Excluir comentário \\ (pentano.delete\_comment)\end{tabular}                   & Identificador do comentário              & Confirmação de Sucesso         \\ \bottomrule
-	\end{tabular}
+	      \multicolumn{1}{c}{\textbf{Tarefa}}                                                & \multicolumn{1}{c}{\textbf{Parâmetros}}                                                                               & \multicolumn{1}{c}{\textbf{Retorno}} \\ \midrule
+	    \begin{tabular}[c]{@{}l@{}}Adicionar nova conversa \\ (pentano.new\_conversation)\end{tabular} & Identificador da conversa                                                                                             & Confirmação de Sucesso               \\ \midrule
+	    \begin{tabular}[c]{@{}l@{}}Adicionar novo comentário \\ (pentano.add\_comment)\end{tabular}    & \begin{tabular}[c]{@{}l@{}}Identificador da conversa\\ Identificador do comentário\\ Texto do comentário\end{tabular} & Confirmação de Sucesso               \\ \midrule
+	    \begin{tabular}[c]{@{}l@{}}Adicionar novo voto\\ (pentano.add\_votes)\end{tabular}             & \begin{tabular}[c]{@{}l@{}}Identificador da conversa\\ Lista de votos e seus usuários\end{tabular}                                             & Confirmação de Sucesso               \\ \midrule
+	    \begin{tabular}[c]{@{}l@{}}Clusterizar\\ (pentano.get\_cluster)\end{tabular}                   & \begin{tabular}[c]{@{}l@{}}Identificador da conversa\\ Identificadores dos usuários amigos\end{tabular}               & \begin{tabular}[c]{@{}l@{}}Grupos de usuários \\(clusters)\end{tabular}\\ \midrule
+	    \begin{tabular}[c]{@{}l@{}}Excluir conversa\\ (pentano.delete\_conversation)\end{tabular}                   & Identificador da conversa & Confirmação de Sucesso         \\ \midrule
+	    \begin{tabular}[c]{@{}l@{}}Excluir comentário \\ (pentano.delete\_comment)\end{tabular}                   & Identificador do comentário              & Confirmação de Sucesso         \\ \bottomrule
+	  \end{tabular}
+	 }
 	\end{table}
 	
  
@@ -298,7 +301,7 @@
 
 
 	Na Figura \ref{fig:resumo_ej_api} é apresentado o fluxo de funcionamento do Empurrando Juntos de acordo com a arquitetura
-	estabelecida e a API desenvolvida.
+	estabelecida e a API desenvolvida neste trabalho.
 	
 	Inicialmente, um usuário faz o cadastro e/ou autentica na aplicação,
 	cuja requisição é tratada pelo \textit{app} de contas.

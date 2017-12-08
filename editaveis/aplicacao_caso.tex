@@ -33,18 +33,14 @@
   
   \section{Aplicação Cliente e API}
     
-    A aplicação cliente serve como interface gráfica para os serviços de 
+    A aplicação cliente é a interface gráfica para os serviços de 
     gerenciamento de conversas, comentários e votos providos pela API e foi
     criada para consolidar as funcionalidades desenvolvidas e fornecer uma interface mais
-    amigável para o sistema.
-    
-    Foram implementados todos os requisitos descritos na seção \ref{functional_requirements}
+    amigável para o sistema. Foram implementados todos os requisitos descritos na seção \ref{functional_requirements}
     em uma aplicação Angular 2\footnotemark para
-    testar a integração com todos os \textit{endpoints} da API e demonstrar o comportamento da API.
-    \footnotetext{https://angular.io/}
-    
-    Esta aplicação foi feita utilizando os recursos providos pelo próprio \textit{framework}, portanto
+    testar a integração com todos os \textit{endpoints} da API e demonstrar o comportamento da API. Esta aplicação foi feita utilizando os recursos providos pelo próprio \textit{framework}, portanto
     possui uma arquitetura baseada em componentes, claramente apresentada na própria documentação do Angular \footnotemark.
+    \footnotetext{https://angular.io/}
     
     Resumidamente, a arquitetura consiste em uma hierarquia de componentes organizados
     em módulos independentes que se comunicam para compor a aplicação e realizar o objetivo desejado.
@@ -56,10 +52,10 @@
     Quando um nova conversa, comentário ou voto são criados na aplicação cliente,
     a API é invocada para a criação do respectivo dado, que por sua vez
     notitifica o módulo matemático da ação recém ocorrida para que o mesmo possa reagir de acordo.
-    Esta comunicação é feita através de tarefas do Celery e são transportadas como mensagens assíncronas
+    Essa comunicação é feita através de tarefas do Celery e são transportadas como mensagens assíncronas
     através do RabbitMQ para o módulo matemático.
     
-    Nesta implementação, ao serem criados conversas, comentários e votos, o módulo matemático apenas
+    Nesta implementação, ao serem criados conversas, comentários e votos, o módulo matemático
     sincroniza seu banco de dados com os novos dados.
   
   \section{Módulo matemático}

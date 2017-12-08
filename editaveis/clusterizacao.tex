@@ -3,15 +3,15 @@
 A classificação consiste em atribuir categorias a objetos ou dados e pode ser realizada por meio de inúmeras técnicas, as quais podem
 ser divididas em dois tipos: supervisionada e não supervisionada. \cite{tan2013data, han2011data, clustering_review}.
 
-Nas técnicas supervisionadas os objetos de dados são analisados a partir de rótulos de classe predefinidos nos objetos, ou seja, 
+Nas técnicas supervisionadas, os objetos de dados são analisados a partir de rótulos de classe predefinidos nos objetos, ou seja, 
 com as categorias previamente definidas e conhecidas. \citeonline{han2011data} chamam esse tipo de dado de ``dado treinado''
 (aqueles cujos rótulos são conhecidos), onde o modelo que o descreve é obtido a partir da análise dos rótulos.
 
 Na classificação não supervisionada, os rótulos de classe são obtidos a partir da análise dos dados dos objetos, tão somente \cite{tan2013data}.
-A clusterização é uma das estratégias não supervisionadas mais conhecida e utilizada e demontra-se adequada para o contexto
-do ``Empurrando Juntos'', no qual os grupos são formados com base em cada voto.
+A clusterização é uma das estratégias não supervisionadas mais conhecida e utilizada, sendo adequada para o contexto
+do ``Empurrando Juntos'', pois na plataforma os grupos são formados de forma dinâmica com base em cada voto.
 
-A clusterização foi denominada por \citeonline{clustering_review} como uma técnica para organização ou agrupamento em \textit{clusters} 
+A clusterização foi denominada por \citeonline{clustering_review} como uma técnica para organização ou aglomeração
 de uma coleção de elementos que sigam padrões baseado em similaridade.
 \citeonline{tan2013data} definem a análise de \textit{clusters}, ou clusterização, como a ação que agrupa objetos de dados
 baseada apenas nas informações contidas nos dados do próprio objeto que permitam descrever os objetos e suas relações. Um \textit{cluster}
@@ -25,7 +25,7 @@ mineração de dados, recuperação de documentos, segmentação de imagens e pa
 hierárquica ou particional; exclusiva, sobreposta ou \textit{fuzzy}; completa ou parcial.
 
 \section{Tipos de clusterização}
-Na clusterização particional o agrupamento dos 
+Na clusterização particional, o agrupamento dos 
 objetos de dados é realizado em simples \textit{clusters}, o que significa que pertencem apenas a um \textit{cluster} \cite{tan2013data}.
 
 \citeonline{clustering_review} definem uma clusterização hierárquica quando ela produz uma série
@@ -66,7 +66,7 @@ o conceito inverso de dissimilaridade para calcular o quanto objetos são difere
 com o contexto da aplicação e tipo dos dados \cite{clustering_review}. 
 
 E por fim, o agrupamento pode ser realizado com uso de inúmeras técnicas e algoritmos diferentes \cite{clustering_review}.
-Os objetos são agrupados (ou ``clusterizados'') buscando maximizar a similaridade intraclasse e minimizar a similaridade interclasse.
+Os objetos são agrupados buscando maximizar a similaridade intraclasse e minimizar a similaridade interclasse.
 Em outras palavras, o objetivo é formar \textit{clusters} cujos elementos tenham alta similaridade entre si em um mesmo \textit{cluster} 
 e baixa similaridade a elementos de outros \textit{clusters} \cite{han2011data}.
 
@@ -81,27 +81,40 @@ de pontos (a) que pode ser agrupado de formas diferentes gerando quantidades dif
 \label{fig:clusters_difficulty}
 \end{figure}
 
-Por isso para a construção de um algoritmo de clusterização deve-se definir, além do algoritmo principal a ser utilizado, as funções
+Dessa forma, para a construção de um algoritmo de clusterização deve-se definir, além do algoritmo principal a ser utilizado, as funções
 de cálculo de similaridade e dissimilaridade para delimitação dos \textit{clusters}.
 
 \section{Algoritmos de clusterização}
 Conforme supracitado, existem diversos algoritmos criados para realizar a clusterização dos dados, que também são classificados em tipos
-conforme os tipos de clusterização. A Figura \ref{fig:tipos_algoritmo} apresenta um esquemático dos tipos de algoritmos de clusterização de acordo
-com as definições de \citeonline{gan2007data, han2011data, clustering_review}.
+conforme os tipos de clusterização.  \citeonline{gan2007data, han2011data, clustering_review} apresentam os seguintes tipos de algoritmos:
+% 
+% \begin{figure}[h!]
+% \centering
+% \includegraphics[scale=0.5]{figuras/algoritmos.png}
+% \caption{Algoritmos de clusterização}
+% \label{fig:tipos_algoritmo}
+% \end{figure}
 
-\begin{figure}[h!]
-\centering
-\includegraphics[scale=0.5]{figuras/algoritmos.png}
-\caption{Algoritmos de clusterização}
-\label{fig:tipos_algoritmo}
-\end{figure}
+\begin{itemize}
+ \item Técnicas de clusterização hierárquica;
+ \item Algoritmos Fuzzy;
+ \item Algoritmos baseados no centro;
+ \item Algoritmos baseados em busca;
+ \item Algoritmos baseados em grafo;
+ \item Algoritmos baseados em modelos;
+ \item Clusterização em subsespaços;
+ \item Algoritmos baseados em grid;
+ \item Algoritmos baseados em densidade.
+\end{itemize}
 
-A partir da figura apresentada, é notório que existe uma diversidade de algoritmos conhecidos. Neste trabalho, será descrito
-apenas o algoritmo k-Means que foi escolhido como algoritmo de teste para o primeiro módulo do ``Empurrando Juntos'' e que de 
-acordo com \citeonline{gan2007data, clustering_review}, é um dos mais utilizados.
+
+Em cada um dos tipos apresentados, existe uma diversidade de algoritmos conhecidos. Neste trabalho, será descrito
+apenas o algoritmo k-Means, um algoritmo baseado no centro, que foi escolhido para o primeiro módulo do ``Empurrando Juntos''
+e que é um dos mais utilizados, de acordo com \citeonline{gan2007data, clustering_review}.
 
 \subsection*{k-Means}
-O k-Means é um algoritmo particional e de clusterização exclusiva que forma $k$ \textit{clusters} a partir de $k$ centróides, onde $k$ é um número definido na aplicação 
+O k-Means é um algoritmo particional e de clusterização exclusiva que forma $k$ \textit{clusters} a partir de $k$ centróides, 
+onde $k$ é um número definido na aplicação 
 \cite{clustering_review, tan2013data}. Um centróide é entendido, conceitualmente, como um ponto central \cite{han2011data}.
 
 O algoritmo foi descrito por \citeonline{tan2013data} e \citeonline{han2011data} da seguinte forma:
@@ -119,14 +132,15 @@ O algoritmo foi descrito por \citeonline{tan2013data} e \citeonline{han2011data}
 
 
 Nota-se que o número de centróides escolhidos determina a quantidade de \textit{clusters} no final do processamento.
-Para o cálculo da distância entre os pontos podem ser utilizadas diversas técnicas. Contudo, é comum a utilização de um cálculo conhecido como distância Euclidiana, 
-dado pela fórmula \ref{eq:euclidiana} \cite{clustering_review, tan2013data, han2011data}.
+Para o cálculo da distância entre os pontos podem ser utilizadas diversas técnicas. Contudo, é comum a utilização de 
+um cálculo conhecido como distância Euclidiana, 
+dado pela Fórmula \ref{eq:euclidiana} \cite{clustering_review, tan2013data, han2011data}.
 
 \begin{equation} \label{eq:euclidiana}
   d_{2}(x_i, x_j) = (\sum_{k=1}^{d} (x_{i,k} - x_{j,k})^2)^{1/2}
 \end{equation}
 
-A variação dentro do cluster é calculada pela fórmula \ref{eq:variacao}, na qual a 
+A variação dentro do cluster é calculada pela Fórmula \ref{eq:variacao}, na qual a 
 função \textit{dist} representa a distância Euclidiana entre um ponto do
 cluster e seu centróide. Ou seja, a variação é a soma dos quadrados
 das distâncias de todos os pontos do cluster.
