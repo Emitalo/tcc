@@ -1,9 +1,9 @@
-\chapter{Validação da API proposta} \label{cap:aplicacao_exemplo}
+\chapter{Aplicação de validação da API proposta} \label{cap:aplicacao_exemplo}
 
   Para validar a API construída, o protocolo de comunicação proposto entre a API e o módulo Matemático
   e a arquitetura proposta em geral, foram criados a aplicação cliente do Pentano e um módulo matemático
   que implementa o algoritmo k-Means para a clusterização.
-  Todas as aplicações construídas, inclusive a API proposta, se encontram no \href{https://gitlab.com/pentano}{repositório do Pentano}.
+  Todas as aplicações construídas, inclusive a API proposta, se encontram no repositório do Pentano\footnote{\href{https://gitlab.com/pentano}{https://gitlab.com/pentano}}.
   
   \begin{figure}[h!]
     \centering
@@ -21,10 +21,10 @@
       \item a API do Pentano, que fornece os serviços de autenticação e gerenciamento das conversas, comentários e votos; 
       \item uma instância do módulo matemático,
 	  que fornece o serviço de clusterização para agrupar os usuários; e
-      \item uma instância do RabbitMQ\footnotemark para
+      \item uma instância do RabbitMQ\footnote{\href{https://www.rabbitmq.com/}{https://www.rabbitmq.com/}} para
 	  intermediar a comunicação entre a API e o módulo matemático, servindo como meio de transporte das
 	  mensagens disparadas pelo Celery.
-	  \footnotetext{https://www.rabbitmq.com/}
+	  
   \end{enumerate}
 
   Nas próximas seções são apresentados os detalhes de cada parte desta solução implementada
@@ -38,17 +38,16 @@
     gerenciamento de conversas, comentários e votos providos pela API e foi
     criada para consolidar as funcionalidades desenvolvidas e fornecer uma interface mais
     amigável para o sistema. Foram implementados todos os requisitos descritos na seção \ref{functional_requirements}
-    em uma aplicação Angular 2\footnotemark para
+    em uma aplicação Angular 2\footnote{\href{https://angular.io/}{https://angular.io/}} para
     testar a integração com todos os \textit{endpoints} da API e demonstrar o comportamento da API. Esta aplicação foi feita utilizando os recursos providos pelo próprio \textit{framework}, portanto
-    possui uma arquitetura baseada em componentes, claramente apresentada na própria documentação do Angular \footnotemark.
-    \footnotetext{https://angular.io/}
+    possui uma arquitetura baseada em componentes, claramente apresentada na própria documentação do Angular.
+    
     
     Resumidamente, a arquitetura consiste em uma hierarquia de componentes organizados
     em módulos independentes que se comunicam para compor a aplicação e realizar o objetivo desejado.
     Cada componente conta com um \textit{template} HTML e uma classe para gerenciar o comportamento do componente.
     Cada módulo pode possuir serviços, que são classes que encapsulam a lógica da aplicação.
     É a partir da camada de serviços que a integração com a API é realizada.
-    \footnotetext{https://angular.io/guide/architecture}
     
     Quando um nova conversa, comentário ou voto são criados na aplicação cliente,
     a API é invocada para a criação do respectivo dado, que por sua vez
@@ -56,9 +55,20 @@
     Essa comunicação é feita através de tarefas do Celery e são transportadas como mensagens assíncronas
     através do RabbitMQ para o módulo matemático.
     
+    A Figura \ref{fig:cliente} apresenta uma das telas da aplicação criada. 
+    Nessa tela é representada uma conversa criada a título de exemplificação
+    com seus comentários e os grupos de usuários formados. Cada cor representa um grupo e cada círculo representa um usuário. 
+    
+    \begin{figure}[h!]
+      \centering
+      \includegraphics[scale=0.48]{figuras/client.png}
+      \caption{Tela que apresenta os comentários e grupos de usuáŕios de uma conversa}
+      \label{fig:cliente}
+    \end{figure}
+  
     Nesta implementação, ao serem criados conversas, comentários e votos, o módulo matemático
     sincroniza seu banco de dados com os novos dados.
-  
+     
   \section{Módulo matemático}
      
     Quando a aplicação cliente solicita os dados dos grupos de usuários de uma conversa,
@@ -71,7 +81,7 @@
     o protocolo de comunicação estabelecido.
     As implementações realizadas foram feitas utilizando recursos matemáticos
     providos pela bibloteca Python \textit{scikit-learn}\footnotemark 
-    e os detalhes dessa implementação são apresentados a seguir.
+    e os detalhes da implementação de \citeonline{tallys_tcc} são apresentados a seguir.
     \footnotetext{http://scikit-learn.org/stable/}
     
     
@@ -100,14 +110,15 @@
     objetos estudados, satisfazendo condições matemáticas e estatísticas.
     \citeonline{shlens2014tutorial} afirma que o principal objetivo da técnica é identificar
     uma base para expressar um conjunto de dados que elimine os ruídos e revele 
-    outros dados escondidos. Isso acontece com a criação de $k$ vetores ortogonais que possuem o mesmo significado que o conjunto
+    outros dados escondidos. Isso acontece com a criação de $n$ vetores ortogonais que possuem o mesmo significado que o conjunto
     de vetores inicial, porém em um conjunto menor \cite{han2011data}. 
     
     Considerando isso, é aplicada a técnica de PCA para que
     a dimensionalidade da combinação de comentário e votos seja reduzida. 
-    Com os dados em duas dimensões, é aplicado o algoritmo k-Means, para obtenção da disposição dos grupos de pessoas. 
+    Com os dados em duas dimensões, para possibilitar a visualização gráfica, 
+    é aplicado o algoritmo k-Means, para obtenção da disposição dos grupos de pessoas. 
     
-    Para a definição do melhor valor para $k$, foi aplicada uma técnica analítica conhecida como Coeficiente de Silhueta \cite{sklearn}.  
+    Para a definição do melhor valor para $k$, foi aplicada uma técnica analítica conhecida como Coeficiente de Silhueta \cite{tan2013data}.  
     Essa técnica tem por objetivo combinar a avaliação de coesão e separação dos \textit{clusters} por meio do cálculo de um coeficiente (o de silhueta) que 
     varia de -1 a 1, no qual um coeficiente negativo representa que o elemento está no \textit{cluster} errado.
     O valor ``zero'' representa que o elemento está próximo da ``borda'' do \textit{cluster} e por fim, quanto mais próximo do valor 1, melhor
@@ -122,3 +133,25 @@
  
     Os dois módulos apresentados neste capítulo complementaram a arquitetura definida para o ``Empurrando Juntos'',
     do ponto de vista funcional, e permitiram a visualização do funcionamento da API e do sistema por completo.
+    
+    \section{Resultados e Discussão}
+    
+    A aplicação de validação proposta neste Capítulo trata-se de uma validação relacionada ao comportamento de resposta
+    dos protocolos de comunicação estabelecidos, os \textit{endpoints}
+    e o protocolo definido. Nesse sentido, a arquitetura de comunicação definida mostrou-se adequada 
+    para a proposta do trabalho, na qual o módulo matemático deve ser configurado no momento da implantação do sistema completo, 
+    ou seja, os três módulos. 
+    
+    As tecnologias de troca de mensagens para o protocolo de comunicação, Celery e RabbitMQ, funcionaram 
+    apropriadamente nos testes com a configuração
+    da comunicação apenas de uma aplicação para outra. 
+    
+    As funcionalidades de deleção já estavam previstas na API, contudo não estavam previstas tarefas na interface
+    de comunicação para sincronizar os módulos matemáticos. Após a construção da aplicação, foi percebida a necessidade de acrescentar
+    as duas tarefas de deleção no protocolo.
+    
+    
+    
+    
+      
+      
