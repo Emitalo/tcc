@@ -1,8 +1,8 @@
 \chapter{Aplicação de validação da API proposta} \label{cap:aplicacao_exemplo}
 
   Para validar a API construída, o protocolo de comunicação proposto entre a API e o módulo Matemático
-  e a arquitetura proposta em geral, foram criados a aplicação cliente do Pentano e um módulo matemático
-  que implementa o algoritmo k-Means para a clusterização.
+  e a arquitetura proposta em geral, em relação aos requisitos identificados,
+  foram criados a aplicação cliente do Pentano e um módulo matemático que implementa o algoritmo k-Means para a clusterização.
   Todas as aplicações construídas, inclusive a API proposta, se encontram no repositório do Pentano\footnote{\href{https://gitlab.com/pentano}{https://gitlab.com/pentano}}.
   
   \begin{figure}[h!]
@@ -21,7 +21,7 @@
       \item a API do Pentano, que fornece os serviços de autenticação e gerenciamento das conversas, comentários e votos; 
       \item uma instância do módulo matemático,
 	  que fornece o serviço de clusterização para agrupar os usuários; e
-      \item uma instância do RabbitMQ\footnote{\href{https://www.rabbitmq.com/}{https://www.rabbitmq.com/}} para
+      \item uma instância do RabbitMQ para
 	  intermediar a comunicação entre a API e o módulo matemático, servindo como meio de transporte das
 	  mensagens disparadas pelo Celery.
 	  

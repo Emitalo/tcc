@@ -102,9 +102,8 @@
     para se comunicarem com a API, de modo que seja possível criar vários módulos matemáticos utilizando algoritmos diferentes.
     Os módulos matemáticos encapsulam a lógica de agrupar os usuários com base nos votos obtidos.
     
-    Para a comunicação entre a API e os módulos matemáticos escolhidos, foi utilizada
-    uma plataforma de execução de tarefas assíncronas, o Celery\footnote{\href{http://www.celeryproject.org/}{http://www.celeryproject.org/}}, que é uma aplicação
-    madura, estável, bem acolhida pela comunidade do Python, logo é de fácil integração com projetos nessa linguagem.
+    Como mencionado, para a comunicação entre a API e os módulos matemáticos escolhidos,
+    foi utilizado o Celery como plataforma de execução de tarefas assíncronas.
     O Celery funciona a partir da definição de tarefas que podem ser executadas de forma assíncrona
     e utiliza um \textit{message broker}, que é uma plataforma intermediária
     entre duas aplicações para troca de mensagens, para enfileirar e delegar as tarefas para execução.
