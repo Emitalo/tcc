@@ -11,33 +11,67 @@
 
     \subsection*{Requisitos Funcionais} \label{functional_requirements}
 
-    Uma avaliação do escopo da plataforma ``Empurrando Juntos'' permitiu o levantamento de características desejadas do sistema e,
-    consequentemente, alguns requisitos associados, que foram sumarizados na Tabela \ref{tab:requisitos}.
+    Uma avaliação do escopo da plataforma ``Empurrando Juntos'' permitiu o levantamento de \textit{features} desejadas do sistema e,
+    consequentemente, alguns requisitos associados, que foram sumarizados na listagem abaixo.
+    
+    É importante salientar que os requisitos identificados foram levantados no trabalho de \citeonline{empurrandojuntos}
+    e neste trabalho somente foi realizada a tradução do requisito para a forma de histórias de usuários, que
+    foram documentadas como \textit{issues} no repositório
+    da aplicação\footnote{\href{https://gitlab.com/pentano}{https://gitlab.com/pentano}}.
 
-    \begin{table}[h!]
-    \centering
-    \caption{Requisitos funcionais de alto nível da aplicação.}
-    \label{tab:requisitos}
-    \resizebox{\columnwidth}{!}{
-      \begin{tabular}{@{}cl@{}}
-      \toprule
-      \textbf{Característica}                      & \multicolumn{1}{c}{\textbf{Requisito}}                                                                                                \\ \midrule
-      \multirow{5}{*}{Gerenciamento de Usuário}    & O sistema deve permitir o cadastro de usuários                                                                                        \\
-						  & O sistema deve permitir a alteração de usuários                                                                                       \\
-						  & \begin{tabular}[c]{@{}l@{}}O sistema deve permitir a autenticação de usuários \\ cadastrados na plataforma\end{tabular}			\\
-						  &  \begin{tabular}[c]{@{}l@{}}O sistema deve permitir a autenticação de usuários \\ cadastrados no Facebook\end{tabular}                     \\ \midrule
-      \multirow{3}{*}{Gerenciamento de Conversa}   & O sistema deve permitir o cadastro de conversas                                                                                       \\
-						  & O sistema deve permitir a alteração de conversas                                                                                      \\
-						  & O sistema deve permitir a exclusão de conversas                                                                                       \\ \midrule
-      \multirow{4}{*}{Gerenciamento de Comentário} & O sistema deve permitir o cadastro de comentários em conversas                                                                        \\
-						  & O sistema deve permitir a alteração de comentários                                                                                    \\
-						  & O sistema deve permitir a exclusão de comentários                                                                                     \\ 
-						  & O sistema deve permitir que o usuário vote em comentários                                                                             \\ \midrule
-      Agrupamento de usuários                      & \begin{tabular}[c]{@{}l@{}}O sistema deve permitir a 
-						    visualização dos usuários agrupados \\ de acordo com os votos dados\end{tabular} \\ \bottomrule
-	\end{tabular}
-    }
-	\end{table}
+    \begin{itemize}
+	\item \textbf{Feature}:  Gerenciamento de Usuário
+	    \begin{itemize}
+		\item Como usuário, gostaria de me cadastrar na plataforma para poder participar das discussões.
+		\item Como usuário, gostaria de acessar a plataforma utilizando minha conta da própria plataforma para ter acesso às discussões.
+		\item Como usuário, gostaria de acessar a plataforma utilizando minha conta do Facebook para não ter que preencher muitos dados e poder ter acesso rápido às discussões.
+		\item Como usuário, gostaria de alterar meus dados cadastrais para manter minhas informações atualizadas.
+	    \end{itemize}
+	    
+	\item \textbf{Feature}: Gerenciamento de Conversa
+	    \begin{itemize}
+		\item Como usuário, gostaria de criar uma conversa para iniciar uma discussão sobre um tema de minha escolha. 
+		\item Como usuário, gostaria de editar minha conversa para corrigir possíveis erros no texto. 
+		\item Como usuário, gostaria de excluir minha conversa para encerrar a discussão apresentada.
+	    \end{itemize}
+	    
+	\item \textbf{Feature}: Gerenciamento de Comentário
+	    \begin{itemize}
+		\item Como usuário, gostaria de criar um comentário em uma conversa para expressar minha opinião sobre o assunto da conversa. 
+		\item Como usuário, gostaria de editar meu comentário em uma conversa para corrigir possíveis erros no texto. 
+		\item Como usuário, gostaria de excluir meu comentário em uma conversa para deixar de expressar minha opinião naquela conversa. 
+	    \end{itemize}
+	    
+	\item \textbf{Feature}: Agrupamento de usuários
+	    \begin{itemize}
+		\item Como usuário, gostaria de votar em um comentário para expressar minha opinião sobre o conteúdo daquele comentário.
+		\item Como usuário, gostaria de visualizar os grupos formados em uma conversa para ter uma visão geral das pessoas na discussão.
+	    \end{itemize}
+    \end{itemize}
+%     \begin{table}[h!]
+%     \centering
+%     \caption{Requisitos funcionais de alto nível da aplicação.}
+%     \label{tab:requisitos}
+%     \resizebox{\columnwidth}{!}{
+%       \begin{tabular}{@{}cl@{}}
+%       \toprule
+%       \textbf{Característica}                      & \multicolumn{1}{c}{\textbf{Requisito}}                                                                                                \\ \midrule
+%       \multirow{5}{*}{Gerenciamento de Usuário}    & O sistema deve permitir o cadastro de usuários                                                                                        \\
+% 						  & O sistema deve permitir a alteração de usuários                                                                                       \\
+% 						  & \begin{tabular}[c]{@{}l@{}}O sistema deve permitir a autenticação de usuários \\ cadastrados na plataforma\end{tabular}			\\
+% 						  &  \begin{tabular}[c]{@{}l@{}}O sistema deve permitir a autenticação de usuários \\ cadastrados no Facebook\end{tabular}                     \\ \midrule
+%       \multirow{3}{*}{Gerenciamento de Conversa}   & O sistema deve permitir o cadastro de conversas                                                                                       \\
+% 						  & O sistema deve permitir a alteração de conversas                                                                                      \\
+% 						  & O sistema deve permitir a exclusão de conversas                                                                                       \\ \midrule
+%       \multirow{4}{*}{Gerenciamento de Comentário} & O sistema deve permitir o cadastro de comentários em conversas                                                                        \\
+% 						  & O sistema deve permitir a alteração de comentários                                                                                    \\
+% 						  & O sistema deve permitir a exclusão de comentários                                                                                     \\ 
+% 						  & O sistema deve permitir que o usuário vote em comentários                                                                             \\ \midrule
+%       Agrupamento de usuários                      & \begin{tabular}[c]{@{}l@{}}O sistema deve permitir a 
+% 						    visualização dos usuários agrupados \\ de acordo com os votos dados\end{tabular} \\ \bottomrule
+% 	\end{tabular}
+%     }
+% 	\end{table}
 	  
       
     \subsection*{Requisitos não funcionais}	\label{non_functional_requirements}
@@ -54,7 +88,7 @@
     Outro aspecto importante para esta aplicação é a questão da manutenibilidade, pois como é um software livre, a solução
     deve ser desenvolvida de uma maneira que seja possível evoluir facilmente pela comunidade.
     
-    \subsection*{Decisões de implementação}
+    \subsection*{Suporte tecnológico}
     
     Todos os serviços da API serão providos para a plataforma por meio de uma interface HTTP/HTTPS utilizando o estilo arquitetural REST.
     Para isso, a linguagem Python\footnote{Versão 3.4 - \href{https://www.python.org/download/releases/3.4.0/}{https://www.python.org/download/releases/3.4.0/}} 
