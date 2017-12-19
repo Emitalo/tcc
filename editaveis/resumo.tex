@@ -7,22 +7,26 @@ O intuito é que o usuário crie e participe de conversas, realizando comentári
 Com os votos realizados, as pessoas que responderem de maneira similar são agrupadas,
 provendo ao usuário uma visão ampliada das opiniões acerca do assunto.
 %
+
 Como o ``Empurrando Juntos'' possui a necessidade de ter essas funcionalidades de
 gerenciamento de usuários, conversas e de agrupamento de usuários para cumprir o seu propósito,
 oferecê-las como um serviço \textit{web} seria uma contribuição significante ao projeto.
 Além disso, uma solução mais flexível seria possibilitar que  o agrupamento seja feito
 utilizando diferentes técnicas de classificação configuráveis.
 %
+
 O objetivo deste trabalho foi a implementação de uma API RESTful para o ``Empurrando Juntos''
-que contemplasse as funcionalidades supracitadas e permitisse a utilização de diferentes
+que contemplasse as funcionalidades supracitadas e a proposta de uma arquitetura que permitisse a utilização de diferentes
 métodos de classificação para realizar o agrupamento dos usuários.
 %
-Uma arquitetura em três módulos independentes foi proposta, na qual um dos módulos foi implementado 
-e validada para atender as necessidades do ``Empurrando Juntos'',
-que consiste , o módulo cliente, o módulo de API e o módulo matemático,
-os quais são responsáveis, respectivamente, pela interface gráfica da aplicação,
-pelos serviços provedores das funcionalidades definidas e pelo agrupamento dos usuários.
+
+O trabalho foi realizado em cinco etapas e a API foi implementada em seis iterações. Além do módulo de serviços (API), a arquitetura foi proposta com outros dois módulos, o módulo cliente, para prover a interface gráfica da plataforma, 
+e o módulo matemático, responsável pelo agrupamento dos usuários. 
+Ao final do desenvolvimento, foi construída uma aplicação para validação da API e da arquitetura proposta. Na validação apenas um módulo matemático foi integrado. A arquitetura proposta e a API foram consideradas adequadas e satisfatória para os requisitos identificados.
+Contudo, foi percebida a necessidade de evoluções para outras funcionalidades do ``Empurrando Juntos'' essenciais
+para a minimização da polarização das discussões e a carência de outros módulos matemáticos para teste da integração.
 %
+
 \vspace{\onelineskip}
 
 
