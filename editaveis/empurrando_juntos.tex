@@ -16,64 +16,88 @@ A gamificação tem por objetivo utilizar mecanismos e elementos de jogos para p
 de uma pessoa na realização de uma tarefa \cite{pedreira2015gamification}. No caso do ``Empurrando Juntos'' a ideia é conceder poderes
 especiais a determinados usuários de acordo com seus posicionamento nos grupos formados.
 
+\section{Funcionamento do Empurrando Juntos}
 
-\begin{figure}[h!]
-\centering
-\includegraphics[scale=0.7]{figuras/resumo_ej.png}
-\caption{Funcionamento do ``Empurrando Juntos''}
-\label{fig:resumo_ej}
-\end{figure}
+  A Figura \ref{fig:resumo_ej} ilustra o funcionamento completo do sistema. O usuário entra no sistema e pode criar conversas ou
+  comentar em conversas criadas por outros usuários. Para cada comentário realizado nessas conversas, é possível atribuir um 
+  ``voto'' de concordância ou discordância do conteúdo exposto, ou não atribuir nenhum voto (pular).
+  Os votos são entendidos como a opinião dos usuários e são utilizados para a formação dos grupos de pessoas de acordo com suas opiniões. 
 
-A Figura \ref{fig:resumo_ej} ilustra o funcionamento completo do sistema. O usuário entra no sistema e pode criar conversas ou
-comentar em conversas criadas por outros usuários. Para cada comentário realizado nessas conversas, é possível atribuir um 
-``voto'' de concordância ou discordância do conteúdo exposto, ou não atribuir nenhum voto (pular).
-Os votos são entendidos como a opinião dos usuários e são utilizados para a formação dos grupos de pessoas de acordo com suas opiniões. 
+  \begin{figure}[h!]
+  \centering
+  \includegraphics[scale=0.7]{figuras/resumo_ej.png}
+  \caption{Funcionamento do ``Empurrando Juntos''}
+  \label{fig:resumo_ej}
+  \end{figure}
 
-Em relação a gamificação proposta, \citeonline{empurrandojuntos} criaram o conceito de ``the Push'' que consiste
-em prover notificações para determinados usuários e concedê-los o poder de enviar mensagens e criar eventos. Com 
-o intuito de movimentar ainda mais as participações na aplicação e criar comunicação entre os usuários agrupados.
+  Em relação a gamificação proposta, \citeonline{empurrandojuntos} criaram o conceito de ``the Push'' que consiste
+  em prover notificações para determinados usuários e concedê-los o poder de enviar mensagens e criar eventos. Com 
+  o intuito de movimentar ainda mais as participações na aplicação e criar comunicação entre os usuários agrupados.
 
-\citeonline{parra}, em um artigo para a página do Instituto Cidade Democrática, apresenta os três perfis de usuário
-que receberão essas notificações:
+  \citeonline{parra}, em um artigo para a página do Instituto Cidade Democrática, apresenta os três perfis de usuário
+  que receberão essas notificações:
 
-\begin{enumerate}
-  \item \textbf{Ativista de minoria}: usuários com representação em um grupo de minoria, ou seja, que não concordam com a opinião 
-    expressa em maior volume;
-  \item \textbf{Pessoa ponte de diálogo}: usuários com opiniões ``contraditórias'', que normalmente concordam com a maioria, mas
-    possuem alguns pensamentos diferentes demonstrando compatibilidade com outros grupos;
-  \item \textbf{Criador da consulta}: usuários específicos representantes de consultas de governos para auxiliar na criação de projetos
-  e políticas.
-\end{enumerate}
+  \begin{enumerate}
+    \item \textbf{Ativista de minoria}: usuários com representação em um grupo de minoria, ou seja, que não concordam com a opinião 
+      expressa em maior volume;
+    \item \textbf{Pessoa ponte de diálogo}: usuários com opiniões ``contraditórias'', que normalmente concordam com a maioria, mas
+      possuem alguns pensamentos diferentes demonstrando compatibilidade com outros grupos;
+    \item \textbf{Criador da consulta}: usuários específicos representantes de consultas de governos para auxiliar na criação de projetos
+    e políticas.
+  \end{enumerate}
 
 
-Contudo, a ideia da utilização dessas notificações e perfis ainda necessita de validações e deverá ser bem
-acompanhada para garantir a efetividade do seu propósito \cite{empurrandojuntos, parra}. 
+  Contudo, a ideia da utilização dessas notificações e perfis ainda necessita de validações e deverá ser bem
+  acompanhada para garantir a efetividade do seu propósito \cite{empurrandojuntos, parra}. 
 
-A Figura \ref{fig:prototipo} apresenta o protótipo definido para a plataforma e nela é possível ver a apresentação das conversas
-e grupos formados e os poderes concedidos ao usuário através do ``The Push'' \cite{parra}.
+  A Figura \ref{fig:prototipo} apresenta o protótipo definido para a plataforma e nela é possível ver a apresentação das conversas
+  e grupos formados e os poderes concedidos ao usuário através do ``The Push'' \cite{parra}.
 
-\begin{figure}[h!]
-\centering
-\includegraphics[scale=0.3]{figuras/prototipo.png}
-\caption{Protótipo do ``Empurrando Juntos''. Fonte: \cite{parra}}
-\label{fig:prototipo}
-\end{figure}
+  \begin{figure}[h!]
+  \centering
+  \includegraphics[scale=0.3]{figuras/prototipo.png}
+  \caption{Protótipo do ``Empurrando Juntos''. Fonte: \cite{parra}}
+  \label{fig:prototipo}
+  \end{figure}
 
-Levando isto em consideração, o escopo inicial do sistema foi definido para fornecer o gerenciamento de usuários, com cadastro, atualização, exclusão e autenticação, 
-incluindo contas provenientes do Facebook. Além disso, deve prover funcionalidades para o gerenciamento das conversas, comentários
-e votos. Por fim, deve prover também a funcionalidade principal de agrupamento dos usuários de acordo com os votos obtidos.
+  Levando isto em consideração, o escopo inicial do sistema foi definido para fornecer o gerenciamento de usuários, com cadastro, atualização, exclusão e autenticação, 
+  incluindo contas provenientes do Facebook. Além disso, deve prover funcionalidades para o gerenciamento das conversas, comentários
+  e votos. Por fim, deve prover também a funcionalidade principal de agrupamento dos usuários de acordo com os votos obtidos.
+  
+  Em suma, o objetivo da plataforma é realizar o agrupamento de pessoas que responderam de maneira parecida, ou seja, 
+  concordaram e discordaram dos mesmos comentários. Com os grupos formados, a convergência e divergência 
+  de opiniões e uma visualização mais efetiva da opinião das pessoas são apresentadas aos usuários.
 
-Tal agrupamento pode ser implementado utilizando técnicas de classificação de dados.
-De acordo com a proposta descrita por \citeonline{empurrandojuntos}, 
-em um primeiro momento, essa classificação seria realizada utilizando algoritmos de clusterização. 
+\section{Classificação de dados no Empurrando Juntos}
 
-Em suma, o objetivo da plataforma é realizar o agrupamento de pessoas que responderam de maneira parecida, ou seja, 
-concordaram e discordaram dos mesmos comentários. Com os grupos formados, a convergência e divergência 
-de opiniões e uma visualização mais efetiva da opinião das pessoas são apresentadas aos usuários. 
-
-Nesse sentido, este trabalho 
-é uma contribuição para o ``Empurrando Juntos'' por meio da proposta e implementação de uma API para expor como serviços as funcionalidades
-relacionadas ao escopo supracitado e permitir o uso de diferentes técnicas 
-de classificação de dados.
+  A funcionalidade de agrupamento de usuários pode ser implementada utilizando técnicas de classificação de dados.
+  De acordo com a proposta descrita por \citeonline{empurrandojuntos}, 
+  em um primeiro momento, essa classificação seria realizada utilizando algoritmos de clusterização.
+  Uma breve explicação sobre classificação de dados pode ser encontrada no Apêndice \ref{apd:classificacao}.
+  
+  O algoritmo k-Means, um algoritmo baseado no centro, foi escolhido por \citeonline{tallys_tcc} 
+  para ser o algoritmo utilizado no primeiro módulo de agrupamento de usuários do ``Empurrando Juntos''.
+  
+\section{Arquitetura atual do Empurrando Juntos}
+  
+  Atualmente, o ``Empurrando Juntos'' possui uma arquitetura monolítica acoplada a uma única implementação
+  do módulo de agrupamento de usuários, não sendo possível utilizar outro algoritmo de clusterização para
+  agrupar os usuários com base nos votos obtidos.
+  
+  \citeonline{tallys_tcc} criou uma primeira versão de um módulo de agrupamento de usuários
+  para o ``Empurrando Juntos'' que implementava o algoritmo k-Means,
+  o qual foi denominado de \textit{Pentano}, que apesar de ser uma alternativa \textit{open-source}
+  ainda deixava o agrupamento de usuários acoplado a um único algoritmo de clusterização. 
+  
+  Neste trabalho propomos uma arquitetura modular e distribuída onde é possível
+  trocar o módulo que realizará o agrupamento dos usuários.
+  Para o ``Empurrando Juntos'' possuir um módulo de agrupamento de usuários, 
+  nós refatoramos a aplicação \textit{Pentano} para se encaixar na arquitetura proposta.
+  
+  Como contribuição para o ``Empurrando Juntos'', o processo de clusterização e as
+  demais funcionalidades supracitadas foram disponibilizados como serviços
+  \textit{web} na API proposta, de forma que seja possível utilizar diferentes tipos de algoritmos para realizar a classificação dos dados.
+  Para validação da API construída (Capítulo \ref{cap:aplicacao_exemplo}), uma implementação do algoritmo k-Means
+  foi realizada para exemplificar o serviço de clusterização oferecido.
 
 

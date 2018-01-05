@@ -50,6 +50,11 @@ Portanto, o objetivo do trabalho foi implementar uma API que sirva como contribu
 capaz de fornecer os serviços de gerenciamento das conversas e de agrupamento de usuários, e propor uma arquitetura 
 de forma que seja possível substituir o método de classificação utilizado para o agrupamento.
 
+Uma arquitetura monolítica já existe para o ``Empurrando Juntos'', assim como um protótipo do módulo de agrupamento
+de usuários (que foi intitulado de \textit{Pentano}\footnote{Nome da proposta no trabalho de \citeonline{tallys_tcc}}).
+O esforço deste trabalho concentra-se em propor uma nova arquitetura modular e desacoplada para ``Empurrando Juntos'',
+evoluindo a aplicação \textit{Pentano} para ser utilizada como um módulo de agrupamento de usuários nesta nova arquitetura.
+
 Para realização do objetivo proposto, o trabalho foi dividido em cinco etapas, conforme a Figura \ref{fig:etapas_trabalho}. 
 
 \begin{figure}[h!]
@@ -70,8 +75,8 @@ Por fim, na etapa de ``Aplicação de validação'', a título de validação da
 a API foi utilizada em um cenário de exemplo em comunicação com os outros dois módulos: cliente e matemático.
 
 Nesse contexto, este trabalho, além desta introdução, está organizado em outros seis capítulos.
-No Capítulo \ref{cap:empurrandojuntos} é apresentada a descrição, histórico e o escopo da plataforma ``Empurrando Juntos''.
-O Capítulo \ref{cap:classificação} aborda os conceitos de classificação, com foco em uma das técnicas implementadas na plataforma. 
+No Capítulo \ref{cap:empurrandojuntos} é apresentada a descrição, histórico, escopo e arquitetura da plataforma ``Empurrando Juntos''.
+% O Capítulo \ref{apd:classificacao} aborda os conceitos de classificação, com foco em uma das técnicas implementadas na plataforma. 
 A definição da proposta e o planejamento são apresentados no Capítulo \ref{cap:proposta}.
 A API desenvolvida no trabalho é apresentada no Capítulo \ref{cap:api}. No Capítulo \ref{cap:aplicacao_exemplo} é
 apresentada uma validação da API. E por fim são apresentadas as conclusões no Capítulo \ref{cap:consideracoes_finais}.
