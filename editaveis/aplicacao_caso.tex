@@ -1,8 +1,8 @@
-\chapter{Aplicação de validação da API proposta} \label{cap:aplicacao_exemplo}
+\chapter{Aplicação para validação funcional da API proposta} \label{cap:aplicacao_exemplo}
 
-  Para validar a API construída, o protocolo de comunicação proposto entre a API e o módulo Matemático
+  Para validar a API construída, do ponto de vista funcional, o protocolo de comunicação proposto entre a API e o módulo Matemático
   e a arquitetura proposta em geral, em relação aos requisitos identificados,
-  foram criados a aplicação cliente do Pentano e um módulo matemático que implementa o algoritmo k-Means para a clusterização.
+  criamos a aplicação cliente do Pentano e um módulo matemático que implementa o algoritmo k-Means para a clusterização.
   Todas as aplicações construídas, inclusive a API proposta, se encontram no repositório do Pentano\footnote{\href{https://gitlab.com/pentano}{https://gitlab.com/pentano}}.
   
   \begin{figure}[h!]
@@ -41,7 +41,6 @@
     em uma aplicação Angular 2\footnote{\href{https://angular.io/}{https://angular.io/}} para
     testar a integração com todos os \textit{endpoints} da API e demonstrar o comportamento da API. Esta aplicação foi feita utilizando os recursos providos pelo próprio \textit{framework}, portanto
     possui uma arquitetura baseada em componentes, claramente apresentada na própria documentação do Angular.
-    
     
     Resumidamente, a arquitetura consiste em uma hierarquia de componentes organizados
     em módulos independentes que se comunicam para compor a aplicação e realizar o objetivo desejado.
@@ -131,28 +130,31 @@
     $k$ por meio do cálculo do coeficiente de silhueta.
     No final dos ciclos, na saída do fluxo são formados os grupos de pessoas com opiniões semelhantes, que são retornados para API.
  
-    Os dois módulos apresentados neste capítulo complementaram a arquitetura definida para o ``Empurrando Juntos'',
+    Os dois módulos (cliente e matemático) apresentados neste capítulo complementaram a arquitetura definida para o ``Empurrando Juntos'',
     do ponto de vista funcional, e permitiram a visualização do funcionamento da API e do sistema por completo.
     
     \section{Resultados e Discussão}
     
-    A aplicação de validação proposta neste Capítulo trata-se de uma validação relacionada ao comportamento de resposta
+    A aplicação de validação proposta neste capítulo trata-se de uma validação relacionada ao comportamento de resposta
     dos protocolos de comunicação estabelecidos, os \textit{endpoints}
     e o protocolo definido, com o objetivo de validar as funcionalidades implementadas frente aos requisitos identificados.
     
-    Os requisitos funcionais implementados foram validados por meio da integração com a aplicação cliente,
+    Os requisitos funcionais implementados foram validados, do ponto de vista funcional, por meio da integração com a aplicação cliente,
     que testou a integração com API por meio da utilização de todos os \textit{endpoints} implementados.
     Para todos os requisitos implementados existem testes automatizados na API para garantir o funcionamento dos \textit{endpoints} da API.
+        
+    Para a definição das tarefas da interface de comunicação foram identificadas as requisições que deveriam
+    comunicar com o módulo matemático para prover as informações necessárias para a formação dos grupos. 
+    As funcionalidades de deleção já estavam previstas na API, contudo não estavam previstas tarefas na interface
+    de comunicação para sincronizar os módulos matemáticos. Após a construção da aplicação, 
+    percebemos a necessidade de acrescentar as duas tarefas de deleção no protocolo, dessa forma elas foram
+    acrescentadas à interface do protocolo e testadas.
     
     A arquitetura de comunicação definida mostrou-se adequada para a proposta do trabalho, uma vez que foi possível
     realizar o processamento assíncrono e distribuído nos modulos matemáticos de forma desacoplada da API.
     As tecnologias de troca de mensagens para o protocolo de comunicação, Celery e RabbitMQ, funcionaram 
     apropriadamente nos testes com a utilização de apenas um módulo matemático. 
-    
-    As funcionalidades de deleção já estavam previstas na API, contudo não estavam previstas tarefas na interface
-    de comunicação para sincronizar os módulos matemáticos. Após a construção da aplicação, foi percebida a necessidade de acrescentar
-    as duas tarefas de deleção no protocolo.
-    
+
     
     
     

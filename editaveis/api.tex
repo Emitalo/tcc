@@ -88,10 +88,6 @@
     módulos matemáticos plugáveis, a solução proposta está representada na Figura \ref{fig:pentano}, 
     na qual são indicados os dois módulos tratados na solução: os módulos API e Matemático. 
     A API implementada neste trabalho em conjunto com uma aplicação cliente a ser implementada em outro momento,
-    
-    -----------
-    
-    
     será denominado neste trabalho de \textit{Pentano}\footnote{Nome da proposta no trabalho de \citeonline{tallys_tcc}}.
     
     \begin{figure}[h!]
@@ -101,8 +97,8 @@
     \label{fig:pentano}
     \end{figure}
     
-    A arquitetura proposta é definida pelo módulo de API, o módulo Matemático
-    e o protocolo de comunicação entre esses dois módulos, como ilustra a Figura \ref{fig:pentano}. O módulo de 
+    A aplicação é composta de três módulos: cliente, API e matemático. Na Figura \ref{fig:pentano}
+    é possível observar a relação entre os três módulos e o protocolo de comunicação entre os módulos API e matemático. O módulo de 
     API é uma aplicação independente que contém a lógica para o gerenciamento das conversas e usuários e
     serve como ponto de entrada para o sistema. Os módulos matemáticos também são aplicações independentes que implementam a 
     interface definida no protocolo
@@ -120,7 +116,7 @@
     Uma visão geral do protocolo pode ser vista na Figura \ref{fig:protocolo}.
     
 
-    \begin{figure}[bt!]
+    \begin{figure}[ht!]
     \centering
     \includegraphics[scale=1]{figuras/esquema_protocolo.png}
     \caption{Esquema de comunicação entre os módulos de API e Matemático}
@@ -269,8 +265,12 @@
 	da implementação do módulo para poder gerenciar os momentos em que deve ser realizada clusterização visando 
 	uma boa performance da aplicação.
 	
-	Com o intuito de validar a implementação dessa API foram implementados os outros módulos estabelecidos na arquitetura da
-	solução, apresentada na Figura \ref{fig:pentano}. A descrição destes dois módulos e da validação será apresentada no próximo
+	
+	Com o objetivo de fazer uma primeira validação funcional 
+	da implementação da nossa API, como parte do Pentano, e
+	por sua vez compondo o ``Empurrando Juntos'' de forma a prover os serviços necessários para 
+	o desenvolvimento da plataforma, os outros módulos (cliente e matemático) 
+	estabelecidos foram implementados. A descrição destes dois módulos e da validação será apresentada no próximo
 	capítulo.
 	
 	

@@ -15,18 +15,19 @@
   conversas, comentários, votos e formação de grupos. Este último com a possibilidade da utilização de qualquer método 
   de classificação de dados.
   
-  Para a implementação da API primeiramente foram identificados os requisitos funcionais e não funcionais da aplicação
+  Como proposta de implementação e evolução do Pentano, e contribuição para o ``Empurrando Juntos'',
+  identificamos os requisitos funcionais e não funcionais da aplicação
   relacionados ao escopo a ser tratado no trabalho, além
-  da definição das tecnologias a serem utilizadas. A escolha do \textit{framework} Django foi considerada apropriada, pois permitiu
+  de definirmos as tecnologias a serem utilizadas. A escolha do \textit{framework} Django foi considerada apropriada, pois permitiu
   a separação em \textit{apps} provendo um baixo acoplamento na aplicação. 
   
-  Em relação ao nível de maturidade da API, foi percebido que ela se encaixa no Nível 2 proposto,
+  Em relação ao nível de maturidade da API, analisamos que atendemos ao Nível 2, proposto,
   pois utiliza corretamente os verbos e códigos de resposta HTTP.
   A utilização da especificação JSONAPI motrou-se um primeiro passo para atingir o Nível 3 de maturidade,
   adicionando alguns \textit{hyperlinks} de controle nas respostas da API.
   
   Considerando a arquitetura modularizada do sistema e a API como sendo apenas uma parte do todo, 
-  foram conectados os outros dois módulos para a validação 
+  conectamos os outros dois módulos para a validação 
   da solução. Na comunicação com aplicação cliente foi possível confirmar a escolha adequada da arquitetura dos serviços e 
   constatar o correto funcionamento dos \textit{endpoints}.
   
@@ -35,7 +36,7 @@
   inicial da aplicação de acordo com a proposta do ``Empurrando Juntos'', incluindo a escolha da clusterização 
   como um primeiro método para a realização dos agrupamentos. 
   
-  Dessa forma, os resultados obtidos com a validação utilizando apenas uma opção de aplicação de classificação são considerados pertinentes.
+  Dessa forma, os resultados obtidos com a validação funcional utilizando apenas uma opção de aplicação de classificação são considerados pertinentes.
   Porém é reconhecida como limitação deste trabalho a ausência de um teste da API com outros algoritmos de classificação implementados em outras aplicações.
   Nesse sentido, um trabalho futuro proposto é a implementação de outros módulos matemáticos com diferentes técnicas
   de classificação dos dados para validação do protocolo apresentado e para estudos de métodos mais apropriados para o contexto.

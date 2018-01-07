@@ -1,22 +1,23 @@
 \chapter{Definição e planejamento da proposta} \label{cap:proposta}
 
- A seção \ref{requirements} apresenta os requisitos identificados para a solução.
- A seção \ref{architecture} apresenta a descrição da arquitetura definida para a solução.
+ Considerando o objetivo de implementar uma API e propor uma arquitetura como contruibuição
+ para o ``Empurrando Juntos'', a partir do escopo da plataforma 
+ definido em suas propostas iniciais (\citeonline{parra, tallys_tcc}) 
+ foram extraídos os requisitos necessários para a implementação e
+ a partir disso definida a proposta de arquitetura.
 
 \section{Requisitos da solução} \label{requirements}
 
-    Considerando as necessidades do ``Empurrando Juntos'',
-    foram identificados requisitos funcionais e não funcionais da aplicação,
+    A partir do escopo do ``Empurrando Juntos'' definido por \citeonline{empurrandojuntos}
+    foram traduzidos os requisitos funcionais e não funcionais da aplicação,
     que são apresentados a seguir.
 
     \subsection*{Requisitos Funcionais} \label{functional_requirements}
 
-    Uma avaliação do escopo da plataforma ``Empurrando Juntos'' permitiu o levantamento de \textit{features} desejadas do sistema e,
-    consequentemente, alguns requisitos associados, que foram sumarizados na listagem abaixo.
-    
-    É importante salientar que os requisitos identificados foram levantados no trabalho de \citeonline{empurrandojuntos}
-    e neste trabalho somente foi realizada a tradução do requisito para a forma de histórias de usuários, que
-    foram documentadas como \textit{issues} no repositório
+    A tradução de \textit{features} desejadas do sistema e,
+    consequentemente, alguns requisitos associados, 
+    foram sumarizados na listagem abaixo. Todas as histórias foram documentadas 
+    como \textit{issues} no repositório
     da aplicação\footnote{\href{https://gitlab.com/pentano}{https://gitlab.com/pentano}}.
 
     \begin{itemize}
@@ -81,7 +82,7 @@
     o que cria uma necessidade das funcionalidades principais da aplicação serem reutilizáveis
     pelas diversas plataformas que possam existir.
     
-    O agrupamento dos usuários geralmente é um processo computacionalmente custoso e recorrente. Por isso, o ``Empurrando Juntos''
+    O agrupamento dos usuários, geralmente, é um processo computacionalmente custoso e recorrente. Por isso, o ``Empurrando Juntos''
     necessita de uma solução que realize esse processamento de forma assíncrona e distribuída, para que a comunicação com
     as aplicações clientes possam ser mais fluidas e que possa haver máquinas dedicadas ao processamento.
     
@@ -90,7 +91,8 @@
     
     \subsection*{Suporte tecnológico}
     
-    Todos os serviços da API serão providos para a plataforma por meio de uma interface HTTP/HTTPS utilizando o estilo arquitetural REST.
+    Todos os serviços da API serão providos para a plataforma por meio de uma interface HTTP/HTTPS utilizando o estilo arquitetural REST 
+    (apresentado e discutido no contexto do ``Empurrando Juntos'' no Capítulo \ref{cap:api}).
     Para isso, a linguagem Python\footnote{Versão 3.4 - \href{https://www.python.org/download/releases/3.4.0/}{https://www.python.org/download/releases/3.4.0/}} 
     foi definida como tecnologia de implementação da solução proposta, juntamente com os \textit{frameworks}
     Django\footnote{Versão 1.11 - \href{https://www.djangoproject.com/}{https://www.djangoproject.com/}} e 
@@ -106,7 +108,7 @@
     o que a torna de fácil integração com projetos nessa linguagem.
     Como a necessidade do ``Empurrando Juntos'' está mais ligada a operações em tempo real,
     processamento do agrupamento dos usuários à medida que os votos mudam,
-    o Celery é adequado para fornecer as funcionalidades necessárias relacionadas ao processamento assíncrono e distribuído.
+    avaliamos o Celery como adequado para fornecer as funcionalidades necessárias relacionadas ao processamento assíncrono e distribuído.
     
     Para executar as tarefas de forma assíncrona e distribuída, o Celery utiliza um \textit{message broker},
     que é uma plataforma intermediária entre duas aplicações para troca de mensagens,
@@ -129,8 +131,9 @@
     
 \section{Planejamento do trabalho}
 
-    Para a execução do trabalho foi utilizada uma abordagem ágil, onde os requisitos foram alocados em 6 iterações de duas semanas e
-    este planejamento pode ser visto na Figura \ref{fig:cronograma}.
+    Para a execução do trabalho foi utilizada uma abordagem ágil, 
+    onde os requisitos foram alocados em 6 iterações de duas semanas 
+    e este planejamento pode ser visto na Figura \ref{fig:cronograma}.
     
     \begin{figure}[h!]
       \centering
@@ -138,3 +141,36 @@
       \caption{Cronograma de iterações de desenvolvimento}
       \label{fig:cronograma}
     \end{figure}
+    
+    O objetivo das atividades foram: 
+
+    \begin{itemize}
+     \item \textbf{Estabelecer Arquitetura}: implementar e estruturar na aplicação
+     a arquitetura proposta;
+     \item \textbf{Desenvolver \textit{feature} de Gerenciamento de Conversas}: 
+     implementar e realizar testes unitários das histórias de usuários referentes
+     ao Gerenciamento de Conversas;
+     \item \textbf{Desenvolver \textit{feature} de Gerenciamento de Comentários}: 
+     implementar e realizar testes unitários das histórias de usuários referentes
+     ao Gerenciamento de Comentários;
+     \item \textbf{Desenvolver \textit{feature} de Gerenciamento de Usuário}: 
+     implementar e realizar testes unitários das histórias de usuários referentes
+     ao Gerenciamento de Usuário, cadastro e alteração;
+     \item \textbf{Implementar controle de autenticação}: 
+     implementar e realizar testes unitários das histórias referentes Gerenciamento de Usuário, 
+     autenticação pelo cadastro na plataforma ou por Facebook;
+     \item \textbf{Implementar comunicação com o módulo \textit{Math}}: 
+     implementar e testar interface de comunicação com o módulo de clusterização,
+     adaptar aplicação desenvolvida por \citeonline{tallys_tcc};
+     \item \textbf{Construir aplicação de validação}: 
+     implementar aplicação cliente para testar o funcionamento da arquitetura definida e 
+     da API.
+    \end{itemize}
+
+    Cada atividade apresentada foi disposta em uma iteração gerando um ciclo
+    iterativo-incremental, no qual no final de cada iteração foi gerado
+    um incremento da API.
+    
+  
+    
+    
