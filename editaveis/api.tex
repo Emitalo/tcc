@@ -200,17 +200,27 @@
 	\end{itemize}
 	
 	
-	Considerando que o módulo matemático implemente todas as diretrizes definidas acima, a comunicação é realizada com 
-	os seguintes passos:
+	Considerando que o módulo matemático implemente todas as diretrizes definidas acima, a comunicação é realizada de acordo 
+	com a Figura \ref{fig:sequence_diagram}.
 	  
-	\begin{enumerate}
-	\item O cliente realiza uma das requisições relacionada a uma das 6 tarefas da Tabela \ref{tab:tasks};
-	\item A API processa a requisição e enfileira a tarefa no \textit{message broker};
-	\item O Celery executando no projeto onde encontra-se o módulo matemático captura a chamada da tarefa através do mesmo \textit{message broker} e 
-	executa a tarefa especificada;
-	\item O módulo matemático retorna o resultado de execução da tarefa;
-	\item A API recebe o resultado retornado do módulo matemático, identificando o sucesso ou a falha da tarefa executada.
-	\end{enumerate}
+% 	\begin{enumerate}
+% 	\item O cliente realiza uma das requisições relacionada a uma das 6 tarefas da Tabela \ref{tab:tasks};
+% 	\item A API processa a requisição e enfileira a tarefa no \textit{message broker};
+% 	\item O Celery executando no projeto onde encontra-se o módulo matemático captura a chamada da tarefa através do mesmo \textit{message broker} e 
+% 	executa a tarefa especificada;
+% 	\item O módulo matemático retorna o resultado de execução da tarefa;
+% 	\item A API recebe o resultado retornado do módulo matemático, identificando o sucesso ou a falha da tarefa executada.
+% 	\end{enumerate}
+
+
+	\begin{figure}[h]
+	\centering
+	\includegraphics[scale=0.7]{figuras/sequence_diagram.png}
+	\caption{Diagrama de Sequência de comunicação entre os módulos}
+	\label{fig:sequence_diagram}
+	\end{figure}
+
+
 
 	\begin{table}[h!]
 	\centering
